@@ -1,0 +1,112 @@
+/*MODALS*/
+.modal2 {
+    width: 35%;
+    height: 200px;
+    display: none;
+    background-color: white;
+}
+.add_collection_modal {
+    width: 960px;
+    height: 630px;
+    display: none;
+    background-color: white;
+}
+
+.modal_header{
+    padding-left: 15px;
+    line-height: 40px;
+    height: 40px;
+    background-color: #F5F5F5;
+    border-bottom: 1px solid #CCC;
+}
+.modal_content{
+    text-align: center;
+    height: 110px;
+    line-height: 100px;
+}
+.modal_footer{
+    background-color: #F5F5F5;
+    height: 50px;
+    line-height: 50px;
+}
+.modal_footer a{
+    margin-top: 5px;
+}
+
+
+.add_collection_modal .add_collection_content{
+    height: 510px;
+    overflow: auto;
+}
+.add_collection_modal .add_collection_header{
+    padding-left: 15px;
+    line-height: 40px;
+    height: 40px;
+    background-color: #F5F5F5;
+    border-bottom: 1px solid #CCC;
+}
+.add_collection_modal .add_collection_footer{
+    background-color: #F5F5F5;
+    height: 50px;
+    line-height: 50px;
+}
+
+
+
+.print_modal {
+    width: 960px;
+    height: 620px;
+    display: none;
+    background-color: white;
+}
+.print_modal .print_header{
+    padding-left: 15px;
+    line-height: 40px;
+    height: 40px;
+    background-color: #F5F5F5;
+    border-bottom: 1px solid #CCC;
+}
+.print_modal .print_content{
+    height: 510px;
+    overflow: auto;
+}
+.print_modal .print_footer{
+    background-color: #F5F5F5;
+    height: 70px;
+    line-height: 70px;
+}
+
+
+.audit_modal {
+    width: 640px;
+    height: 290px;
+    display: none;
+    background-color: white;
+}
+.audit_modal .audit_header{
+    padding-left: 15px;
+    line-height: 40px;
+    height: 40px;
+    background-color: #F5F5F5;
+    border-bottom: 1px solid #CCC;
+}
+.audit_modal .audit_content{
+    height: 180px;
+    overflow: auto;
+    margin-left: 80px;
+    padding-top: 20px;
+}
+.audit_modal .audit_footer{
+    background-color: #F5F5F5;
+    height: 70px;
+    line-height: 70px;
+}
+
+.success_modal {
+    width: 100%;
+    height: 100%;
+    display: none;
+    background-color: white;
+}
+
+

@@ -1,0 +1,21 @@
+@CHARSET "UTF-8";
+.b_content{
+    min-width: 1260px;
+    padding-top: 10px;
+}
+.b_content .b_inner {
+    margin-left: 180px;
+    overflow-y: auto;
+    background-color: #fff;
+    overflow-x:auto;
+}
+
+.container table {
+    width: 100%;
+}
+.ftx04{
+    color: #FF5050;
+    font-weight: normal;
+}
+.fl{float: left;}
+.fr{float:right;}

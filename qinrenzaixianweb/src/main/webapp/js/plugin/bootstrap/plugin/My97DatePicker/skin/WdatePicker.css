@@ -1,0 +1,27 @@
+.Wdate{
+	border:#dedede 2px solid;
+	height:40px;
+    _height:26px;
+    *height:26px;
+	background:#fff url(datePacker1.png) no-repeat;
+}
+.Wdate1{
+    border:#dedede 2px solid;
+    height:40px;
+    _height:26px;
+    *height:26px;
+    background:#fff url(datePakcer2.png) no-repeat;
+}
+
+.WdateFmtErr{
+	font-weight:bold;
+	color:red;
+}
+
+.WdateDisable{
+    border:#dedede 2px solid;
+    height:40px;
+    _height:26px;
+    *height:26px;
+    background:#fff url(datePakcer2.png) no-repeat;
+}

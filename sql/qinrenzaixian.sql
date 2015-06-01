@@ -43,7 +43,7 @@ CREATE TABLE `cities` (
 DROP TABLE IF EXISTS `user`;
 CREATE TABLE `user` (
   `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
-  `type` tinyint(4) unsigned DEFAULT '0',  COMMENT '0 管理员,1 父母，2子女，3 好心人，4 其他',
+  `type` tinyint(4) unsigned DEFAULT '0'  COMMENT '0 管理员,1 父母，2子女，3 好心人，4 其他',
   `name` varchar(255) NOT NULL DEFAULT '' COMMENT '登录名',
   `sex` tinyint(1) DEFAULT '0' COMMENT '性别 0男，1女',
   `birthday` varchar(32) DEFAULT '' COMMENT '生日',
@@ -61,11 +61,11 @@ CREATE TABLE `user` (
   `address`  int(11) COMMENT '联系地址',
   `login_times` int(11) default 0 COMMENT '用户登录次数',
   `last_login_time` datetime default NULL COMMENT '最后登录时间',
-  `last_login_ip` varchar(255) NOT NULL COMMENT '最后登录IP',
-  `create_ip` varchar(255) NOT NULL COMMENT '创建IP',
-  `createtime` datetime NOT NULL COMMENT '创建时间',
-  `creater` int(11) NOT NULL COMMENT '创建人',
-  `update_ip` varchar(255) NOT NULL COMMENT '修改IP',
+  `last_login_ip` varchar(255)  NULL COMMENT '最后登录IP',
+  `create_ip` varchar(255)  NULL COMMENT '创建IP',
+  `createtime` datetime  NULL COMMENT '创建时间',
+  `creater` int(11)  NULL COMMENT '创建人',
+  `update_ip` varchar(255)  NULL COMMENT '修改IP',
   `updatetime` datetime  NULL COMMENT '修改时间',
   `updater` int(11)  NULL COMMENT '修改人',
   `delflag` tinyint(1) DEFAULT '0'  COMMENT '删除标志0 可用，1 删除',
@@ -100,7 +100,7 @@ CREATE TABLE `addresses` (
   `ZONE` varchar(20) DEFAULT NULL COMMENT '区号',
   `PHONE_NUMBER` varchar(100) DEFAULT NULL COMMENT '电话号',
   `EXT_NUMBER` varchar(20) DEFAULT NULL COMMENT '分机号',
-  `EMAIL` c
+  `EMAIL` varchar(64) DEFAULT NULL COMMENT '分机号',
   `createtime` datetime NOT NULL COMMENT '创建时间',
   `creater` int(11) NOT NULL COMMENT '创建人',
   `updatetime` datetime  NULL COMMENT '修改时间',
@@ -190,7 +190,7 @@ DROP TABLE IF EXISTS `publicmessage`;
 CREATE TABLE `publicmessage` (
   `ID` int(11) unsigned NOT NULL AUTO_INCREMENT,
   `type` tinyint(11) NOT NULL COMMENT '类型 1 父母寻子，2 子寻父母 ，3 好人线索',
-  `parent_id` int(11) unsigned NOT NULL '发表信息父消息',
+  `parent_id` int(11) unsigned NOT NULL COMMENT '发表信息父消息',
   `happen_addr`  int(11)  NOT NULL COMMENT '失散地点 丢失地点 发现地点 ',
   `description` varchar(2048) NOT NULL COMMENT '特征描述',
   `remark` varchar(1024)  NULL COMMENT '备注',
@@ -203,5 +203,5 @@ CREATE TABLE `publicmessage` (
   `delflag` tinyint(1) DEFAULT '0'  COMMENT '删除标志0 可用，1 删除',
   `status` tinyint(1) DEFAULT '0' COMMENT '状态',
    PRIMARY KEY (`ID`)
-) ENGINE=MyISAM AUTO_INCREMENT=1013 DEFAULT CHARSET=utf8 COMMENT='发布信息表';
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COMMENT='发布信息表';
 

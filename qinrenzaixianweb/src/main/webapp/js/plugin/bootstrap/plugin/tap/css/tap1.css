@@ -1,0 +1,6 @@
+@charset "utf-8";
+.investment_f .investment_title{height:50px;overflow:hidden;background: url(pixel.gif) bottom left repeat-x;}
+.investment_title div{width:100px; height:50px;float:left;display:inline; font-size:18px; font-weight:normal; text-align:center; line-height:50px; color:#cccccc; cursor:pointer;}
+.investment_title .on{color:#656565;background:#ffffff;width:100px; height:50px;background: url(../images/tabs.jpg) repeat-x;border-left: 1px solid #dedede;border-right: 1px solid #dedede;}
+.investment_con{ *width:920px;_width:920px;clear:both; background:#fff;border-bottom: 1px  solid #cccccc;border-right: 1px  solid #cccccc;border-left: 1px  solid #cccccc; padding:20px;overflow: hidden;}
+.investment_con_list{display:none;}

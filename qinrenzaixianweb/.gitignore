@@ -1,1 +1,6 @@
-/target/
+/.metadata
+/.settings
+/target
+.classpath
+.project
+ibatorConfig.xml

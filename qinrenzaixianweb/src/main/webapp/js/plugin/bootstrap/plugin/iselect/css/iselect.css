@@ -1,0 +1,17 @@
+/*被选中的文本样式*/
+::-webkit-selection{ background:#000; color:#fff; text-shadow:none; }
+::-moz-selection{ background:#000; color:#fff; text-shadow:none; }
+::selection{ background:#000; color:#fff; text-shadow:none; }
+
+.cssSelect .selectBox{ cursor: pointer; border:solid 2px #666666; float: left; }
+.cssSelect .selectLt{ cursor: pointer; float: left; text-align: left; }
+.cssSelect .selectRt{ cursor: pointer; background:url('../images/skin_icons.png')  -49px -155px no-repeat #f2f2f2; float: left}
+.cssSelect .selectLt{ overflow: hidden; height: 40px; line-height: 41px; padding: 0 10px; background: none transparent scroll repeat 0% 0%; color: #666; }
+.cssSelect .selectRt{ height: 40px; padding-bottom: 0px; padding-top: 10px; padding-left: 0px; padding-right: 28px}
+.cssSelect .sHover .selectRt{ background: url('../images/skin_icons.png')  -49px -155px no-repeat; }
+.cssSelect .sPressDown .selectRt{ background: url('../images/skin_icons.png')  -49px -155px no-repeat #e6e6e6; }
+.cssSelect .optionsBox{ position: absolute; border: 1px solid #dbdbdb; padding: 2px; margin: 0px; background: #fff; z-index: 100;}
+.cssSelect .optionBox { cursor: pointer; padding: 2px 30px 2px 18px; margin: 0px; height:35px; line-height: 35px; }
+.cssSelect .optionBox span { cursor: pointer; font-size:12px}
+.cssSelect .oHover{ background: #eeeeee; color: #666666; }
+/*.cssSelect .selected{ background: #1180B9; color: #666666; }*/    /*被选中的文本样式*/

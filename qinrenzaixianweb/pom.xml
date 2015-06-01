@@ -6,6 +6,11 @@
   <packaging>war</packaging>
   <name>qinrenzaixian</name>
   <description>情人在线web</description>
+  <properties>
+		<spring.version>4.1.5.RELEASE</spring.version>
+		<charcter-encoding>UTF-8</charcter-encoding>
+		<jackson.version>2.4.1</jackson.version>
+  </properties>
   <dependencies>
      <dependency>
 	      <groupId>junit</groupId>  
@@ -23,11 +28,26 @@
         <artifactId>spring-webmvc</artifactId>  
         <version>4.1.5.RELEASE</version>  
     </dependency>
-    <dependency>  
-        <groupId>jstl</groupId>  
-        <artifactId>jstl</artifactId>  
-        <version>1.1.2</version>  
-    </dependency> 
+    <dependency>
+			<groupId>javax.servlet</groupId>
+			<artifactId>jstl</artifactId>
+			<version>1.2</version>
+	</dependency>
+	<dependency>
+			<groupId>com.fasterxml.jackson.core</groupId>
+			<artifactId>jackson-core</artifactId>
+			<version>${jackson.version}</version>
+	</dependency>
+	<dependency>
+		<groupId>com.fasterxml.jackson.core</groupId>
+		<artifactId>jackson-databind</artifactId>
+		<version>${jackson.version}</version>
+	</dependency>
+	<dependency>
+        <groupId>mysql</groupId>
+        <artifactId>mysql-connector-java</artifactId>
+        <version>5.1.32</version>
+    </dependency>
   </dependencies>
   <build>
    <plugins>  

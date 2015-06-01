@@ -1,3 +1,6 @@
 eclipse.preferences.version=1
+encoding//src/main/java/com/qinrenzaixian/action/UsersAction.java=UTF-8
+encoding//src/main/java/com/qinrenzaixian/core/util/json/JacksonObjectMapper.java=UTF-8
+encoding//src/main/java/com/qinrenzaixian/test/action/UserAction.java=UTF-8
 encoding//src/main/webapp/WEB-INF/web.xml=UTF-8
-encoding/<project>=UTF-8
+encoding//src/main/webapp/css/normalize.css=UTF-8

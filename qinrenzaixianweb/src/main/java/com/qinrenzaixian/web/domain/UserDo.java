@@ -1,8 +1,8 @@
-package com.qinrenzaixian.web.domain.web;
+package com.qinrenzaixian.web.domain;
 
 import java.util.Date;
 
-import com.qinrenzaixian.domain.BaseDo;
+import com.qinrenzaixian.web.domain.BaseDo;
 
 /**
  * 用户信息

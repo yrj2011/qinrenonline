@@ -123,8 +123,6 @@
         <property name="exposeSpringMacroHelpers" value="true" />
     </bean>
      
-    <bean id="messageSource" class="org.springframework.context.support.ResourceBundleMessageSource"
-        p:basename="i18n/messages" />
  
     <!--    <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
         <property name="prefix" value="/WEB-INF/views/" />

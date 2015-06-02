@@ -1,4 +1,4 @@
-package com.qinrenzaixian.domain.web;
+package com.qinrenzaixian.web.domain;
 
 import java.util.Date;
 

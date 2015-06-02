@@ -1,4 +1,4 @@
-package com.qinrenzaixian.action.web;
+package com.qinrenzaixian.web.action;
 
 import java.util.HashMap;
 import java.util.Map;

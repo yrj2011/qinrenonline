@@ -10,6 +10,7 @@ import java.util.Map;
 import javax.annotation.PostConstruct;
 import javax.inject.Inject;
 
+import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.orm.ibatis.SqlMapClientCallback;
 import org.springframework.orm.ibatis.support.SqlMapClientDaoSupport;
 
@@ -21,7 +22,9 @@ import com.zhaoonline.web.vo.pagination.Pagination;
 
 
 @SuppressWarnings("all")
+@Repository
 public class BaseDAO extends SqlMapClientDaoSupport implements IBaseDAO {
+	private SqlSessionTemplate sessionTemplate;
     @Inject
     private SqlMapClient sqlMapClient;
     

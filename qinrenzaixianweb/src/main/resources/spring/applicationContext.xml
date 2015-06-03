@@ -14,7 +14,7 @@
     http://www.springframework.org/schema/mvc  
     http://www.springframework.org/schema/mvc/spring-mvc-4.1.xsd"> 
     <!-- 用于持有ApplicationContext,可以使用SpringContextHolder.getBean('xxxx')的静态方法得到spring bean对象 -->
-    <bean class="com.xxl.app.base.SpringContextHolder" lazy-init="false" />
+    <!-- <bean class="com.xxl.app.base.SpringContextHolder" lazy-init="false" /> -->
     
     <!-- 使用annotation注解方式配置事务 -->
     <tx:annotation-driven transaction-manager="transactionManager" />
@@ -62,7 +62,7 @@
     当两者都指定了的时候，SqlSessionFactory会被忽略。
     sqlSessionTemplateBeanName：指定需要使用的sqlSessionTemplate对应的bean名称。-->
     <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
-        <property name="basePackage" value="com.xxl.app.**.dao"/>
-        <property name="markerInterface" value="com.xxl.app.base.dao.SqlMapper"/>
+        <property name="basePackage" value="com.qinrenzaixian.web.dao"/>
+        <property name="markerInterface" value="com.qinrenzaixian.web.domain.mapping"/>
     </bean>
 </beans>

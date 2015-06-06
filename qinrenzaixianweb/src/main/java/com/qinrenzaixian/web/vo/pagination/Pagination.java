@@ -3,8 +3,6 @@ package com.qinrenzaixian.web.vo.pagination;
 import java.io.Serializable;
 import java.util.List;
 
-import com.qinrenzaixian.core.util.string.StringUtils;
-
 /**
  * 分页对象
  * @author yangrenjiang
@@ -113,7 +111,7 @@ public class Pagination<T> extends Result implements Cloneable, Serializable {
     }
 
     public void setPage(String page) {
-        this.page = StringUtils.parseInt(page,1);
+        this.page = com.qinrenzaixian.core.util.StringUtils.parseInt(page,1);
     }
 
     public void setCurrentPage(int page) {

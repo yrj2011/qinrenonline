@@ -15,7 +15,20 @@
     http://www.springframework.org/schema/mvc/spring-mvc-4.1.xsd"> 
     <!-- 用于持有ApplicationContext,可以使用SpringContextHolder.getBean('xxxx')的静态方法得到spring bean对象 -->
     <!-- <bean class="com.xxl.app.base.SpringContextHolder" lazy-init="false" /> -->
-    
+    <!-- 自动扫描的包名 -->  
+     <!--  @Controller 声明Action组件
+    @Service    声明Service组件    @Service("myMovieLister") 
+    @Repository 声明Dao组件
+    @Component   泛指组件, 当不好归类时. 
+    @RequestMapping("/menu")  请求映射
+    @Resource  用于注入，( j2ee提供的 ) 默认按名称装配，@Resource(name="beanName") 
+    @Autowired 用于注入，(spring提供的) 默认按类型装配 
+    @Transactional( rollbackFor={Exception.class}) 事务管理
+    @ResponseBody
+    @Scope("prototype")   设定bean的作用域 -->
+    <!-- 开启自动扫描，在指定的路劲及子路径下扫描，将扫描到的的bean 注册到spring的bean中 --> 
+    <context:component-scan base-package="com.qinrenzaixian.web" annotation-config="false"  />
+     
     <!-- 使用annotation注解方式配置事务 -->
     <tx:annotation-driven transaction-manager="transactionManager" />
      
@@ -42,14 +55,13 @@
     </bean>
      <!-- 开启自动注入-->
     <context:annotation-config />  
-    <!-- 开启自动扫描，在指定的路劲及子路径下扫描，将扫描到的的bean 注册到spring的bean中 --> 
-     <context:component-scan base-package="com.qinrenzaixian.web" />
+    
     <!-- 配置SqlSessionFactoryBean -->
     <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
         <property name="dataSource" ref="dataSource"/>
         <property name="configLocation" value="classpath:/spring/spring-mybatis.xml"/>
         <!-- 实体类映射文件路径-->
-        <property name="mapperLocations" value="classpath*:com/qinrenzaixian/web/domain/*mapper.xml"/>
+        <property name="mapperLocations" value="classpath*:/myibatis/*mapper.xml"/>
     </bean>
     <!-- 配置sqlsession 产生这个实例就是通过 sqlsessionTemplate来实现的 -->    
     <bean id="sqlSession" class="org.mybatis.spring.SqlSessionTemplate">
@@ -58,10 +70,34 @@
 	    </constructor-arg>
     </bean>
     
-     <!-- 业务类 的配置 -->
-    <bean id="userDaoImp"  class="com.qinrenzaixian.web.dao.UserDaoImpl">
-	    <property name="sqlSession">
-	    <ref bean="sqlSession"/>
-	    </property>
-    </bean>
+    <!-- 事务代理拦截器的配置 -->
+	<bean id="transactionInterceptor"
+		class="org.springframework.transaction.interceptor.TransactionInterceptor">
+		<property name="transactionManager" ref="transactionManager" />
+		<property name="transactionAttributes">
+			<props>
+				<prop key="insert*">PROPAGATION_REQUIRED,-Exception</prop>
+				<prop key="update*">PROPAGATION_REQUIRED,-Exception</prop>
+				<prop key="delete*">PROPAGATION_REQUIRED,-Exception</prop>
+				<prop key="submit*">PROPAGATION_REQUIRED,-Exception</prop>
+				<prop key="get*">PROPAGATION_REQUIRED,readOnly</prop>
+				<prop key="*">PROPAGATION_REQUIRED,-Exception</prop>
+			</props>
+		</property>
+	</bean>
+	
+    <!--指定对满足哪些bean name的bean自动生成业务代理 -->
+	<bean
+		class="org.springframework.aop.framework.autoproxy.BeanNameAutoProxyCreator">
+		<property name="beanNames">
+			<list>
+				<value>*Service</value>
+			</list>
+		</property>
+		<property name="interceptorNames">
+			<list>
+				<value>transactionInterceptor</value>
+			</list>
+		</property>
+	</bean>
 </beans>

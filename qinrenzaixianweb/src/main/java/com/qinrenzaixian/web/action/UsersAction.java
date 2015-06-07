@@ -3,6 +3,7 @@ package com.qinrenzaixian.web.action;
 import java.util.HashMap;
 import java.util.Map;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -13,6 +14,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.qinrenzaixian.web.domain.UserDo;
+import com.qinrenzaixian.web.service.UserService;
 
 /** 
 * 用户相关action
@@ -27,6 +29,8 @@ import com.qinrenzaixian.web.domain.UserDo;
 @Scope("prototype")   
 @RequestMapping("/user")
 public class UsersAction {
+     @Autowired
+	 private UserService userService;
 	 /**
 	   * 进入用户注册页面
 	   * @return
@@ -48,6 +52,11 @@ public class UsersAction {
 	  public ModelAndView  registUser(UserDo userinfo , Model model)
 	  {
 	      ModelAndView mov=new ModelAndView(); 
+	      try {
+			userService.insertUser(userinfo);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 	      mov.setViewName("user/regist");
 	      model.addAttribute("userinfo", userinfo);
 	      return mov;  

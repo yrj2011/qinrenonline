@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="User">
+    <resultMap  id="user-rm" type="user">
+    	 <id property="id" column="ID"/>
+    	 <result property="name" column="NAME" />
+    	 <result property="password" column="PASSWORD" />
+    </resultMap>
+	<select id="findUser" parameterType="java.lang.String"  resultMap="user-rm">
+	   select id , name , password from  user  where name=#{name}
+	</select>
+	
+	<insert  id="insertUser"  parameterType="user">
+	   insert  into user  (name,password) values (#{name},#{password})
+	</insert>
+	<delete id="deleteBlog"  parameterType="java.lang.String">
+	   delete  from  user where name=#{name}
+	</delete>
+</mapper>

@@ -4,12 +4,14 @@ import java.io.Serializable;
 import java.util.Collection;
 import java.util.List;
 import java.util.Map;
+
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
+
 import com.qinrenzaixian.web.vo.pagination.Pagination;
 
 public class BaseDAO implements IBaseDAO {
-	
+	@Autowired
 	private SqlSessionTemplate sqlSession;
 
 	/* *//** 搜索关健字缓存数组 */
@@ -29,10 +31,6 @@ public class BaseDAO implements IBaseDAO {
 
 	public SqlSessionTemplate getSqlSession() {
 		return sqlSession;
-	}
-
-	public void setSqlSession(SqlSessionTemplate sqlSession) {
-		this.sqlSession = sqlSession;
 	}
 
 	@Override

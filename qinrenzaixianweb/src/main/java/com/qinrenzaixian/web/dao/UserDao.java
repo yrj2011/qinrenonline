@@ -1,7 +1,5 @@
 package com.qinrenzaixian.web.dao;
 
-import java.util.Map;
-
 import org.springframework.stereotype.Repository;
 
 import com.qinrenzaixian.web.domain.UserDo;
@@ -9,8 +7,8 @@ import com.qinrenzaixian.web.domain.UserDo;
 @Repository("userDao")
 public class UserDao extends BaseDAO{
 
-	public UserDo selectBlog(String title){
-	    return getSqlSession().selectOne("User.findUser",title);
+	public UserDo selectUserByName(String name){
+	    return getSqlSession().selectOne("User.findUser",name);
 	}
 
 	public int  insertUser(UserDo user){

@@ -13,9 +13,14 @@ public class UserServiceImpl implements UserService {
 	@Autowired
 	private UserDao userDao;
 
+	/**
+	 * 通过登录名查询用户
+	 * @param name 用户名
+	 * @return
+	 */
 	@Override
-	public UserDo selectBlog(String name) {
-		return userDao.selectBlog(name);
+	public UserDo selectUserByName(String name) {
+		return userDao.selectUserByName(name);
 	}
 	
 	@Override

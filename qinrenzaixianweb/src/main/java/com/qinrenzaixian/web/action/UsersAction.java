@@ -73,8 +73,8 @@ public class UsersAction {
 	 public Map<String,String> validateName(@RequestParam String name, @RequestParam String param){
 		Map<String,String> map = new HashMap<String,String>();
 		map.put(name, param);
-		long n = System.currentTimeMillis();
-		if(n%2==0){
+		UserDo user = userService.selectUserByName(param);
+		if(user != null){
 			map.put("status","n");
 			map.put("info","用户名已存在");
 		}else {

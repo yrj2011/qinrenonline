@@ -20,7 +20,7 @@ public class TestDiskScanXml extends TestCase {
     	try {
     		ApplicationContext act = new ClassPathXmlApplicationContext("/spring/applicationContext.xml");
     		UserService userService= (UserService)act.getBean("userService");
-            UserDo user=userService.selectBlog("title1");
+            UserDo user=userService.selectUserByName("title1");
             String title=user.getName();
             String content=user.getName();
             System.out.println("获取的值标题"+title+"  内容："+content);

@@ -4,8 +4,6 @@ import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.TimeZone;
 
-import org.springframework.stereotype.Component;
-
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 /**
@@ -14,7 +12,6 @@ import com.fasterxml.jackson.databind.ObjectMapper;
  * @author yangrenjaing
  * @date 2015-05-31
  */
-@Component("jacksonObjectMapper")
 public class JacksonObjectMapper extends ObjectMapper {
 
 	private static final long serialVersionUID = 1L;

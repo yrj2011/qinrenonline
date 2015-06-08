@@ -5,6 +5,7 @@
     xmlns:tx="http://www.springframework.org/schema/tx"  
     xmlns:context="http://www.springframework.org/schema/context"    
     xmlns:mvc="http://www.springframework.org/schema/mvc"    
+    xmlns:aop="http://www.springframework.org/schema/aop"    
     xsi:schemaLocation="http://www.springframework.org/schema/beans   
     http://www.springframework.org/schema/beans/spring-beans-4.1.xsd  
     http://www.springframework.org/schema/tx   
@@ -12,7 +13,9 @@
     http://www.springframework.org/schema/context  
     http://www.springframework.org/schema/context/spring-context-4.1.xsd
     http://www.springframework.org/schema/mvc  
-    http://www.springframework.org/schema/mvc/spring-mvc-4.1.xsd"> 
+    http://www.springframework.org/schema/mvc/spring-mvc-4.1.xsd
+    http://www.springframework.org/schema/aop
+    http://www.springframework.org/schema/aop/spring-aop-4.1.xsd"> 
     <!-- 用于持有ApplicationContext,可以使用SpringContextHolder.getBean('xxxx')的静态方法得到spring bean对象 -->
     <!-- <bean class="com.xxl.app.base.SpringContextHolder" lazy-init="false" /> -->
     <!-- 自动扫描的包名 -->  
@@ -28,9 +31,6 @@
     @Scope("prototype")   设定bean的作用域 -->
     <!-- 开启自动扫描，在指定的路劲及子路径下扫描，将扫描到的的bean 注册到spring的bean中 --> 
     <context:component-scan base-package="com.qinrenzaixian.web" annotation-config="false"  />
-     
-    <!-- 使用annotation注解方式配置事务 -->
-    <tx:annotation-driven transaction-manager="transactionManager" />
      
     <!-- 使用JDBC事务 -->  
     <bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">  
@@ -70,34 +70,19 @@
 	    </constructor-arg>
     </bean>
     
-    <!-- 事务代理拦截器的配置 -->
-	<bean id="transactionInterceptor"
-		class="org.springframework.transaction.interceptor.TransactionInterceptor">
-		<property name="transactionManager" ref="transactionManager" />
-		<property name="transactionAttributes">
-			<props>
-				<prop key="insert*">PROPAGATION_REQUIRED,-Exception</prop>
-				<prop key="update*">PROPAGATION_REQUIRED,-Exception</prop>
-				<prop key="delete*">PROPAGATION_REQUIRED,-Exception</prop>
-				<prop key="submit*">PROPAGATION_REQUIRED,-Exception</prop>
-				<prop key="get*">PROPAGATION_REQUIRED,readOnly</prop>
-				<prop key="*">PROPAGATION_REQUIRED,-Exception</prop>
-			</props>
-		</property>
-	</bean>
+    <!-- 配置事务的传播特性 -->
+    <tx:advice id="transactionAdvice" transaction-manager="transactionManager">
+        <tx:attributes>
+            <tx:method name="insert*" propagation="REQUIRED" rollback-for="Exception"/>
+            <tx:method name="update*" propagation="REQUIRED" rollback-for="Exception"/>
+            <tx:method name="delete*" propagation="REQUIRED" rollback-for="Exception"/>
+            <tx:method name="set*" propagation="REQUIRED" rollback-for="Exception"/>
+        </tx:attributes>
+    </tx:advice>
+	<!-- 配置事务拦截器拦截哪些类的哪些方法,一般设置成拦截Service -->
+	<aop:config>
+        <aop:pointcut id="transactionPointcut" expression="execution(* com.qinrenzaixian...service.*.*(..))"/>
+        <aop:advisor pointcut-ref="transactionPointcut" advice-ref="transactionAdvice"/>
+    </aop:config>
 	
-    <!--指定对满足哪些bean name的bean自动生成业务代理 -->
-	<bean
-		class="org.springframework.aop.framework.autoproxy.BeanNameAutoProxyCreator">
-		<property name="beanNames">
-			<list>
-				<value>*Service</value>
-			</list>
-		</property>
-		<property name="interceptorNames">
-			<list>
-				<value>transactionInterceptor</value>
-			</list>
-		</property>
-	</bean>
 </beans>

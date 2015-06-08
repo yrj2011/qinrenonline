@@ -9,6 +9,11 @@ import com.qinrenzaixian.web.domain.UserDo;
  */
 public interface UserService  {
 	
-	public UserDo selectBlog(String  name);
+	/**
+	 * 通过登录名查询用户
+	 * @param name 用户名
+	 * @return
+	 */
+	public UserDo selectUserByName(String  name);
 	public int insertUser(UserDo user) throws Exception;
 }

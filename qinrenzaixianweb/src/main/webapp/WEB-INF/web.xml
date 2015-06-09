@@ -55,7 +55,7 @@
     </servlet>  
     <servlet-mapping>  
         <servlet-name>springMVC</servlet-name>  
-        <url-pattern>*.shtml</url-pattern>  
+        <url-pattern>/*</url-pattern>  
         <!--拦截/*，这是一个错误的方式，请求可以走到Action中，但转到jsp时再次被拦截，不能访问到jsp。 
             拦截/，restful风格 弊端：会导致静态文件（jpg,js,css）被拦截后不能正常显示。解决办法看dispatcher-->
     

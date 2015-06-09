@@ -26,6 +26,6 @@ public class UserServiceImpl implements UserService {
 	@Override
 	public int insertUser(UserDo user) throws Exception{
 		int rs = userDao.insertUser(user);
-		throw new Exception();
+		return rs;
 	}
 }

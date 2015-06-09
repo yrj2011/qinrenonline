@@ -15,7 +15,9 @@
     http://www.springframework.org/schema/mvc/spring-mvc-4.1.xsd"> 
     <!-- 启用spring mvc 注解 -->
     <context:annotation-config />
-    <context:component-scan base-package="com.qinrenzaixian.web"/>
+    <context:component-scan base-package="com.qinrenzaixian.web"> 
+       <context:exclude-filter type="annotation" expression="org.springframework.stereotype.Service"/> 
+    </context:component-scan>
     <!-- 完成请求和注解POJO的映射 -->
     <bean class="org.springframework.web.servlet.mvc.annotation.AnnotationMethodHandlerAdapter" />
     <!-- 默认的注解映射的支持，自动注册DefaultAnnotationHandlerMapping和AnnotationMethodHandlerAdapter -->  
@@ -75,4 +77,18 @@
     <mvc:resources mapping="/js/**" location="/WEB-INF/js/" cache-period="31556926"/>  
     <mvc:resources mapping="/css/**" location="/WEB-INF/css/" cache-period="31556926"/> 
     
+    <!-- 将Controller抛出的异常转到特定View, 保持SiteMesh的装饰效果 -->
+     <bean class="org.springframework.web.servlet.handler.SimpleMappingExceptionResolver">  
+	     <!-- 定义默认的异常处理页面，当该异常类型的注册时使用 -->  
+	     <property name="defaultErrorView" value="error"></property>  
+	     <!-- 定义异常处理页面用来获取异常信息的变量名，默认名为exception -->  
+	     <property name="exceptionAttribute" value="ex"></property>  
+	     <!-- 定义需要特殊处理的异常，用类名或完全路径名作为key，异常也页名作为值 -->  
+	     <property name="exceptionMappings">  
+	         <props>  
+	             <prop key="com.qinrenzaixian.web.exception.ActionException">error/sexception</prop>  
+	             <!-- 这里还可以继续扩展对不同异常类型的处理 -->  
+	         </props>  
+	     </property>  
+    </bean>  
 </beans>

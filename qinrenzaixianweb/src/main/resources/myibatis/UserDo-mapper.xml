@@ -11,7 +11,7 @@
 	   select id , name , password from  user  where name=#{name}
 	</select>
 	
-	<insert  id="insertUser"  parameterType="user">
+	<insert  id="insertUser"  parameterType="user" useGeneratedKeys="true" keyProperty="id" >
 	   insert  into user  (name,password) values (#{name},#{password})
 	</insert>
 	<delete id="deleteBlog"  parameterType="java.lang.String">

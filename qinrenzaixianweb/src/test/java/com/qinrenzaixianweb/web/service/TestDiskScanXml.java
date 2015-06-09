@@ -20,11 +20,9 @@ public class TestDiskScanXml extends TestCase {
     	try {
     		ApplicationContext act = new ClassPathXmlApplicationContext("/spring/applicationContext.xml");
     		UserService userService= (UserService)act.getBean("userService");
-            UserDo user=userService.selectUserByName("title1");
-            String title=user.getName();
-            String content=user.getName();
-            System.out.println("获取的值标题"+title+"  内容："+content);
-            user.setName(user.getName()+System.currentTimeMillis());
+            UserDo user= new UserDo();
+            user.setName("yrj2012");
+            user.setPassword("abc123");
             userService.insertUser(user);
            /* // 保存一条数据 user
             Map<String,Object> map=new HashMap<String,Object>();

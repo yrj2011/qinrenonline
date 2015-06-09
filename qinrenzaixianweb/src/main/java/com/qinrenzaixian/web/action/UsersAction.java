@@ -14,6 +14,8 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.qinrenzaixian.web.domain.UserDo;
+import com.qinrenzaixian.web.exception.ActionException;
+import com.qinrenzaixian.web.exception.UserException;
 import com.qinrenzaixian.web.service.UserService;
 
 /** 
@@ -47,18 +49,20 @@ public class UsersAction {
 	  /**
 	   * 注册用户
 	   * @return
+	 * @throws Exception 
 	   */
 	  @RequestMapping(value="/regist",method=RequestMethod.POST)  
-	  public ModelAndView  registUser(UserDo userinfo , Model model)
+	  public ModelAndView  registUser(UserDo userinfo , Model model) throws Exception
 	  {
 	      ModelAndView mov=new ModelAndView(); 
 	      try {
 			userService.insertUser(userinfo);
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
 	      mov.setViewName("user/regist");
 	      model.addAttribute("userinfo", userinfo);
+	      
 	      return mov;  
 	  }  
 	  

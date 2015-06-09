@@ -30,31 +30,25 @@
     @ResponseBody
     @Scope("prototype")   设定bean的作用域 -->
     <!-- 开启自动扫描，在指定的路劲及子路径下扫描，将扫描到的的bean 注册到spring的bean中 --> 
-    <context:component-scan base-package="com.qinrenzaixian.web" annotation-config="false"  />
-     
-    <!-- 使用JDBC事务 -->  
-    <bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">  
-        <property name="dataSource" ref="dataSource" />
-    </bean>
+    <context:annotation-config />
+    <context:component-scan base-package="com.qinrenzaixian.web" annotation-config="true"  />
+   
      <!-- 引入配置文件 -->
     <context:property-placeholder location="classpath*:jdbc.properties"  ignore-unresolvable="true"/>
     <!--创建jdbc数据源 -->
-    <bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource" >
-        <property name="driverClassName">
-	           <value>${jdbc.driver}</value>
-	    </property>
-	    <property name="url">
-	           <value>${jdbc.url}</value>
-	    </property>
-	    <property name="username">
-	            <value>${jdbc.username}</value>
-	    </property>
-	    <property name="password">
-	            <value>${jdbc.password}</value>
-	    </property>
+    <bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource" >
+        <property name="driverClassName" value="${jdbc.driver}"></property>
+	    <property name="url" value="${jdbc.url}"></property>
+	    <property name="username" value="${jdbc.username}"></property>
+	    <property name="password" value="${jdbc.password}"></property>
+	    <property name="maxActive" value="${jdbc.maxActive}"></property>
+		<property name="maxIdle" value="${jdbc.maxIdle}"></property>
+		<property name="minIdle" value="${jdbc.minIdle}"></property>
+		<property name="maxWait" value="${jdbc.maxWait}"></property>
+		<property name="removeAbandoned" value="${jdbc.removeAbandoned}"></property>
+		<property name="removeAbandonedTimeout" value="${jdbc.removeAbandonedTimeout}"></property>
+		<property name="logAbandoned" value="${jdbc.logAbandoned}"></property>
     </bean>
-     <!-- 开启自动注入-->
-    <context:annotation-config />  
     
     <!-- 配置SqlSessionFactoryBean -->
     <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
@@ -69,7 +63,12 @@
 	       <ref  bean="sqlSessionFactory"/>
 	    </constructor-arg>
     </bean>
-    
+    <aop:aspectj-autoproxy proxy-target-class="true"/>
+    <tx:annotation-driven transaction-manager="transactionManager" />
+    <!-- 使用JDBC事务 -->  
+    <bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">  
+        <property name="dataSource" ref="dataSource" />
+    </bean>
     <!-- 配置事务的传播特性 -->
     <tx:advice id="transactionAdvice" transaction-manager="transactionManager">
         <tx:attributes>
@@ -81,7 +80,7 @@
     </tx:advice>
 	<!-- 配置事务拦截器拦截哪些类的哪些方法,一般设置成拦截Service -->
 	<aop:config>
-        <aop:pointcut id="transactionPointcut" expression="execution(* com.qinrenzaixian..service.*.*(..))"/>
+        <aop:pointcut id="transactionPointcut" expression="execution(* com.qinrenzaixian.web.service..*.*(..))"/>
         <aop:advisor pointcut-ref="transactionPointcut" advice-ref="transactionAdvice"/>
     </aop:config>
 	

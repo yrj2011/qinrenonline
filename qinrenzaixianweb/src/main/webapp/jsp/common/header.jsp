@@ -55,7 +55,7 @@ DD_belatedPNG.fix('.seered,.laok img,.seegray,.mBanner img,.div_image div,.png_b
                 	</ul>
 				</div>
 				<div class="input_logout">
-					<a href="/logout.shtml" class="fff">登出
+					<a href="${ctx}/user/login.shtml" class="fff">登录
 					</a>
 				</div>
 				<div class="input_logout">

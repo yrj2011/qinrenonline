@@ -1,0 +1,77 @@
+package com.qinrenzaixian.web.action;
+
+import java.util.HashMap;
+import java.util.Map;
+
+import org.apache.log4j.Logger;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Scope;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.servlet.ModelAndView;
+
+import com.qinrenzaixian.core.util.secret.MD5Util;
+import com.qinrenzaixian.web.domain.UserDo;
+import com.qinrenzaixian.web.exception.ActionException;
+import com.qinrenzaixian.web.exception.UserException;
+import com.qinrenzaixian.web.service.UserService;
+
+/**
+ * 
+ * 模仿viewcontroll
+ * @author yrj
+ * @version [版本号, 2015年6月10日]
+ * @see
+ * @since v1.0 页面模块
+ */
+@Controller
+@Scope("prototype")
+public class PageAction {
+	private static Logger log = Logger.getLogger(PageAction.class);
+	@Autowired
+	private UserService userService;
+
+	/**
+	 * 进入首页
+	 * 
+	 * @return
+	 */
+	@RequestMapping(value = "", method = RequestMethod.GET)
+	public ModelAndView intoRegist(Model model) {
+		ModelAndView mov = new ModelAndView();
+		mov.setViewName("index");
+		return mov;
+	}
+
+	/**
+	 * 用户注册
+	 * 
+	 * @return
+	 */
+	@RequestMapping(value = "/user/regist", method = RequestMethod.GET)
+	public ModelAndView regist(Model model) {
+		ModelAndView mov = new ModelAndView();
+		UserDo userinfo = new UserDo();
+		mov.addObject("userinfo", userinfo);
+		mov.setViewName("user/regist");
+		return mov;
+	}
+	
+	/**
+	 * 用户登录
+	 * 
+	 * @return
+	 */
+	@RequestMapping(value = "/user/login", method = RequestMethod.GET)
+	public ModelAndView login(Model model) {
+		ModelAndView mov = new ModelAndView();
+		UserDo userinfo = new UserDo();
+		mov.addObject("userinfo", userinfo);
+		mov.setViewName("user/login");
+		return mov;
+	}
+}

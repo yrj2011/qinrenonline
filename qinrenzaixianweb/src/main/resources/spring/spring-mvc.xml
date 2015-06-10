@@ -54,8 +54,10 @@
 		<!-- 默认的content type -->
 		<property name="defaultContentType" value="application/json" />
 	</bean>
+	<!-- 容器默认的DefaultServletHandler处理 所有静态内容与无RequestMapping处理的URL-->	
+	<mvc:default-servlet-handler/>
 	
-		<!-- 内容协商视图解析器；根据客户端不同的请求决定不同的view进行响应 -->
+    <!-- 内容协商视图解析器；根据客户端不同的请求决定不同的view进行响应 -->
 	<!-- 会自动根据解析的contentType来决定使用哪个视图解析器（默认使用整个web应用中的viewResolver） -->
 	<bean class="org.springframework.web.servlet.view.ContentNegotiatingViewResolver">
 		<!-- 内容协商管理器 用于决定media type -->
@@ -76,7 +78,6 @@
     <mvc:resources mapping="/images/**" location="/WEB-INF/images/" cache-period="31556926"/>  
     <mvc:resources mapping="/js/**" location="/WEB-INF/js/" cache-period="31556926"/>  
     <mvc:resources mapping="/css/**" location="/WEB-INF/css/" cache-period="31556926"/> 
-    
     <!-- 将Controller抛出的异常转到特定View, 保持SiteMesh的装饰效果 -->
      <bean class="org.springframework.web.servlet.handler.SimpleMappingExceptionResolver">  
 	     <!-- 定义默认的异常处理页面，当该异常类型的注册时使用 -->  

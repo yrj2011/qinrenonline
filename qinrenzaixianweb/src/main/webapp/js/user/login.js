@@ -1,5 +1,5 @@
 /**
- *  用户注册js
+ *  用户登录js
  *  @author yrj
  */
 /**
@@ -7,7 +7,7 @@
  */
 $(document).ready(function () {
 	//验证Form
-    $(".registeform").Validform({
+    $(".loginform").Validform({
         tiptype:function(msg,o,cssctl){
             //msg：提示信息;
             //o:{obj:*,type:*,curform:*}, obj指向的是当前验证的表单元素（或表单对象），type指示提示的状态，值为1、2、3、4， 1：正在检测/提交数据，2：通过验证，3：验证失败，4：提示ignore状态, curform为当前form对象;
@@ -26,16 +26,17 @@ $(document).ready(function () {
 				//注意return可以返回true 或 false 或 字符串文字，true表示验证通过，返回字符串表示验证失败，字符串作为错误提示显示，返回false则用errmsg或默认的错误提示;
 			}
 	  },callback:function(form){
-		  var registForm = $("#registForm");
-		  registForm[0].submit();
+		  var loginForm = $("#loginForm");
+		  loginForm[0].submit();
       	  return false;
 		}
     });
-    
+   
+	
     /*
-     * 提交用户注册
+     * 提交用户登录
      */
-    $("#registuser").click(function(){
-    	$(".registeform").submit();
+    $("#loginuser").click(function(){
+    	$(".loginform").submit();
     });
 });

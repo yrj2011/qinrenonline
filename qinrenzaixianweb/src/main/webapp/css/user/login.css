@@ -1,0 +1,136 @@
+.form .item {
+    padding-top: 10px;
+    overflow: hidden;
+    zoom: 1;
+}
+.item .label {
+    padding: 0px 10px;
+    font-weight:normal;
+    height: 40px;
+    line-height: 40px;
+    float: left;
+    width: 165px;
+    text-align: right;
+    font-size: 14px;
+    color: #666666;
+}
+.item .lablecontent {
+    font-weight:normal;
+    line-height: 40px;
+    float: left;
+    width: 165px;
+    text-align: left;
+    font-size: 14px;
+    color: #a9a9a9;
+}
+.item .modal_label {
+    padding: 0px 10px;
+    font-weight:normal;
+    height: 40px;
+    line-height: 40px;
+    float: left;
+    width: 100px;
+    text-align: right;
+    font-size: 14px;
+    color: #666666;
+}
+.label b{
+    font-family: "????";
+    font-weight: normal;
+    color: #F00;
+}
+.item span{
+    padding-right: 7px;
+}
+.item .item_subinfo{
+    width: 100%;
+    padding: 5px 0px;
+}
+.fl {
+    float: left;
+}
+.collect_img{
+    padding-left: 155px;
+}
+.collect_img .img{
+    padding-right: 12px;
+}
+.collect_img .btn{
+    width:70px;
+    height: 30px;
+    line-height: 30px;
+    padding: 0px;
+    font-size: 14px;
+}
+.btn_list .btn{
+    float: left;
+    margin: 40px 5px;
+    margin-left:220px;
+}
+.btn_list #save_and_review_btn{
+    margin-left: 165px;
+    *margin-left: 185px;
+    _margin-left: 185px;
+}
+.btn_list #back_btn{
+    width: 65px;
+}
+.organises_box{
+    overflow-y: scroll;
+    overflow-x: hidden;
+    z-index: 1;
+    border: 2px solid #ccc;
+    width: 630px;
+    height: 400px;
+}
+.organises_box .organises_wrapper{
+    padding: 20px;
+}
+.organises_box .organise{
+    width:120px;
+    float: left;
+    margin: 15px 10px;
+}
+.organises_box .organise .desc{
+    padding-top: 5px;
+    font-size: 14px;
+    width:120px;
+    height: 40px;
+}
+.showimg_box{
+    width: 465px;height: 125px;background: url(../images/img1.jpg) no-repeat;
+}
+.form h3{
+    font-size: 18px; font-weight: bold;
+}
+
+.modal_collection div{
+    width: 290px;
+    height: 70px;
+    margin: 10px 0px;
+}
+.modal_collection img{
+    margin-right: 5px;
+    float:left;
+}
+.modal_collection span{
+    width: 170px;
+    float:left;
+    font-size: 14px;
+    display: block;
+}
+
+.selected{
+    background: url(../images/selected.jpg?a=1) no-repeat;
+}
+
+.regist-center{
+	padding-top:10px;
+	padding-left:150px;
+}
+
+.error{
+	color:red;
+	font-size:13px;
+	padding-left:240px;
+}

@@ -1,26 +1,30 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ include file="../common/common.inc"%>
+
 <c:set var="title" value="用户登录" />
 <c:set var="formMethod" value="post" />
 <c:set var="formAction" value="${ctx }/user/login.shtml" />
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
+<c:if test="${ sessionScope.QINRENZAIXIAN_WEBLOGIN_KEY != null}">
+	<script type="text/javascript">
+	    var index="${ctx}/jsp/index.jsp";
+	    window.open(index,"_self");
+	</script>
+</c:if>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>${title}</title>
 <link rel="stylesheet" href="${ctx}/css/base.css"/>
 <link rel="stylesheet" href="${ctx}/css/header.css"/>
 <link rel="stylesheet" href="${ctx}/css/common.css"/>
-<link href="${ctx}/js/plugin/bootstrap/plugin/hoverex/css/hoverex-all.css" rel="stylesheet">
-<link href="${ctx}/js/plugin/bootstrap/plugin/hoverex/css/templates.css" rel="stylesheet">
+
 <link href="${ctx}/css/user/login.css" rel="stylesheet">
 <link href="${ctx}/css/normalize.css" rel="stylesheet">
 </head>
 <body>
 <jsp:include page="/jsp/common/header.jsp"></jsp:include>
-<jsp:include page="/jsp/common/header-ref.jsp"></jsp:include>
-
 <div id="bg-container " style="min-width:1000px;">
     <div class="w1000 center " >
       <div class="h2 center">${title}</div>
@@ -59,4 +63,5 @@
 <%@include file="/jsp/common/footer.jsp" %>
 </body>
 <script src="${ctx}/js/user/login.js"></script>
+
 </html>

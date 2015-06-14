@@ -14,10 +14,9 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.qinrenzaixian.core.util.ActionUtil;
 import com.qinrenzaixian.core.util.secret.MD5Util;
 import com.qinrenzaixian.web.domain.UserDo;
-import com.qinrenzaixian.web.exception.ActionException;
-import com.qinrenzaixian.web.exception.UserException;
 import com.qinrenzaixian.web.service.UserService;
 
 /**
@@ -35,19 +34,6 @@ public class UserAction {
 	private static Logger log = Logger.getLogger(UserAction.class);
 	@Autowired
 	private UserService userService;
-
-	/**
-	 * 进入用户注册页面
-	 * 
-	 * @return
-	 *//*
-	@RequestMapping(value = "/regist", method = RequestMethod.GET)
-	public ModelAndView intoRegist(Model model) {
-		ModelAndView mov = new ModelAndView();
-		mov.setViewName("user/regist");
-		model.addAttribute("userinfo", new UserDo());
-		return mov;
-	}*/
 
 	/**
 	 * 注册用户
@@ -93,6 +79,7 @@ public class UserAction {
 			map.put("status", "y");
 			map.put("info", "");
 		}
+		
 		return map;
 	}
 	
@@ -107,18 +94,38 @@ public class UserAction {
 		log.info("用户登录");
 		ModelAndView mov = new ModelAndView();
 		try {
-			
 			UserDo userdo = userService.selectUserByName(userinfo.getName());
 			if(userdo == null || !userdo.getPassword().equals(MD5Util.MD5Encode(userinfo.getPassword()))){
 				model.addAttribute("loginmsg","用户名或密码错误");
 				model.addAttribute("userinfo", userinfo);
 				mov.setViewName("user/login");
 			}else{
+				ActionUtil.setCurrentUser(userdo);
 				mov.setViewName("index");
 			}
 			
 		} catch (Exception e) {
 			log.error("登录用户失败：", e);
+			throw e;
+		}
+		return mov;
+	}
+	
+	/**
+	 * 用户注销
+	 * 
+	 * @return
+	 * @throws Exception
+	 */
+	@RequestMapping(value = "/logout", method = RequestMethod.GET)
+	public ModelAndView logout(UserDo userinfo, Model model)throws Exception {
+		log.info("用户注销");
+		ModelAndView mov = new ModelAndView();
+		try {
+			ActionUtil.clearCurrentUser();
+			mov.setViewName("index");
+		} catch (Exception e) {
+			log.error("用户注销失败：", e);
 			throw e;
 		}
 		return mov;

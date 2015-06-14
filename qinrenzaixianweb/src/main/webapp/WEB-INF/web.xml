@@ -72,6 +72,7 @@
     <listener>
         <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
     </listener>
+    
     <!-- ================spring 字符过滤================ -->  
    <!-- 中文编码 -->
 	<filter>

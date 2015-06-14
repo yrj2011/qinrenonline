@@ -14,4 +14,11 @@ public class Constans {
 	 * MD5算法
 	 */
 	public static final String MD5 = "MD5";
+	
+	public static class User{
+		/**
+		 * session 登录用户key
+		 */
+		public static final String SESSION_WEB_LOGIN_USER_KEY = "QINRENZAIXIAN_WEBLOGIN_KEY";
+	}
 }

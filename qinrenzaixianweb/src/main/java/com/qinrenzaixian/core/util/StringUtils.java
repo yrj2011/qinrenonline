@@ -201,7 +201,7 @@ public class StringUtils {
      * @return
      */
     public static boolean compare(String val, String compareVal) {
-        if(!ObjectUtils.isNull(val) && val.equals(compareVal)) {
+        if(!ObjectUtil.isNull(val) && val.equals(compareVal)) {
             return true;
         }
         return false;
@@ -214,7 +214,7 @@ public class StringUtils {
      * @return
      */
     public static boolean compareIgnoreCase(String val, String compareVal) {
-        if(!ObjectUtils.isNull(val) && val.equalsIgnoreCase(compareVal)) {
+        if(!ObjectUtil.isNull(val) && val.equalsIgnoreCase(compareVal)) {
             return true;
         }
         return false;

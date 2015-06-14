@@ -33,39 +33,29 @@ DD_belatedPNG.fix('.seered,.laok img,.seegray,.mBanner img,.div_image div,.png_b
 		</div>
 		
 			<div class="head_info pt23">
-				<div class="input_account">
-					<div class="current">
-						admin
+				
+				<c:if test="${ sessionScope.QINRENZAIXIAN_WEBLOGIN_KEY == null}">
+					<div class="input_logout">
+						<a href="${ctx}/user/login.shtml" class="fff">登录
+						</a>
 					</div>
-				</div>
-				<div class="input_center has_sup">
-					<a href="/user/userInfoIndex.shtml">用户中心
-					</a>
-                    <sup>
-                        99+
-					</sup>
-                	<ul class="info_sub png_bg pr5 pb16">
-	                    	<li><a href="/user/buyer/watching.shtml?condition.source=jinpai" target="_blank">a1</sup></a></li>
-	                    	<li><a href="/user/buyer/bid.shtml" target="_blank">a2 <sup>sub2</sup></a></li>
-	                    	<li><a href="/user/message/message.shtml" target="message">a3<sup>sub3</sup></a></li>
-	                    	<li><a href="/user/unpaid.shtml" target="unpaid">a4<sup>sub4</sup></a></li>
-	                    	<li><a href="/user/my-auction-list.shtml" target="_blank">a5  <sup>sub5</sup></a></li>
-	                    	<li><a href="/user/not-yet-deliver.shtml" target="delivery">a6  <sup>sub6</sup></a></li>
-
-                	</ul>
-				</div>
-				<div class="input_logout">
-					<a href="${ctx}/user/login.shtml" class="fff">登录
-					</a>
-				</div>
-				<div class="input_logout">
-					<a href="${ctx}/user/regist.shtml" class="fff">注册
-					</a>
-				</div>
-				<div class="help">
-					<a href="/help/162.htm">帮助
-					</a>
-				</div>
+					<div class="input_logout">
+						<a href="${ctx}/user/regist.shtml" class="fff">注册
+						</a>
+					</div>
+				</c:if>
+				<c:if test="${ sessionScope.QINRENZAIXIAN_WEBLOGIN_KEY != null}">
+				    <div class="input_account">
+						<div class="current">
+							${sessionScope.QINRENZAIXIAN_WEBLOGIN_KEY.name}
+						</div>
+					</div>
+					<div class="input_logout">
+						<a href="${ctx}/user/logout.shtml" class="fff">注销
+						</a>
+					</div>
+					
+				</c:if>
 			</div>
 	</div>
 </div>

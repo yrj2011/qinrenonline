@@ -5,11 +5,11 @@ import java.util.regex.Pattern;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 
-public class ObjectUtils {
-    private ObjectUtils() {
+public class ObjectUtil {
+    private ObjectUtil() {
     }
 
-    private static final Log   logger       = LogFactory.getLog(ObjectUtils.class);
+    private static final Log   logger       = LogFactory.getLog(ObjectUtil.class);
 
     public static final String EMPTY_STRING = "";
 

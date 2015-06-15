@@ -1,10 +1,6 @@
 <%@ page contentType="text/html;charset=UTF-8"%>
 <%@ include file="../common/common.inc"%>
-
-<c:set var="title" value="用户登录" />
-<c:set var="formMethod" value="post" />
-<c:set var="formAction" value="${ctx }/user/login.shtml" />
-
+<c:set var="title" value="基本信息" />
 <!DOCTYPE HTML>
 <html>
 <head>
@@ -28,24 +24,69 @@
 <div class="b_inner h1800">
 <div class="container">
     <div class="form-group" style="border:0;">
-					xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
-					xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
-					xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx<br/>
-						xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx<br/>
-							xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx<br/>
-								xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx<br/>
-									xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx<br/>
-									
-										xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx<br/>
-											xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx<br/>
-												xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx<br/>
-													xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx<br/>
-														xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx<br/>
-															xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx<br/>
-																xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx<br/>
-																	xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx<br/>
-																		xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx<br/>
-																			xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx<br/>
+				<div class="form">
+	                    <div class="item">
+	                        <div class="item_subinfo " >
+	                            <span class="label">登录名</span>
+	                            <span class="label-txt">${userinfo.name}</span>
+	                        </div>
+	                        <div class="item_subinfo ">
+	                            <span class="label">密码</span>
+	                            <span class="label-txt">******</span>
+	                        </div>
+	                        <div class="item_subinfo ">
+	                            <span class="label">姓名</span>
+	                            <span class="label-txt">${userinfo.realName}</span>
+	                        </div>
+	                        <div class="item_subinfo ">
+	                            <span class="label">性别</span>
+	                            <span class="label-txt">${userinfo.sex}</span>
+	                        </div>
+	                        <div class="item_subinfo ">
+	                            <span class="label">生日</span>
+	                            <span class="label-txt">${userinfo.birthday}</span>
+	                        </div>
+	                        <div class="item_subinfo ">
+	                            <span class="label">个人图片</span>
+	                            <span class="label-txt">${userinfo.picture}</span>
+	                        </div>
+	                        <div class="item_subinfo ">
+	                            <span class="label">身份证</span>
+	                            <span class="label-txt">${userinfo.identity}</span>
+	                        </div>
+	                        <div class="item_subinfo ">
+	                            <span class="label">身份证图片</span>
+	                            <span class="label-txt">${userinfo.identitypic}</span>
+	                        </div>
+	                        <div class="item_subinfo ">
+	                            <span class="label">电子邮箱</span>
+	                            <span class="label-txt">${userinfo.email}</span>
+	                        </div>
+	                        <div class="item_subinfo ">
+	                            <span class="label">手机</span>
+	                            <span class="label-txt">${userinfo.mobile}</span>
+	                        </div>
+	                        <div class="item_subinfo ">
+	                            <span class="label">座机</span>
+	                            <span class="label-txt">${userinfo.telephone}</span>
+	                        </div>
+	                        <div class="item_subinfo ">
+	                            <span class="label">QQ</span>
+	                            <span class="label-txt">${userinfo.qq}</span>
+	                        </div>
+	                        <div class="item_subinfo ">
+	                            <span class="label">微信</span>
+	                            <span class="label-txt">${userinfo.weixin}</span>
+	                        </div>
+	                        <div class="item_subinfo ">
+	                            <span class="label">微博</span>
+	                            <span class="label-txt">${userinfo.weibo}</span>
+	                        </div>
+	                        <div class="item_subinfo ">
+	                            <a href="${ctx}//user/info-detail.shtml" target='_self'> 个人信息修改>></a>
+	                        </div>
+	                    </div>
+	           </div>
     </div>
 </div>
 </div>

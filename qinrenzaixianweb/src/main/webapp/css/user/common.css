@@ -8,7 +8,7 @@ body {
 }
 .container {
     margin: 0px;
-    padding: 30px 70px;
+    padding: 10px 30px;
 }
 .b_header{
     background-color: #006599;
@@ -22,7 +22,7 @@ body {
     z-index: 998;
     position: absolute;
     width: 180px;
-    background-color: #434343;
+    background-color: #ccc;
     border-collapse: separate;
     top: 0px;
     left: 0;
@@ -30,7 +30,7 @@ body {
 }
 .b_content{
     min-width: 1260px;
-    padding-top: 80px;
+    padding-top: 10px;
 }
 .b_content .b_inner {
     margin-left: 180px;
@@ -163,3 +163,16 @@ em.r{ background: url(../images/right.png) no-repeat; width:25px; height:25px; d
 
 .label2{padding: 0px 10px;font-weight: normal;height: 40px;line-height: 40px;float: left;width: 120px;text-align: center;font-size: 14px;}
 .pagefy{font-size:14px;}
+.label{
+	width:130px;
+	display:-moz-inline-box;
+    display:inline-block;
+    text-align:left;
+}
+.label-txt{
+	width:130px;
+	display:-moz-inline-box;
+    display:inline-block;
+    padding-left:3px;
+    text-align:left;
+}

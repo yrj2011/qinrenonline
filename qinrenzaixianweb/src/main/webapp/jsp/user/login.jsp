@@ -19,12 +19,14 @@
 <link rel="stylesheet" href="${ctx}/css/base.css"/>
 <link rel="stylesheet" href="${ctx}/css/header.css"/>
 <link rel="stylesheet" href="${ctx}/css/common.css"/>
-
+<link href="${ctx}/js/plugin/bootstrap/plugin/hoverex/css/hoverex-all.css" rel="stylesheet">
+<link href="${ctx}/js/plugin/bootstrap/plugin/hoverex/css/templates.css" rel="stylesheet">
 <link href="${ctx}/css/user/login.css" rel="stylesheet">
 <link href="${ctx}/css/normalize.css" rel="stylesheet">
 </head>
 <body>
 <jsp:include page="/jsp/common/header.jsp"></jsp:include>
+<jsp:include page="/jsp/common/header-ref.jsp"></jsp:include>
 <div id="bg-container " style="min-width:1000px;">
     <div class="w1000 center " >
       <div class="h2 center">${title}</div>

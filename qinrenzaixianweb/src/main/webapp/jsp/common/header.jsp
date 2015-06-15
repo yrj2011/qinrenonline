@@ -51,6 +51,10 @@ DD_belatedPNG.fix('.seered,.laok img,.seegray,.mBanner img,.div_image div,.png_b
 						</div>
 					</div>
 					<div class="input_logout">
+						<a href="${ctx}/user/info.shtml" class="fff" style="">个人中心
+						</a>
+					</div>
+					<div class="input_logout">
 						<a href="${ctx}/user/logout.shtml" class="fff">注销
 						</a>
 					</div>

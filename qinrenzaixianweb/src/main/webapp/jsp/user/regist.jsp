@@ -29,7 +29,7 @@
                 <form:form id="registForm" class="registeform" commandName="userinfo" method="${formMethod }" action="${formAction }">
 	                <div class="form">
 	                    <div class="item">
-	                        <div class="item_subinfo fl" id="category">
+	                        <div class="item_subinfo fl" >
 	                            <span class="label"><b class="ftx04">*</b>登录名</span>
 	                            <div class="fl">
 	                                <form:input path="name" placeholder="请输入登录名" ajaxurl="${ctx}/user/validateName.shtml" class="form-control fl" style="width: 265px;" datatype="*1-20" errormsg="登录名最大长度20位" nullmsg="请输入登录名"/>

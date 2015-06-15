@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <div id="footer_index">
 <div class="w1000 autos tc">
-		<div class="pt30"><img src="/images/index/shoucang_zhaoonline.jpg" alt="" title=""></div>
+		<div class="pt30"><img src="" alt="" title=""></div>
         <div class="w1000 footer_nav pt25 bold">
             <span class="pr30"><a href="/company.shtml" class="gray6">关于我们</a></span>
             <span class="pr30"><a href="/contact.shtml" class="gray6">联系我们</a></span>

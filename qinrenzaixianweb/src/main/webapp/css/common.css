@@ -19,3 +19,7 @@
 }
 .fl{float: left;}
 .fr{float:right;}
+
+.nobb{
+	border-bottom:0px !important
+}

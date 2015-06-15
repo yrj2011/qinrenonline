@@ -1,8 +1,5 @@
 package com.qinrenzaixian.web.action;
 
-import java.util.HashMap;
-import java.util.Map;
-
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
@@ -10,14 +7,10 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.qinrenzaixian.core.util.secret.MD5Util;
+import com.qinrenzaixian.core.util.ActionUtil;
 import com.qinrenzaixian.web.domain.UserDo;
-import com.qinrenzaixian.web.exception.ActionException;
-import com.qinrenzaixian.web.exception.UserException;
 import com.qinrenzaixian.web.service.UserService;
 
 /**
@@ -72,6 +65,34 @@ public class PageAction {
 		UserDo userinfo = new UserDo();
 		mov.addObject("userinfo", userinfo);
 		mov.setViewName("user/login");
+		return mov;
+	}
+	
+	/**
+	 * 基本信息
+	 * 
+	 * @return
+	 */
+	@RequestMapping(value = "/user/info", method = RequestMethod.GET)
+	public ModelAndView userinfo(Model model) {
+		ModelAndView mov = new ModelAndView();
+		UserDo userinfo = ActionUtil.getCurrentUser();
+		mov.addObject("userinfo", userinfo);
+		mov.setViewName("user/center");
+		return mov;
+	}
+	
+	/**
+	 * 个人信息完善
+	 * 
+	 * @return
+	 */
+	@RequestMapping(value = "/user/info-detail", method = RequestMethod.GET)
+	public ModelAndView userinfoDetail(Model model) {
+		ModelAndView mov = new ModelAndView();
+		UserDo userinfo = ActionUtil.getCurrentUser();
+		mov.addObject("userinfo", userinfo);
+		mov.setViewName("user/center-user-detail");
 		return mov;
 	}
 }

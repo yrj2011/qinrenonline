@@ -4,19 +4,15 @@ import java.text.DecimalFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.UUID;
 import java.util.regex.Pattern;
 
 import org.apache.commons.lang.time.DateFormatUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-/**
- * 
- * @author xiaoyang
- *
- */
-public class StringUtils {
-    private static final Logger logger = LoggerFactory.getLogger(StringUtils.class);
+public class StringUtil {
+    private static final Logger logger = LoggerFactory.getLogger(StringUtil.class);
 	private static final SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 	private static final SimpleDateFormat format_1 = new SimpleDateFormat("yyyy-MM-dd");
 	private static final DecimalFormat numberFormat = new DecimalFormat("###,###.##");
@@ -24,10 +20,10 @@ public class StringUtils {
 	/**
 	 * 判断字符串是否包含有意义字符
 	 * <pre>
-	 * StringUtils.hasText(" ") = false;
-	 * StringUtils.hasText("test") = true;
-	 * StringUtils.hasText(null) = false;
-	 * StringUtils.hasText("  test") = true;
+	 * StringUtil.hasText(" ") = false;
+	 * StringUtil.hasText("test") = true;
+	 * StringUtil.hasText(null) = false;
+	 * StringUtil.hasText("  test") = true;
 	 * </pre>
 	 * @param str
 	 * @return true/false
@@ -48,10 +44,10 @@ public class StringUtils {
 	/**
 	 * 判断字符串是否为空或null(去除空格)
 	 * <pre>
-	 * StringUtils.emptyOrNull(" ") = true;
-	 * StringUtils.emptyOrNull(null) = true;
-	 * StringUtils.emptyOrNull("test") = false;
-	 * StringUtils.emptyOrNull(" test") = false;
+	 * StringUtil.emptyOrNull(" ") = true;
+	 * StringUtil.emptyOrNull(null) = true;
+	 * StringUtil.emptyOrNull("test") = false;
+	 * StringUtil.emptyOrNull(" test") = false;
 	 * </pre>
 	 * @param str
 	 * @return
@@ -63,10 +59,10 @@ public class StringUtils {
 	/**
 	 * 判断字符串是否有长度
 	 * <pre>
-	 * StringUtils.hasLength(" ") = true;
-	 * StringUtils.hasLength("") = false;
-	 * StringUtils.hasLength("abc") = true;
-	 * StringUtils.hasLength(null) = false;
+	 * StringUtil.hasLength(" ") = true;
+	 * StringUtil.hasLength("") = false;
+	 * StringUtil.hasLength("abc") = true;
+	 * StringUtil.hasLength(null) = false;
 	 * </pre>
 	 * @param str
 	 * @return
@@ -77,8 +73,8 @@ public class StringUtils {
 
 	/**
 	 * 日期对象转日期格式字符串,如果日期对象为null,返回缺省值
-	 * StringUtils.formatDateIfNull(new Date(),"2000-01-01") = "2011-06-13 14:00:00";
-	 * StringUtils.formatDateIfNull(null,"2000-01-01 12:00:00") = "2000-01-01 12:00:00";
+	 * StringUtil.formatDateIfNull(new Date(),"2000-01-01") = "2011-06-13 14:00:00";
+	 * StringUtil.formatDateIfNull(null,"2000-01-01 12:00:00") = "2000-01-01 12:00:00";
 	 * @param date 日期对象
 	 * @param defaultString 缺省返回值
 	 * @return string
@@ -104,7 +100,7 @@ public class StringUtils {
 	/**
 	 * 日期转字符串(yyyy-MM-dd HH:mm:ss)
 	 * <pre>
-	 * StringUtils.dateToString(new Date()) = "2011-06-13 14:00:00"
+	 * StringUtil.dateToString(new Date()) = "2011-06-13 14:00:00"
 	 * </pre>
 	 * @param date
 	 * @return String(yyyy-MM-dd HH:mm:ss)
@@ -120,13 +116,13 @@ public class StringUtils {
 	/**
 	 * 格式数字
 	 * <pre>
-	 * StringUtils.formatNumber(new Long(100000)) = 100,000.00
-	 * StringUtils.formatNumber(new Double(100000)) = 100,000.00
-	 * StringUtils.formatNumber(new Integer(100000)) = 100,000.00
-	 * StringUtils.formatNumber(new Float(100000)) = 100,000.00
-	 * StringUtils.formatNumber(new Long(1)) = 1.00
-	 * StringUtils.formatNumber(new Long(111)) = 111.00
-	 * StringUtils.formatNumber(new Long(1111)) = 1,111.00
+	 * StringUtil.formatNumber(new Long(100000)) = 100,000.00
+	 * StringUtil.formatNumber(new Double(100000)) = 100,000.00
+	 * StringUtil.formatNumber(new Integer(100000)) = 100,000.00
+	 * StringUtil.formatNumber(new Float(100000)) = 100,000.00
+	 * StringUtil.formatNumber(new Long(1)) = 1.00
+	 * StringUtil.formatNumber(new Long(111)) = 111.00
+	 * StringUtil.formatNumber(new Long(1111)) = 1,111.00
 	 * </pre>
 	 * @param num 数字
 	 * @return 格式化数字字符串
@@ -144,8 +140,8 @@ public class StringUtils {
 	/**
 	 * 根据数字格式,格式化数字
 	 * <pre>
-	 * StringUtils.formatNumber(new Long(1000),"##,###.00") = 1,000.00
-	 * StringUtils.formatNumber(new Long(100000),"#,####.00") = 10,0000.00
+	 * StringUtil.formatNumber(new Long(1000),"##,###.00") = 1,000.00
+	 * StringUtil.formatNumber(new Long(100000),"#,####.00") = 10,0000.00
 	 * </pre>
 	 * @param num 数字
 	 * @param fmtString 格式串
@@ -160,7 +156,7 @@ public class StringUtils {
 	/**
 	 * 数字字符串转数字
 	 * <pre>
-	 * StringUtils.parseNumber("100") = 100;
+	 * StringUtil.parseNumber("100") = 100;
 	 * </pre>
 	 * @param numberString 数字字符串
 	 * @return Number
@@ -227,7 +223,7 @@ public class StringUtils {
      */
     public static Integer parseInt(String input, Integer defaultVal) {
         try {
-            if (!StringUtils.hasText(input)) {
+            if (!StringUtil.hasText(input)) {
                 return defaultVal;
             }
             if (Pattern.matches("(^\\d+(\\.\\d+)?$|^\\d+(\\,\\d+)+(\\.\\d+)?$)",input)) {
@@ -244,8 +240,8 @@ public class StringUtils {
     /**
      * 处理整型字符串
      * <pre>
-     * StringUtils.treatInt("000900") =  "900"
-     * StringUtils.treatInt("900") = "900"
+     * StringUtil.treatInt("000900") =  "900"
+     * StringUtil.treatInt("900") = "900"
      * </pre>
      * @param str
      * @return
@@ -270,7 +266,7 @@ public class StringUtils {
      */
     public static Long parseLong(String input) {
         try {
-            if (!StringUtils.hasText(input)) {
+            if (!StringUtil.hasText(input)) {
                 return Long.MIN_VALUE;
             }
             if (Pattern.matches("(^\\d+(\\.\\d+)?$|^\\d+(\\,\\d+)+(\\.\\d+)?$)",input)) {
@@ -293,7 +289,7 @@ public class StringUtils {
      */
     public static Long parseLong(String input, Long defaultVal) {
         try {
-            if (!StringUtils.hasText(input)) {
+            if (!StringUtil.hasText(input)) {
                 return defaultVal;
             }
             if (Pattern.matches("(^\\d+(\\.\\d+)?$|^\\d+(\\,\\d+)+(\\.\\d+)?$)",input)) {
@@ -309,7 +305,7 @@ public class StringUtils {
     
     public static Double parseDouble(String input) {
         try {
-            if (!StringUtils.hasText(input)) {
+            if (!StringUtil.hasText(input)) {
                 return Double.MIN_VALUE;
             }
             if (Pattern.matches("(^\\d+(\\.\\d+)?$|^\\d+(\\,\\d+)+(\\.\\d+)?$)",input)) {
@@ -325,7 +321,7 @@ public class StringUtils {
     
     public static Double parseDouble(String input, Double defaultVal) {
         try {
-            if (!StringUtils.hasText(input)) {
+            if (!StringUtil.hasText(input)) {
                 return defaultVal;
             }
             if (Pattern.matches("(^\\d+(\\.\\d+)?$|^\\d+(\\,\\d+)+(\\.\\d+)?$)",input)) {
@@ -343,8 +339,8 @@ public class StringUtils {
      * 
      * 空字符串处理
      * <pre>
-	 * StringUtils.dealNull(new Integer(2),"0") = 2
-	 * StringUtils.dealNull(null,"0") = 0
+	 * StringUtil.dealNull(new Integer(2),"0") = 2
+	 * StringUtil.dealNull(null,"0") = 0
 	 * </pre>
      * @param str
      * @param defaultValue
@@ -388,4 +384,12 @@ public class StringUtils {
     public static void main(String[] a) {
         System.out.println("+++++kv".replaceAll("(\\+|-)+", "$1"));
     }
+
+    /**
+     * 获取唯一标示
+     * @return
+     */
+	public static String getUUID() {
+		return UUID.randomUUID().toString().replace("-", ""); 
+	}
 }

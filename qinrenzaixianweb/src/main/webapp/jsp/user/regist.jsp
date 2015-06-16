@@ -30,14 +30,14 @@
 	                <div class="form">
 	                    <div class="item">
 	                        <div class="item_subinfo fl" >
-	                            <span class="label"><b class="ftx04">*</b>登录名</span>
+	                            <span class="label">登录名<b class="ftx04">*</b></span>
 	                            <div class="fl">
 	                                <form:input path="name" placeholder="请输入登录名" ajaxurl="${ctx}/user/validateName.shtml" class="form-control fl" style="width: 265px;" datatype="*1-20" errormsg="登录名最大长度20位" nullmsg="请输入登录名"/>
 	                                <div class="Validform_checktip"></div>
 	                            </div>
 	                        </div>
 	                        <div class="item_subinfo fl">
-	                            <span class="label"><b class="ftx04">*</b>密码</span>
+	                            <span class="label">密码<b class="ftx04">*</b></span>
 	                            <div class="fl">
 	                                <form:password  path="password" placeholder="请输密码" class="form-control fl" style="width: 265px;" datatype="*6-20,zuhe" errormsg="6~20位字符，支持字母、数字和符号的组合" nullmsg="请输入密码"/>
 	                                <div class="Validform_checktip"></div>

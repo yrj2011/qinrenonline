@@ -15,6 +15,20 @@ public class Constans {
 	 */
 	public static final String MD5 = "MD5";
 	
+	/**
+	 * 男人
+	 */
+	public static final String MAN = "0";
+	
+	/**
+	 * 女人
+	 */
+	public static final String WOMAN = "1";
+	/**
+	 * 文件上传路径
+	 */
+	public static final String UPLOAD_PATH = "E:/picupload/";
+	
 	public static class User{
 		/**
 		 * session 登录用户key

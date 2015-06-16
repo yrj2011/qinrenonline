@@ -40,7 +40,7 @@
 	                        </div>
 	                        <div class="item_subinfo ">
 	                            <span class="label">性别</span>
-	                            <span class="label-txt">${userinfo.sex}</span>
+	                            <span class="label-txt"><q:sexTag sex="${userinfo.sex}"/></span>
 	                        </div>
 	                        <div class="item_subinfo ">
 	                            <span class="label">生日</span>
@@ -83,7 +83,7 @@
 	                            <span class="label-txt">${userinfo.weibo}</span>
 	                        </div>
 	                        <div class="item_subinfo ">
-	                            <a href="${ctx}//user/info-detail.shtml" target='_self'> 个人信息修改>></a>
+	                            <a href="${ctx}/user/info-detail.shtml" target='_self'> 个人信息修改>></a>
 	                        </div>
 	                    </div>
 	           </div>

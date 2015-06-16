@@ -7,3 +7,5 @@ ibatis配置
 http://dejazhan.iteye.com/blog/1693516
 jstl 帮助
 http://elf8848.iteye.com/blog/245559
+bootstarp api demo
+http://bootstrap-datepicker.readthedocs.org/en/latest/

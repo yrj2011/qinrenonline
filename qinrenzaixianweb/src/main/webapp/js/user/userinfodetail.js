@@ -38,4 +38,31 @@ $(document).ready(function () {
     $("#userinfodetail").click(function(){
     	$(".userinfodetail").submit();
     });
+    
+   //图片上传
+    $("#identitypic_a").click(function(){
+        var obj = $(this);
+        $("#uploadFile").click();
+        $("#uploadFile").change(function(){
+            $.ajaxFileUpload({
+                url:ctx+'/upload.shtml',
+                secureuri: false, //一般设置为false
+                fileElementId: 'uploadFile', // 上传文件的id、name属性名
+                dataType: 'json',
+                type:"post",
+                //elementIds: elementIds, //传递参数到服务器
+                success: function (result, status){
+                    if(result != null ){
+                    	$("#mainPicImg").attr("src",result.url);
+                        obj.next().val(result.url);
+                        $('.imgPreview').show();
+                    }else{
+                        alert(result);
+                    }
+                    
+                },error:function(res){
+                }
+            });
+        });
+    });
 });

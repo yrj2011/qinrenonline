@@ -111,7 +111,7 @@ public class Pagination<T> extends Result implements Cloneable, Serializable {
     }
 
     public void setPage(String page) {
-        this.page = com.qinrenzaixian.core.util.StringUtils.parseInt(page,1);
+        this.page = com.qinrenzaixian.core.util.StringUtil.parseInt(page,1);
     }
 
     public void setCurrentPage(int page) {

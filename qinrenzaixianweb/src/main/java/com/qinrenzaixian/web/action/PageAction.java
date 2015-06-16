@@ -33,7 +33,7 @@ public class PageAction {
 	 * 
 	 * @return
 	 */
-	@RequestMapping(value = "", method = RequestMethod.GET)
+	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public ModelAndView intoRegist(Model model) {
 		ModelAndView mov = new ModelAndView();
 		mov.setViewName("index");

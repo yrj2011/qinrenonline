@@ -63,7 +63,7 @@ public class ObjectUtil {
         if (input instanceof String) {
             String temp = input == null ? null : (String) input;
             try {
-                if (!StringUtils.hasText(temp)) {
+                if (!StringUtil.hasText(temp)) {
                     return defaultVal;
                 }
                 if (Pattern.matches("(^\\d+(\\.\\d+)?$|^\\d+(\\,\\d+)+(\\.\\d+)?$)", temp)) {
@@ -94,7 +94,7 @@ public class ObjectUtil {
         if (input instanceof String) {
             String temp = input == null ? null : (String) input;
             try {
-                if (!StringUtils.hasText(temp)) {
+                if (!StringUtil.hasText(temp)) {
                     return Long.MIN_VALUE;
                 }
                 if (Pattern.matches("(^\\d+(\\.\\d+)?$|^\\d+(\\,\\d+)+(\\.\\d+)?$)", temp)) {
@@ -126,7 +126,7 @@ public class ObjectUtil {
         if (input instanceof String) {
             String temp = input == null ? null : (String) input;
             try {
-                if (!StringUtils.hasText(temp)) {
+                if (!StringUtil.hasText(temp)) {
                     return defaultVal;
                 }
                 if (Pattern.matches("(^\\d+(\\.\\d+)?$|^\\d+(\\,\\d+)+(\\.\\d+)?$)", temp)) {
@@ -157,7 +157,7 @@ public class ObjectUtil {
         if (input instanceof String) {
             String temp = input == null ? null : (String) input;
             try {
-                if (!StringUtils.hasText(temp)) {
+                if (!StringUtil.hasText(temp)) {
                     return Double.MIN_VALUE;
                 }
                 if (Pattern.matches("(^\\d+(\\.\\d+)?$|^\\d+(\\,\\d+)+(\\.\\d+)?$)", temp)) {
@@ -191,7 +191,7 @@ public class ObjectUtil {
      * @return Integer
      */
     public static Integer parseInteger(String numberStr, Integer defaultVal) {
-        if (!StringUtils.hasText(numberStr)) {
+        if (!StringUtil.hasText(numberStr)) {
             return defaultVal;
         }
         if (numberStr.matches("(^\\d+(\\.\\d+)?$|^\\d+(\\,\\d+)+(\\.\\d+)?$)")) {

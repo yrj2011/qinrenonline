@@ -9,18 +9,18 @@
 }
 .Validform_right{
     color:#71b83d;
-    padding-left:20px;
-    background:url(/resources/bootstrap/plugin/validform/images/right.png) no-repeat left center;
+    padding-left:25px;
+    background:url(images/right.png) no-repeat left center;
 }
 .Validform_wrong{
     color:red;
     padding-left:20px;
     white-space:nowrap;
-    background:url(/resources/bootstrap/plugin/validform/images/error.png) no-repeat left center;
+    background:url(images/error.png) no-repeat left center;
 }
 .Validform_loading{
     padding-left:20px;
-    background:url(/resources/bootstrap/plugin/validform/images/onLoad.gif) no-repeat left center;
+    background:url(images/onLoad.gif) no-repeat left center;
 }
 .Validform_error{
     background-color:#ffe7e7;

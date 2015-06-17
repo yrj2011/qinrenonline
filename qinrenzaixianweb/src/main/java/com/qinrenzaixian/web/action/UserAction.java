@@ -1,13 +1,18 @@
 package com.qinrenzaixian.web.action;
 
+import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
+
+import javax.servlet.http.HttpServletRequest;
 
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.ServletRequestDataBinder;
+import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -15,6 +20,8 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.qinrenzaixian.core.util.ActionUtil;
+import com.qinrenzaixian.core.util.Constants;
+import com.qinrenzaixian.core.util.DateEditor;
 import com.qinrenzaixian.core.util.secret.MD5Util;
 import com.qinrenzaixian.web.domain.UserDo;
 import com.qinrenzaixian.web.service.UserService;
@@ -35,6 +42,13 @@ public class UserAction {
 	@Autowired
 	private UserService userService;
 
+	@InitBinder  
+	protected void initBinder(HttpServletRequest request,  
+	                              ServletRequestDataBinder binder) throws Exception {  
+	    //对于需要转换为Date类型的属性，使用DateEditor进行处理  
+	    binder.registerCustomEditor(Date.class, new DateEditor());  
+	} 
+	
 	/**
 	 * 注册用户
 	 * 
@@ -48,6 +62,7 @@ public class UserAction {
 		try {
 
 			userinfo.setPassword(MD5Util.MD5Encode(userinfo.getPassword()));
+			userinfo.setCreateIp(ActionUtil.getIP());
 			userService.insertUser(userinfo);
 			mov.setViewName("user/regist");
 			model.addAttribute("userinfo", userinfo);
@@ -131,4 +146,22 @@ public class UserAction {
 		return mov;
 	}
 	
+	/**
+	 * 完善用户信息
+	 * 
+	 * @return
+	 * @throws Exception
+	 */
+	@RequestMapping(value = "/info-detail", method = RequestMethod.POST)
+	public ModelAndView infoDetail(UserDo userinfo, Model model)throws Exception {
+		log.info("完善用户信息");
+		try {
+			userinfo.setUpdateIp(ActionUtil.getIP());
+			userService.updateUser(userinfo);
+			return new ModelAndView("redirect:"+Constants.URL.USER_CENTER);
+		} catch (Exception e) {
+			log.error("完善用户信息失败：", e);
+			throw e;
+		}
+	}
 }

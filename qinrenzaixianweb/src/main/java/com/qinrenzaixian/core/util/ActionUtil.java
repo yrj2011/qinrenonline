@@ -46,7 +46,7 @@ public class ActionUtil {
 	 * 获取当前登陆的用户
 	 */
     public static UserDo getCurrentUser() {
-        Object user = getRequest().getSession().getAttribute(Constans.User.SESSION_WEB_LOGIN_USER_KEY);
+        Object user = getRequest().getSession().getAttribute(Constants.User.SESSION_WEB_LOGIN_USER_KEY);
         if(user != null) {
             return (UserDo) user;
         }
@@ -57,7 +57,7 @@ public class ActionUtil {
 	 *  设置当前登陆的用户
 	 */
     public static void setCurrentUser(UserDo user) {
-        getRequest().getSession().setAttribute(Constans.User.SESSION_WEB_LOGIN_USER_KEY, user);
+        getRequest().getSession().setAttribute(Constants.User.SESSION_WEB_LOGIN_USER_KEY, user);
     }
     
     /**
@@ -72,7 +72,7 @@ public class ActionUtil {
      * 用户注销
      */
 	public static void clearCurrentUser() {
-		getRequest().getSession().removeAttribute(Constans.User.SESSION_WEB_LOGIN_USER_KEY);
+		getRequest().getSession().removeAttribute(Constants.User.SESSION_WEB_LOGIN_USER_KEY);
 	}
     
 	

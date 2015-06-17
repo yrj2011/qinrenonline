@@ -6,15 +6,93 @@
     	 <id property="id" column="ID"/>
     	 <result property="name" column="NAME" />
     	 <result property="password" column="PASSWORD" />
+    	  <result property="type" column="type" />
+    	  <result property="sex" column="sex" />
+    	  <result property="birthday" column="birthday" />
+    	  <result property="realName" column="real_name" />
+    	  <result property="picture" column="picture" />
+    	  <result property="identity" column="identity" />
+    	  <result property="identitypic" column="identity_pic" />
+    	  <result property="email" column="email" />
+    	  <result property="mobile" column="mobile" />
+    	  <result property="telephone" column="telephone" />
+    	  <result property="qq" column="qq" />
+    	  <result property="weixin" column="weixin" />
+    	  <result property="weibo" column="weibo" />
+    	  <result property="loginTimes" column="login_times" />
+    	  <result property="lastLoginTime" column="last_login_time" />
+    	  <result property="lastLoginIp" column="last_login_ip" />
+    	  <result property="createIp" column="create_ip" />
+          <result property="createTime" column="createtime" />
+    	  <result property="creater" column="creater" />
+    	  <result property="updateIp" column="update_ip" />
+    	  <result property="updateTime" column="updatetime" />
+    	  <result property="updater" column="updater" />
+    	  <result property="delflag" column="delflag" />
+    	  <result property="status" column="status" />
     </resultMap>
+    <!-- 查询用户 -->
 	<select id="findUser" parameterType="java.lang.String"  resultMap="user-rm">
-	   select id , name , password from  user  where name=#{name}
+	   select id ,  password ,
+	   `type`,`name`,`sex` ,`birthday`,
+	   `real_name`, `password`,`picture`,
+	   `identity`,`identity_pic`,`email` ,`mobile`,
+	   `telephone`,`qq` ,`weixin`,`weibo`,
+	   `address`,`login_times`,`last_login_time`,`last_login_ip`,`create_ip`,`createtime`,
+	   `creater`,`update_ip` ,`updatetime`,`updater`,`delflag`,`status`
+	   from  user  where name=#{name}
 	</select>
-	
+	<!-- 插入用户 -->
 	<insert  id="insertUser"  parameterType="user" useGeneratedKeys="true" keyProperty="id" >
-	   insert  into user  (name,password) values (#{name},#{password})
+	   insert  into user  (name,password,create_ip,createtime) values (#{name},#{password},#{createIp},SYSDATE())
 	</insert>
-	<delete id="deleteBlog"  parameterType="java.lang.String">
-	   delete  from  user where name=#{name}
-	</delete>
+	
+	<!-- 修改用户 -->
+	<insert  id="updateUser"  parameterType="user"  >
+	  update user  set
+        updatetime = SYSDATE() 
+        <if test="sex != null  ">  
+            ,sex = #{sex} 
+        </if>  
+        <if test="birthday != null  ">  
+            ,birthday = #{birthday}
+        </if>  
+        <if test="realName != null ">  
+            ,real_name = #{realName}
+        </if>  
+        <if test="picture != null ">  
+           , picture = #{picture}
+        </if>  
+        <if test="identity != null ">  
+          ,  identity = #{identity}  
+        </if>  
+        <if test="identitypic != null">  
+           , identity_pic = #{identitypic}  
+        </if>  
+        <if test="email != null">  
+            ,email = #{email}  
+        </if>
+        <if test="mobile != null">  
+           , mobile = #{mobile}  
+        </if> 
+        <if test="telephone != null">  
+            ,telephone = #{telephone}  
+        </if> 
+        <if test="qq != null">  
+           , qq = #{qq}  
+        </if> 
+        
+         <if test="weixin != null">  
+            ,weixin = #{weixin}  
+        </if>
+         <if test="weibo != null">  
+            ,weibo = #{weibo}  
+        </if>
+        <if test="updateIp != null">  
+           , update_ip = #{updateIp}  
+        </if>
+       
+	  where id = #{id}
+	</insert>
+	
 </mapper>

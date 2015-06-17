@@ -2,7 +2,7 @@ package com.qinrenzaixian.core.util.secret;
 
 import java.security.MessageDigest;
 
-import com.qinrenzaixian.core.util.Constans;
+import com.qinrenzaixian.core.util.Constants;
 
 /**
  * MD5工具类
@@ -33,7 +33,7 @@ public class MD5Util {
 	 * @return
 	 */
 	public static String MD5Encode(String origin){
-		return MD5Encode( origin,  Constans.UTF_8);
+		return MD5Encode( origin,  Constants.UTF_8);
     }
 	/**
 	 * MD5加密
@@ -45,7 +45,7 @@ public class MD5Util {
 		String resultString = null;
 		try {
 			resultString = new String(origin);
-			MessageDigest md = MessageDigest.getInstance(Constans.MD5);
+			MessageDigest md = MessageDigest.getInstance(Constants.MD5);
 			if (charsetname == null || "".equals(charsetname))
 				resultString = byteArrayToHexString(md.digest(resultString
 						.getBytes()));

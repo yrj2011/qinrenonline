@@ -6,7 +6,7 @@ import javax.servlet.jsp.tagext.TagSupport;
 
 import org.apache.log4j.Logger;
 
-import com.qinrenzaixian.core.util.Constans;
+import com.qinrenzaixian.core.util.Constants;
 import com.qinrenzaixian.core.util.StringUtil;
 
 /**
@@ -33,7 +33,7 @@ public class SexTag extends TagSupport {
     public int doEndTag() throws JspException {
         JspWriter out = pageContext.getOut();
         try {
-        	if(StringUtil.hasLength(sex) && Constans.MAN.equals(sex)) {
+        	if(StringUtil.hasLength(sex) && Constants.MAN.equals(sex)) {
            	 out.print("男");
            }else{
            	 out.print("女");

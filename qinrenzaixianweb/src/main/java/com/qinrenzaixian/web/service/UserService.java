@@ -15,5 +15,19 @@ public interface UserService  {
 	 * @return
 	 */
 	public UserDo selectUserByName(String  name);
+	/**
+	 * 新增用户
+	 * @param user 用户信息
+	 * @return
+	 * @throws Exception
+	 */
 	public int insertUser(UserDo user) throws Exception;
+	
+	/**
+	 * 修改用户
+	 * @param user 用户信息
+	 * @return
+	 * @throws Exception
+	 */
+	public int updateUser(UserDo user) throws Exception;
 }

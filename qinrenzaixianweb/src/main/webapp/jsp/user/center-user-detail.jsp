@@ -36,7 +36,15 @@
 	                        <div class="item_subinfo fl" >
 	                            <span class="label">登录名</span>
 	                            <div class="fl">
-	                                <form:input path="name"    class="form-control fl" style="width: 265px;" />
+	                                ${userinfo.name }
+	                                <form:hidden path="name"    class="form-control fl" style="width: 265px;" />
+	                                <div class="Validform_checktip"></div>
+	                            </div>
+	                        </div>
+	                        <div class="item_subinfo fl" >
+	                            <span class="label">姓名</span>
+	                            <div class="fl">
+	                                <form:input path="realName" class="form-control fl" style="width: 265px;"/>
 	                                <div class="Validform_checktip"></div>
 	                            </div>
 	                        </div>
@@ -50,69 +58,80 @@
 	                                <div class="Validform_checktip"></div>
 	                            </div>
 	                        </div>
+	                       
 	                         <div class="item_subinfo fl" >
 	                            <span class="label">生日</span>
 	                            <div class="fl">
-	                                <input class="Wdate Wdate2 form-control" style="float:left; width:175px;" type="text" id="birthday" name="birthday" onFocus="WdatePicker({doubleCalendar:true,dateFmt:'yyyy-MM-dd'})"/>
+	                                <input name="birthday" value="<fmt:formatDate  value="${userinfo.birthday}"  pattern="yyyy-MM-dd" />" class="Wdate Wdate2 form-control" style="float:left; width:265px;" type="text" id="birthday" name="birthday" onFocus="WdatePicker({doubleCalendar:true,dateFmt:'yyyy-MM-dd'})"/>
 	                                <div class="Validform_checktip"></div>
 	                            </div>
 	                        </div>
 	                        <div class="item_subinfo fl" >
 	                            <span class="label">个人图片</span>
 	                             <div class="fl">
-	                                <a href="javascript:void(0);" id="identitypic_a" class="btn btn-block btn-lg btn-main" style="width: 120px;">上传图片</a>
-	                                <form:hidden path="identitypic" datatype="*" class="sctp" nullmsg="请上传图片" />
+	                                <a href="javascript:void(0);" id="picture_a" class="btn btn-block btn-lg btn-main" style="width: 120px;">上传图片</a>
+	                                <form:hidden path="picture"  class="sctp" nullmsg="请上传图片" />
 	                                <div class="Validform_checktip fl"  id="sctptip"></div>
 	                            </div>
 	                            <div class="fl ">
-	                                <a href="javascript:void(0);" class="btn btn-block btn-lg btn-tip-box" style="margin-left:20px;width: 420px;">图片尺寸200x200像素，大小不超过2M，支持jpg、jpeg、png等格式</a>
+	                                <a href="javascript:void(0);" class="btn btn-block btn-lg btn-tip-box" style="margin-left:20px;width: 120px;">大小不超过2M</a>
 	                            </div>
 	                        </div>
-	                         <div class="item_subinfo fl imgPreview" style="display:none;">
+	                        <div class="item_subinfo fl picturePreview" style="display:none;">
 	                            <span class="label"> </span>
 	                            <div class="fl">
-	                                <img id="mainPicImg"  class="showimg_box fl" style="width:200px; height:200px;" src="${albumInfo.mainPic }">
+	                                <img id="picturePicImg"  class="showimg_box fl" style="width:200px; height:200px;" >
 	                            </div>
 	                        </div>
 	                        <div class="item_subinfo fl" >
 	                            <span class="label">身份证</span>
 	                            <div class="fl">
-	                                 <form:input path="identity"    class="form-control fl" style="width: 265px;" />
+	                                 <form:input path="identity"    class="form-control fl" style="width: 265px;" datatype="sfz" />
 	                                 <div class="Validform_checktip"></div>
 	                            </div>
 	                        </div>
 	                        <div class="item_subinfo fl" >
 	                            <span class="label">身份证图片</span>
+	                             <div class="fl">
+	                                <a href="javascript:void(0);" id="identitypic_a" class="btn btn-block btn-lg btn-main" style="width: 120px;">上传图片</a>
+	                                <form:hidden path="identitypic" class="sctp" nullmsg="请上传图片" />
+	                                <div class="Validform_checktip fl"  id="sctptip"></div>
+	                            </div>
+	                            <div class="fl ">
+	                                <a href="javascript:void(0);" class="btn btn-block btn-lg btn-tip-box" style="margin-left:20px;width: 120px;">大小不超过2M</a>
+	                            </div>
+	                        </div>
+	                         <div class="item_subinfo fl identitypicPreview" style="display:none;">
+	                            <span class="label"> </span>
 	                            <div class="fl">
-	                                 <form:input path="identity"    class="form-control fl" style="width: 265px;" />
-	                                 <div class="Validform_checktip"></div>
+	                                <img id="identitypicPicImg"  class="showimg_box fl" style="width:200px; height:200px;" >
 	                            </div>
 	                        </div>
 	                        <div class="item_subinfo fl" >
 	                            <span class="label">电子邮箱</span>
 	                            <div class="fl">
-	                                 <form:input path="email"    class="form-control fl" style="width: 265px;" />
+	                                 <form:input path="email"    datatype="empty|e" errormsg="邮箱格式不正确！" class="form-control fl" style="width: 265px;" />
 	                                 <div class="Validform_checktip"></div>
 	                            </div>
 	                        </div>
 	                        <div class="item_subinfo fl" >
 	                            <span class="label">手机</span>
 	                            <div class="fl">
-	                                 <form:input path="mobile"    class="form-control fl" style="width: 265px;" />
+	                                 <form:input path="mobile"  datatype="empty|m" errormsg="手机号码格式不正确！"  class="form-control fl" style="width: 265px;" />
 	                                 <div class="Validform_checktip"></div>
 	                            </div>
 	                        </div>
 	                        <div class="item_subinfo fl" >
 	                            <span class="label">座机</span>
 	                            <div class="fl">
-	                                 <form:input path="telephone"    class="form-control fl" style="width: 265px;" />
+	                                 <form:input path="telephone"   datatype="empty|n5-11" errormsg="座机号码格式不正确！" class="form-control fl" style="width: 265px;" />
 	                                 <div class="Validform_checktip"></div>
 	                            </div>
 	                        </div>
 	                        <div class="item_subinfo fl" >
 	                            <span class="label">QQ</span>
 	                            <div class="fl">
-	                                 <form:input path="qq"    class="form-control fl" style="width: 265px;" />
+	                                 <form:input path="qq"    datatype="empty|n5-12" errormsg="QQ格式不正确！" class="form-control fl" style="width: 265px;" />
 	                                 <div class="Validform_checktip"></div>
 	                            </div>
 	                        </div>
@@ -132,6 +151,7 @@
 	                        </div>
 	                         <!-- 图片上传 -->
                             <input type="file" id="uploadFile" name="uploadFile" style="display:none;"/>
+                            <form:hidden path="id" />
 	                        <div class="item_subinfo fl btn_list">
 	                            <a href="javascript:void(0);" id="userinfodetail" class="btn btn-primary" >保存</a>
 	                        </div>

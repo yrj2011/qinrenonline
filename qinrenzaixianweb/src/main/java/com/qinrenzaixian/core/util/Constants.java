@@ -5,7 +5,7 @@ package com.qinrenzaixian.core.util;
  * @author xiaoyang
  *
  */
-public class Constans {
+public class Constants {
 	/**
 	 * UTF8编码
 	 */
@@ -34,5 +34,12 @@ public class Constans {
 		 * session 登录用户key
 		 */
 		public static final String SESSION_WEB_LOGIN_USER_KEY = "QINRENZAIXIAN_WEBLOGIN_KEY";
+	}
+	
+	public static class URL{
+		/**
+		 * 基本信息
+		 */
+		public static final String USER_CENTER = "/user/info.shtml";
 	}
 }

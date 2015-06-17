@@ -24,7 +24,15 @@ $(document).ready(function () {
 				if(reg1.test(gets)){return true;}
 				return '密码必须是字母、数字和符号的组合';
 				//注意return可以返回true 或 false 或 字符串文字，true表示验证通过，返回字符串表示验证失败，字符串作为错误提示显示，返回false则用errmsg或默认的错误提示;
-			}
+			},
+		"sfz":function(gets,obj,curform,regxp){
+			var reg1=/(^\d{15}$)|(^\d{17}([0-9]|X)$)/;
+			if(gets == null || gets =="" || reg1.test(gets)){
+				return true;
+				}
+			return '输入的身份证号长度不对，或者号码不符合规定！\n15位号码应全为数字，18位号码末位可以为数字或X。';
+		},
+		"empty": /^\s*$/
 	  },callback:function(form){
 		  var infodetailForm = $("#infodetailForm");
 		  infodetailForm[0].submit();
@@ -36,10 +44,37 @@ $(document).ready(function () {
      * 提交用户信息
      */
     $("#userinfodetail").click(function(){
-    	$(".userinfodetail").submit();
+    	$(".infodetailForm").submit();
     });
     
-   //图片上传
+    //个人图片上传
+    $("#picture_a").click(function(){
+        var obj = $(this);
+        $("#uploadFile").click();
+        $("#uploadFile").change(function(){
+            $.ajaxFileUpload({
+                url:ctx+'/upload.shtml',
+                secureuri: false, //一般设置为false
+                fileElementId: 'uploadFile', // 上传文件的id、name属性名
+                dataType: 'json',
+                type:"post",
+                //elementIds: elementIds, //传递参数到服务器
+                success: function (result, status){
+                    if(result != null ){
+                    	$("#picturePicImg").attr("src",result.file_name);
+                        obj.next().val(result.file_name);
+                        $('.picturePreview').show();
+                    }else{
+                        alert(result);
+                    }
+                    
+                },error:function(res){
+                }
+            });
+        });
+    });
+    
+    //身份图片上传
     $("#identitypic_a").click(function(){
         var obj = $(this);
         $("#uploadFile").click();
@@ -53,9 +88,9 @@ $(document).ready(function () {
                 //elementIds: elementIds, //传递参数到服务器
                 success: function (result, status){
                     if(result != null ){
-                    	$("#mainPicImg").attr("src",result.url);
-                        obj.next().val(result.url);
-                        $('.imgPreview').show();
+                    	$("#identitypicPicImg").attr("src",result.file_name);
+                        obj.next().val(result.file_name);
+                        $('.identitypicPreview').show();
                     }else{
                         alert(result);
                     }

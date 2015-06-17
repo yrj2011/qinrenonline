@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
-import com.qinrenzaixian.core.util.Constans;
+import com.qinrenzaixian.core.util.Constants;
 import com.qinrenzaixian.core.util.FileUtil;
 import com.qinrenzaixian.core.util.StringUtil;
 import com.qinrenzaixian.core.util.json.JsonUtils;
@@ -45,7 +45,7 @@ public class CommonAction {
 			String fileName = uploadFile.getOriginalFilename();
 			String url = null;
 			try {
-				String path = Constans.UPLOAD_PATH;
+				String path = Constants.UPLOAD_PATH;
 				File f = new File(path);
 				if(!f.exists()){
 					f.mkdirs();

@@ -23,9 +23,26 @@ public class UserServiceImpl implements UserService {
 		return userDao.selectUserByName(name);
 	}
 	
+	/**
+	 * 新增用户
+	 * @param user 用户信息
+	 * @return
+	 * @throws Exception
+	 */
 	@Override
 	public int insertUser(UserDo user) throws Exception{
 		int rs = userDao.insertUser(user);
+		return rs;
+	}
+	
+	/**
+	 * 修改用户
+	 * @param user 用户信息
+	 * @return
+	 * @throws Exception
+	 */
+	public int updateUser(UserDo user) throws Exception{
+		int rs = userDao.updateUser(user);
 		return rs;
 	}
 }

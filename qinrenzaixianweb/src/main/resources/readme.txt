@@ -9,3 +9,7 @@ jstl 帮助
 http://elf8848.iteye.com/blog/245559
 bootstarp api demo
 http://bootstrap-datepicker.readthedocs.org/en/latest/
+http://www.w3cschool.cc/bootstrap/bootstrap-plugins-overview.html
+http://validform.rjboy.cn/
+spring mvc4的日期/数字格式化、枚举转换
+http://www.cnblogs.com/yjmyzz/p/4062473.html

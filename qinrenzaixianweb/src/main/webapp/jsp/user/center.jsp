@@ -15,6 +15,11 @@
    	<link href="${ctx}/css/user/normalize.css" rel="stylesheet">
     <style>
     .table_content input{border:0; height:100%;}
+    .label{height:40px;line-height:40px;width:90px}
+    .label-txt{width:300px}
+    .item{padding-left:100px}
+    .item_subinfo a{display:block;margin-left:220px;color:red} 
+    .item_subinfo {border-bottom:0px solid gray;margin-bottom:5px;}
     </style>
 </head>
 <body>
@@ -31,10 +36,6 @@
 	                            <span class="label-txt">${userinfo.name}</span>
 	                        </div>
 	                        <div class="item_subinfo ">
-	                            <span class="label">密码</span>
-	                            <span class="label-txt">******</span>
-	                        </div>
-	                        <div class="item_subinfo ">
 	                            <span class="label">姓名</span>
 	                            <span class="label-txt">${userinfo.realName}</span>
 	                        </div>
@@ -44,11 +45,15 @@
 	                        </div>
 	                        <div class="item_subinfo ">
 	                            <span class="label">生日</span>
-	                            <span class="label-txt">${userinfo.birthday}</span>
+	                            <span class="label-txt"><fmt:formatDate  value="${userinfo.birthday}"  pattern="yyyy-MM-dd" /></span>
 	                        </div>
 	                        <div class="item_subinfo ">
 	                            <span class="label">个人图片</span>
-	                            <span class="label-txt">${userinfo.picture}</span>
+	                            <span class="label-txt">
+		                            <c:if test="${userinfo.picture ne null }">
+		                            	<img id="picturePicImg"  class="showimg_box fl" style="width:200px; height:200px;" src="${userinfo.picture}">
+		                            </c:if>
+	                            </span>
 	                        </div>
 	                        <div class="item_subinfo ">
 	                            <span class="label">身份证</span>
@@ -56,7 +61,11 @@
 	                        </div>
 	                        <div class="item_subinfo ">
 	                            <span class="label">身份证图片</span>
-	                            <span class="label-txt">${userinfo.identitypic}</span>
+	                            <span class="label-txt">
+	                             <c:if test="${not empty userinfo.identitypic}">
+	                              	   <img id="picturePicImg"  class="showimg_box fl" style="width:200px; height:200px;" src="${userinfo.identitypic}">
+	                              </c:if>
+	                            </span>
 	                        </div>
 	                        <div class="item_subinfo ">
 	                            <span class="label">电子邮箱</span>

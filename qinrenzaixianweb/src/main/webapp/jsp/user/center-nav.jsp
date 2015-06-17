@@ -1,5 +1,6 @@
 <%@ page contentType="text/html;charset=UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ page import="com.qinrenzaixian.core.util.Constants" %>
 <c:set var="ctx" value="${pageContext.request.contextPath}" />
 <div class="b_nav">
         <!-- Contenedor -->
@@ -7,7 +8,7 @@
             <li subIndex="0">
                 <div class="link">个人信息<i class="fa-chevron-down"></i></div>
                 <ul class="submenu" subIndex="0">
-                    <li><a href="${ctx }/auction/add"><span>基本信息</span></a></li>
+                    <li><a href="${ctx }<%=Constants.URL.USER_CENTER%>.shtml"><span>基本信息</span></a></li>
                     <li><a href="${ctx }/auction?status=4"><span class="nobb">联系地址</span></a></li>
                 </ul>
             </li>

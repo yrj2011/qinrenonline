@@ -46,7 +46,7 @@ CREATE TABLE `user` (
   `type` tinyint(4) unsigned DEFAULT '0'  COMMENT '0 管理员,1 父母，2子女，3 好心人，4 其他',
   `name` varchar(255) NOT NULL DEFAULT '' COMMENT '登录名',
   `sex` tinyint(1) DEFAULT '0' COMMENT '性别 0男，1女',
-  `birthday` varchar(32) DEFAULT '' COMMENT '生日',
+  `birthday`  datetime  NULL COMMENT '生日',
   `real_name` varchar(255) DEFAULT '' COMMENT '姓名',
   `password` varchar(255) NOT NULL DEFAULT '' COMMENT '密码',
   `picture` varchar(512) DEFAULT '' COMMENT '个人图片',

@@ -29,6 +29,11 @@ public class Constants {
 	 */
 	public static final String UPLOAD_PATH = "E:/picupload/";
 	
+	/**
+	 * servlet 请求路径KEY
+	 */
+	public static final String JAVAX_SERVLET_FORWARD_REQUEST_URI ="javax.servlet.forward.request_uri";
+	
 	public static class User{
 		/**
 		 * session 登录用户key
@@ -36,10 +41,25 @@ public class Constants {
 		public static final String SESSION_WEB_LOGIN_USER_KEY = "QINRENZAIXIAN_WEBLOGIN_KEY";
 	}
 	
+	/**
+	 * 页面地址
+	 * @author xiaoyang
+	 *
+	 */
 	public static class URL{
 		/**
 		 * 基本信息
 		 */
-		public static final String USER_CENTER = "/user/info.shtml";
+		public static final String USER_CENTER = "/user/info";
+		/**
+		 * 用户信息修改
+		 */
+		public static final String USER_INFODETAIL = "/user/info-detail";
+		/**
+		 * 用户地址列表页
+		 */
+		public static final String USER_ADDRESSLIST = "/user/addresslist";
 	}
+	
+	
 }

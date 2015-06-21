@@ -4,6 +4,7 @@
     <!-- 在这个文件放置一些全局性的配置 -->
     <typeAliases>
         <typeAlias alias="user" type="com.qinrenzaixian.web.domain.UserDo"/>
+        <typeAlias alias="address" type="com.qinrenzaixian.web.domain.AddressDo"/>
     </typeAliases>
         
 </configuration>

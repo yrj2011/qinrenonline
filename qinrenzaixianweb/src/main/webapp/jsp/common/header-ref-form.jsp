@@ -27,7 +27,7 @@
 <script src="${ctx}/js/plugin/bootstrap/plugin/validform/Validform_v5.3.2.js"></script>
 <script src="${ctx}/js/plugin/bootstrap/plugin/dialog/moaModal.minified.js"></script>
 <script src="${ctx}/js/plugin/bootstrap/plugin/switch/jquery-jtumbler-1.0.1.min.js"></script>
-<script src="${ctx}/js/plugin/bootstrap/plugin/My97DatePicker/WdatePicker.js"></script>
+<script src="${ctx}/js/plugin/bootstrap/plugin/My97DatePicker2/WdatePicker.js"></script>
 <script src="${ctx}/js/plugin/bootstrap/plugin/datepicker/jquery.datepicker.js"></script>
 <script src="${ctx}/js/plugin/bootstrap/plugin/dialog/Sweefty.js"></script>
 <script src="${ctx}/js/plugin/bootstrap/plugin/hoverex/jquery.hoverex.js"></script>

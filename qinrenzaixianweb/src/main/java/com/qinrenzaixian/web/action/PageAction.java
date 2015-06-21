@@ -11,6 +11,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.qinrenzaixian.core.util.ActionUtil;
 import com.qinrenzaixian.core.util.Constants;
+import com.qinrenzaixian.web.domain.AddressDo;
 import com.qinrenzaixian.web.domain.UserDo;
 import com.qinrenzaixian.web.service.UserService;
 
@@ -101,13 +102,26 @@ public class PageAction {
 	 * 
 	 * @return
 	 */
-	@RequestMapping(value = "/user/info-detail", method = RequestMethod.GET)
+	@RequestMapping(value = Constants.URL.USER_INFODETAIL, method = RequestMethod.GET)
 	public ModelAndView userinfoDetail(Model model) {
 		ModelAndView mov = new ModelAndView();
 		UserDo userinfo = ActionUtil.getCurrentUser();
 		userinfo = userService.selectUserByName(userinfo.getName());
 		mov.addObject("userinfo", userinfo);
 		mov.setViewName("user/center-user-detail");
+		return mov;
+	}
+	
+	/**
+	 * 用户地址列表
+	 * 
+	 * @return
+	 */
+	@RequestMapping(value = Constants.URL.USER_ADDRESSLIST, method = RequestMethod.GET)
+	public ModelAndView addressList(Model model) {
+		ModelAndView mov = new ModelAndView();
+	   
+		mov.setViewName("user/addresslist");
 		return mov;
 	}
 }

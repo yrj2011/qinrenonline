@@ -18,4 +18,16 @@
 			<rtexprvalue>true</rtexprvalue>
 		</attribute>
 	</tag>
+	<tag>
+		<description><![CDATA[page tag]]></description>
+		<name>pageTag</name>
+		<tag-class>com.qinrenzaixian.core.util.tag.PageTag</tag-class>
+		<body-content>JSP</body-content>
+		<attribute>
+			<description><![CDATA[HTML page attribute]]></description>
+			<name>page</name>
+			<required>false</required>
+			<rtexprvalue>true</rtexprvalue>
+		</attribute>
+	</tag>
 </taglib>

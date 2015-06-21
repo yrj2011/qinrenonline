@@ -51,7 +51,7 @@
 	                        <div class="item_subinfo fl" >
 	                            <span class="label">性别</span>
 	                            <div class="fl">
-	                                <select class="select-main category fl " id="category_1" style="display:block;" >
+	                                <select class="select-main category fl " id="category_1" style="display:block;height:35px;" >
 			                        	<option value="0"  class="select-option">男</option>
 			                        	<option value="1"  >女</option>
 			                        </select>
@@ -62,19 +62,20 @@
 	                         <div class="item_subinfo fl" >
 	                            <span class="label">生日</span>
 	                            <div class="fl">
-	                                <input name="birthday" value="<fmt:formatDate  value="${userinfo.birthday}"  pattern="yyyy-MM-dd" />" class="Wdate Wdate2 form-control" style="float:left; width:265px;" type="text" id="birthday" name="birthday" onFocus="WdatePicker({doubleCalendar:true,dateFmt:'yyyy-MM-dd'})"/>
+	                                <input name="birthday" value="<fmt:formatDate  value="${userinfo.birthday}"  pattern="yyyy-MM-dd" />" 
+	                                class="Wdate Wdate2 form-control" style="height:35px;width:265px" type="text" id="birthday" name="birthday" onFocus="WdatePicker({dateFmt:'yyyy-MM-dd'})"/>
 	                                <div class="Validform_checktip"></div>
 	                            </div>
 	                        </div>
 	                        <div class="item_subinfo fl" >
 	                            <span class="label">个人图片</span>
 	                             <div class="fl">
-	                                <a href="javascript:void(0);" id="picture_a" class="btn btn-block btn-lg btn-main" style="width: 120px;">上传图片</a>
+	                                <a href="javascript:void(0);" id="picture_a" class="btn btn-block btn-main" style="width: 120px;">上传图片</a>
 	                                <form:hidden path="picture"  class="sctp" nullmsg="请上传图片" />
 	                                <div class="Validform_checktip fl"  id="sctptip"></div>
 	                            </div>
 	                            <div class="fl ">
-	                                <a href="javascript:void(0);" class="btn btn-block btn-lg btn-tip-box" style="margin-left:20px;width: 120px;">大小不超过2M</a>
+	                                <a href="javascript:void(0);" class="btn btn-block btn-tip-box" style="margin-left:20px;width: 120px;">大小不超过2M</a>
 	                            </div>
 	                        </div>
 	                        <div class="item_subinfo fl picturePreview" style="display:none;">
@@ -93,12 +94,12 @@
 	                        <div class="item_subinfo fl" >
 	                            <span class="label">身份证图片</span>
 	                             <div class="fl">
-	                                <a href="javascript:void(0);" id="identitypic_a" class="btn btn-block btn-lg btn-main" style="width: 120px;">上传图片</a>
+	                                <a href="javascript:void(0);" id="identitypic_a" class="btn btn-block btn-main" style="width: 120px;">上传图片</a>
 	                                <form:hidden path="identitypic" class="sctp" nullmsg="请上传图片" />
 	                                <div class="Validform_checktip fl"  id="sctptip"></div>
 	                            </div>
 	                            <div class="fl ">
-	                                <a href="javascript:void(0);" class="btn btn-block btn-lg btn-tip-box" style="margin-left:20px;width: 120px;">大小不超过2M</a>
+	                                <a href="javascript:void(0);" class="btn btn-block  btn-tip-box" style="margin-left:20px;width: 120px;">大小不超过2M</a>
 	                            </div>
 	                        </div>
 	                         <div class="item_subinfo fl identitypicPreview" style="display:none;">

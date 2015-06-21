@@ -300,9 +300,9 @@ a.wl-orderItem:hover {
 li{list-style:none}
 .btn{
     text-align: center;
-    width: 150px;
+    width: 90px;
     border-radius: 0px;
-    border: 2px solid transparent;
+    border: 1px solid transparent;
     -webkit-transition: all 0.3s ease-in;
     -moz-transition: all 0.3s ease-in;
     -ms-transition: all 0.3s ease-in;
@@ -325,8 +325,8 @@ li{list-style:none}
 }
 .btn-main {
     color: #fff;
-    background-color: #666666;
-    border-color: #666666;
+    background-color: rgb(202,199,235);
+    border-color: #000;
 }
 
 .btn-tip-box {
@@ -348,7 +348,7 @@ li{list-style:none}
 .btn-tip-box:hover{
     color: #F2BD68;
     background-color: #FFF8C8;
-    border: 2px solid #F2BD68;
+    border: 1px solid #F2BD68;
 }
 .btn-tip-box .label {
     padding: 0px 10px;
@@ -365,11 +365,11 @@ li{list-style:none}
 .btn-main:hover,.btn-invice:hover{
     color: #FFF;
     background-color: #1180B9;
-    border: 2px solid #1180B9;
+    border: 1px solid #1180B9;
 }
 .btn-main:active,.btn-invice:active{
     background-color: #006599;
-    border: 2px solid #006599;
+    border: 1px solid #006599;
 }
 
 .form-control_b{
@@ -411,15 +411,15 @@ li{list-style:none}
 }
 
 .form-control{
-    border: 2px solid #ccc;
+    border: 1px solid #ccc;
     border-radius: 0px;
-    height: 40px;
+    height: 30px;
     *height: 26px;
     _height:26px;
     width: 150px;
     *width: 150px;
     _width:150px;
-    line-height: 20px;
+    line-height: 30px;
     _padding: 6px 0px;
     *padding: 6px 0px;
     -webkit-transition: all 0.2s ease-in;
@@ -445,25 +445,25 @@ li{list-style:none}
     opacity: 1;
     -ms-filter: none;
     filter: none;
-    border: 2px solid #000;
+    border: 1px solid #000;
 }
 .form-control:focus{
     opacity: 1;
     -ms-filter: none;
     filter: none;
-    border: 2px solid #1180B9;
+    border: 1px solid #1180B9;
 }
 .form-control-disabled{
     font-size: 14px;
-    border: 2px solid #ccc;
+    border: 1px solid #ccc;
     border-radius: 0px;
-    height: 40px;
+    height: 30px;
     *height: 26px;
     _height:26px;
     width: 150px;
     *width: 150px;
     _width:150px;
-    line-height: 20px;
+    line-height: 30px;
     display: block;
     padding: 6px 12px;
     _padding: 6px 0px;
@@ -474,7 +474,7 @@ li{list-style:none}
 }
 
 .select-main{
-    height: 40px;
+    height: 30px;
     *height:30px;
     _height:30px;
     padding:2px 0;
@@ -483,7 +483,7 @@ li{list-style:none}
     _width:150px;
     font-size: 14px;
     padding-left: 5px;
-    border: 2px solid #ccc;
+    border: 1px solid #ccc;
     *margin-top: 5px;
     _margin-top:5px;
     -webkit-transition: all 0.2s ease-in;
@@ -500,13 +500,13 @@ li{list-style:none}
     opacity: 1;
     -ms-filter: none;
     filter: none;
-    border: 2px solid #000;
+    border: 1px solid #000;
 }
 .select-main:focus{
     opacity: 1;
     -ms-filter: none;
     filter: none;
-    border: 2px solid #1180B9;
+    border: 1px solid #1180B9;
 }
 
 .select-main_s{

@@ -71,10 +71,6 @@ public class UserDo extends BaseDo {
 	 */
 	private String weibo;
 	/**
-	 * 联系地址
-	 */
-	private String address;
-	/**
 	 * 用户登录次数
 	 */
 	private String loginTimes;
@@ -184,12 +180,6 @@ public class UserDo extends BaseDo {
 	}
 	public void setWeibo(String weibo) {
 		this.weibo = weibo;
-	}
-	public String getAddress() {
-		return address;
-	}
-	public void setAddress(String address) {
-		this.address = address;
 	}
 	public String getLoginTimes() {
 		return loginTimes;

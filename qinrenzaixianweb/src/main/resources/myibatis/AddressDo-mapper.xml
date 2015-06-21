@@ -1,0 +1,214 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="Address">
+    <resultMap  id="address-rm" type="addresses">
+    	  <id property="id" column="id"/>
+    	  <result property="userId" column="user_id" />
+    	  <result property="countryId" column="country_id" />
+    	  <result property="provinceId" column="province_id" />
+    	  <result property="cityId" column="city_id" />
+    	  <result property="districtId" column="district_id" />
+    	  <result property="address" column="address" />
+    	  <result property="zipCode" column="zip_code" />
+    	  <result property="contact" column="contact" />
+    	  <result property="mobilePhone" column="mobile_phone" />
+    	  <result property="zone" column="zone" />
+    	  <result property="phoneNumber" column="phone_number" />
+    	  <result property="extNumber" column="ext_number" />
+          <result property="createTime" column="createtime" />
+    	  <result property="creater" column="creater" />
+    	  <result property="updateTime" column="updatetime" />
+    	  <result property="updater" column="updater" />
+    	  <result property="delflag" column="delflag" />
+    	  <result property="status" column="status" />
+    </resultMap>
+    <!-- 查询地址 -->
+	<select id="findAddressById" parameterType="java.lang.Long"  resultMap="address-rm">
+	   select id ,  user_id ,
+	   `country_id`,`province_id`,`city_id` ,`district_id`,
+	   `address`, `zip_code`,`contact`,
+	   `mobile_phone`,`zone`,`phone_number` ,`ext_number`,
+	   `createtime`,`creater` ,`updatetime`,`updater`,
+	   `delflag`,`status`
+	   from  addresses  where delflag =0 and id=#{id}
+	</select>
+	<!-- 新增地址 -->
+	<insert  id="insertAddress"  parameterType="addresses" useGeneratedKeys="true" keyProperty="id" >
+	   insert  into addresses  (
+	   createtime,
+	   <if test="creater != null  ">  
+            ,creater
+       </if>  
+	   <if test="user_id != null  ">  
+            ,user_id
+       </if>  
+       <if test="country_id != null  ">  
+            ,country_id
+       </if> 
+       <if test="province_id != null  ">  
+            ,province_id
+       </if> 
+       <if test="city_id != null  ">  
+            ,city_id
+       </if> 
+       <if test="district_id != null  ">  
+            ,district_id
+       </if> 
+       <if test="address != null  ">  
+            ,address
+       </if> 
+       <if test="zip_code != null  ">  
+            ,zip_code
+       </if> 
+       <if test="contact != null  ">  
+            ,contact
+       </if> 
+       
+       <if test="mobile_phone != null  ">  
+            ,mobile_phone
+       </if> 
+       <if test="zone != null  ">  
+            ,zone
+       </if> 
+       <if test="phone_number != null  ">  
+            ,phone_number
+       </if> 
+       <if test="ext_number != null  ">  
+            ,ext_number
+       </if> 
+        ) values (
+       SYSDATE(),<if test="creater != null  ">  
+            ,#{creater}
+       </if>  
+	   <if test="user_id != null  ">  
+            ,#{userId}
+       </if>  
+       <if test="country_id != null  ">  
+            ,#{countryId}
+       </if> 
+       <if test="province_id != null  ">  
+            ,#{provinceId}
+       </if> 
+       <if test="city_id != null  ">  
+            ,#{cityId}
+       </if> 
+       <if test="district_id != null  ">  
+            ,#{districtId}
+       </if> 
+       <if test="address != null  ">  
+            ,#{address}
+       </if> 
+       <if test="zip_code != null  ">  
+            ,#{zipCode}
+       </if> 
+       <if test="contact != null  ">  
+            ,#{contact}
+       </if> 
+       
+       <if test="mobile_phone != null  ">  
+            ,#{mobilePhone}
+       </if> 
+       <if test="zone != null  ">  
+            ,#{zone}
+       </if> 
+       <if test="phone_number != null  ">  
+            ,#{phoneNumber}
+       </if> 
+       <if test="ext_number != null  ">  
+            ,#{extNumber}
+       </if> )
+	</insert>
+	
+	<!-- 修改地址 -->
+	<update  id="updateAddress"  parameterType="addresses"  >
+	  update addresses  set
+        updatetime = SYSDATE() 
+        <if test="updater != null  ">  
+            ,updater =#{updater}
+       </if>  
+	   <if test="user_id != null  ">  
+            ,user_id=#{userId}
+       </if>  
+       <if test="country_id != null  ">  
+            ,country_id=#{countryId}
+       </if> 
+       <if test="province_id != null  ">  
+            ,province_id=#{provinceId}
+       </if> 
+       <if test="city_id != null  ">  
+            ,city_id=#{cityId}
+       </if> 
+       <if test="district_id != null  ">  
+            ,district_id=#{districtId}
+       </if> 
+       <if test="address != null  ">  
+            ,address=#{address}
+       </if> 
+       <if test="zip_code != null  ">  
+            ,zip_code=#{zipCode}
+       </if> 
+       <if test="contact != null  ">  
+            ,contact=#{contact}
+       </if> 
+       
+       <if test="mobile_phone != null  ">  
+            ,mobile_phone=#{mobilePhone}
+       </if> 
+       <if test="zone != null  ">  
+            ,zone=#{zone}
+       </if> 
+       <if test="phone_number != null  ">  
+            ,phone_number=#{phoneNumber}
+       </if> 
+       <if test="ext_number != null  ">  
+            ,ext_number=#{extNumber}
+       </if> 
+	  where delflag =0 and id = #{id}
+	</update>
+	
+	<!-- 删除地址 -->
+	<update  id="delAddress"  parameterType="addresses"  >
+	  update addresses  set
+        updatetime = SYSDATE() 
+        <if test="updater != null  ">  
+            ,updater =#{updater}
+       </if>  
+	   ,delflag=1
+	  where delflag =0 and id = #{id}
+	</update>
+	
+	<sql id="queryAddressListCondition">
+      <if test="contact != null  ">  
+           and contact=#{contact}
+       </if>
+       <if test="phone != null  ">  
+            and phone_number=#{phone}
+       </if> 
+       <if test="mobile != null  ">  
+            and mobile_phone=#{mobile}
+       </if> 
+        <if test="userId != null  ">  
+            and user_id=#{userId}
+       </if> 
+	</sql>
+	<!-- 查询用户地址列表 -->
+	<select id="queryAddressList"  parameterType="com.qinrenzaixian.web.domain.AddressPagination" resultMap="address-rm">
+	   select id ,  user_id ,
+	   `country_id`,`province_id`,`city_id` ,`district_id`,
+	   `address`, `zip_code`,`contact`,
+	   `mobile_phone`,`zone`,`phone_number` ,`ext_number`,
+	   `createtime`,`creater` ,`updatetime`,`updater`,
+	   `delflag`,`status`
+	   from  addresses  where delflag =0 
+	   <include refid="queryAddressListCondition"></include>
+	   limit #{start},#{end}
+	</select>
+	
+	<!-- 查询用户地址列表总数 -->
+	<select id="queryAddressListCount"  parameterType="com.qinrenzaixian.web.domain.AddressPagination" resultType="java.lang.Integer">
+	   select count(1)
+	   from  addresses  where delflag =0 
+	   <include refid="queryAddressListCondition"></include>
+	</select>
+</mapper>

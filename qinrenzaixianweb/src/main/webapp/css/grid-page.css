@@ -1,0 +1,72 @@
+.investment_f{
+    padding: 20px 0;
+}
+.form .item {
+    padding-top: 10px;
+    padding-bottom: 10px;
+    overflow: hidden;
+    zoom: 1;
+    border-bottom: 1px solid #ccc;
+}
+.item .label {
+    padding: 0px 10px;
+    font-weight:normal;
+    height: 30px;
+    line-height: 30px;
+    float: left;
+    width: 140px;
+    *width:120px;
+    _width:120px;
+    text-align: center;
+    font-size: 14px;
+    color: #666666;
+}
+.label b{
+    font-family: "????";
+    font-weight: normal;
+    color: #F00;
+}
+.item span{
+    padding-right: 7px;
+}
+.item .item_subinfo{
+    width: 100%;
+    padding: 5px 0px;
+}
+.btn_list .btn{
+    float: left;
+    margin: 5px;
+}
+.wdate_mid{
+    float:left;height: 40px;line-height: 40px;padding: 0 10px;
+}
+.btn_list #search_btn{
+    margin-left: 150px;
+}
+.btn_list #reset_btn{
+    width: 65px;
+}
+.table_content td{height: 40px; padding:0px 5px 0px 5px;}
+.c_qiye{width:100px;}
+.c_zy{width:100px;}
+.c_addr{width:100px;}
+.c_gtel{width:100px;}
+.c_mail{width:100px;}
+.c_faren{width:100px;}
+.c_tel{width:100px;}
+.c_gltel{width:100px;}
+.c_smail{width:100px;}
+.c_addr_detail{width:100px;}
+.c_caoz{width:100px;}                                    
+
+.toolong {
+	height: 21px;
+	overflow: hidden;
+	white-space: nowrap;
+	text-overflow: ellipsis;
+}
+.modal_content_enterprise{padding-left:15px;line-height: 60px;text-align: left;}
+.modal_content_title{font-size:16px;font-weight:bold;vertical-align:middle;}
+.modal_content_table table{width:100%;font-size:13px;}
+.modal_content_table table tr td{line-height:30px;}
+.point img{cursor: pointer;}

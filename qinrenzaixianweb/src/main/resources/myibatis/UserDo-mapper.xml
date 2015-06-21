@@ -38,7 +38,7 @@
 	   `real_name`, `password`,`picture`,
 	   `identity`,`identity_pic`,`email` ,`mobile`,
 	   `telephone`,`qq` ,`weixin`,`weibo`,
-	   `address`,`login_times`,`last_login_time`,`last_login_ip`,`create_ip`,`createtime`,
+	   `login_times`,`last_login_time`,`last_login_ip`,`create_ip`,`createtime`,
 	   `creater`,`update_ip` ,`updatetime`,`updater`,`delflag`,`status`
 	   from  user  where name=#{name}
 	</select>

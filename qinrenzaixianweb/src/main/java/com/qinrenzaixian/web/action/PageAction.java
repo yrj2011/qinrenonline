@@ -12,7 +12,9 @@ import org.springframework.web.servlet.ModelAndView;
 import com.qinrenzaixian.core.util.ActionUtil;
 import com.qinrenzaixian.core.util.Constants;
 import com.qinrenzaixian.web.domain.AddressDo;
+import com.qinrenzaixian.web.domain.AddressPagination;
 import com.qinrenzaixian.web.domain.UserDo;
+import com.qinrenzaixian.web.service.AddressService;
 import com.qinrenzaixian.web.service.UserService;
 
 /**
@@ -29,6 +31,21 @@ public class PageAction {
 	private static Logger log = Logger.getLogger(PageAction.class);
 	@Autowired
 	private UserService userService;
+	@Autowired
+	private AddressService addressService;
+	private AddressPagination<AddressDo> addressPage;
+	
+	public AddressPagination<AddressDo> getAddressPage() {
+		if(addressPage == null){
+			addressPage = new AddressPagination<AddressDo>();
+		}
+		addressPage.setUserId(ActionUtil.getCurrentUser() ==null?0L:ActionUtil.getCurrentUser().getId());
+		return addressPage;
+	}
+
+	public void setAddressPage(AddressPagination<AddressDo> addressPage) {
+		this.addressPage = addressPage;
+	}
 
 	/**
 	 * 进入首页
@@ -116,11 +133,13 @@ public class PageAction {
 	 * 用户地址列表
 	 * 
 	 * @return
+	 * @throws Exception 
 	 */
 	@RequestMapping(value = Constants.URL.USER_ADDRESSLIST, method = RequestMethod.GET)
-	public ModelAndView addressList(Model model) {
+	public ModelAndView addressList(Model model) throws Exception {
 		ModelAndView mov = new ModelAndView();
-	   
+	    addressService.queryAddressList(getAddressPage());
+	    mov.addObject("addressPage", getAddressPage());
 		mov.setViewName("user/addresslist");
 		return mov;
 	}

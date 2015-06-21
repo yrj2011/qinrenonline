@@ -26,7 +26,13 @@
 		<attribute>
 			<description><![CDATA[HTML page attribute]]></description>
 			<name>page</name>
-			<required>false</required>
+			<required>true</required>
+			<rtexprvalue>true</rtexprvalue>
+		</attribute>
+		<attribute>
+			<description><![CDATA[HTML type attribute]]></description>
+			<name>type</name>
+			<required>true</required>
 			<rtexprvalue>true</rtexprvalue>
 		</attribute>
 	</tag>

@@ -80,8 +80,8 @@ public class BaseDAO implements IBaseDAO {
 
 	@Override
 	public <T> void queryForPaginate(String sqlId, Pagination<T> paginate) {
-		// 结果数配置的sqlid默认应该是sqlid后加-count
-		int count = this.count(sqlId.concat("-count"), paginate);
+		// 结果数配置的sqlid默认应该是sqlid后加Count
+		int count = this.count(sqlId.concat("Count"), paginate);
 		paginate.repaginate(count);
 		if (count > 0) {
 			List<T> list = this.queryForList(sqlId, paginate);

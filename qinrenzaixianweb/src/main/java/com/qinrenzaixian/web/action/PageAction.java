@@ -33,13 +33,57 @@ public class PageAction {
 	private UserService userService;
 	@Autowired
 	private AddressService addressService;
+    /**
+     * 地址列表
+     */
 	private AddressPagination<AddressDo> addressPage;
+	private AddressDo addressinfo;
 	
+
+	public AddressDo getAddressinfo() {
+		return addressinfo;
+	}
+
+	public void setAddressinfo(AddressDo addressinfo) {
+		this.addressinfo = addressinfo;
+	}
+
+	/**
+	 * 页数
+	 */
+	private int page;
+	/**
+	 * 每页条数
+	 */
+	private int pageSize;
+	
+	public int getPage() {
+		return page;
+	}
+
+	public void setPage(int page) {
+		this.page = page;
+	}
+
+	public int getPageSize() {
+		return pageSize;
+	}
+
+	public void setPageSize(int pageSize) {
+		this.pageSize = pageSize;
+	}
+
 	public AddressPagination<AddressDo> getAddressPage() {
 		if(addressPage == null){
 			addressPage = new AddressPagination<AddressDo>();
 		}
 		addressPage.setUserId(ActionUtil.getCurrentUser() ==null?0L:ActionUtil.getCurrentUser().getId());
+		if(page>0){
+			addressPage.setPage(String.valueOf(page));
+		}
+		if(pageSize > 0){
+			addressPage.setPageSize(pageSize);
+		}
 		return addressPage;
 	}
 
@@ -136,11 +180,33 @@ public class PageAction {
 	 * @throws Exception 
 	 */
 	@RequestMapping(value = Constants.URL.USER_ADDRESSLIST, method = RequestMethod.GET)
-	public ModelAndView addressList(Model model) throws Exception {
+	public ModelAndView addressList(Model model,AddressPagination<AddressDo> addressPage) throws Exception {
 		ModelAndView mov = new ModelAndView();
-	    addressService.queryAddressList(getAddressPage());
-	    mov.addObject("addressPage", getAddressPage());
+	    addressService.queryAddressList(addressPage);
+	    mov.addObject("addressPage", addressPage);
 		mov.setViewName("user/addresslist");
+		return mov;
+	}
+	
+	/**
+	 * 用户地址编辑
+	 * 
+	 * @return
+	 * @throws Exception 
+	 */
+	@RequestMapping(value = Constants.URL.USER_ADDRESSEDIT, method = RequestMethod.GET)
+	public ModelAndView addressEdit(Model model, AddressDo addressinfo) throws Exception {
+		ModelAndView mov = new ModelAndView();
+		 mov.addObject(Constants.FLAG, Constants.FLAG_ADD);
+		if(addressinfo ==  null){
+			addressinfo = new AddressDo();
+		}
+		if(addressinfo.getId() != null && addressinfo.getId().longValue() >0){
+			addressinfo = addressService.selectAddressById(addressinfo.getId());
+			 mov.addObject(Constants.FLAG, Constants.FLAG_UPDATE);
+		}
+	    mov.addObject("addressinfo", addressinfo);
+		mov.setViewName("user/address_add");
 		return mov;
 	}
 }

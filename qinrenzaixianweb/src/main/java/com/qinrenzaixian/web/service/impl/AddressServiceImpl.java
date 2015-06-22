@@ -49,6 +49,16 @@ public class AddressServiceImpl implements AddressService {
 	}
 	
 	/**
+	 * 删除地址
+	 * @param address 地址信息
+	 * @return
+	 * @throws Exception
+	 */
+	@Override
+	public int deleteAddress(AddressDo address) throws Exception{
+		return addressDao.deleteAddress(address);
+	}
+	/**
 	 * 查询地址列表
 	 * @param address 地址信息
 	 * @return

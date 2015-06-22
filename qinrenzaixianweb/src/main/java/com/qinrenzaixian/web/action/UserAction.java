@@ -23,7 +23,9 @@ import com.qinrenzaixian.core.util.ActionUtil;
 import com.qinrenzaixian.core.util.Constants;
 import com.qinrenzaixian.core.util.DateEditor;
 import com.qinrenzaixian.core.util.secret.MD5Util;
+import com.qinrenzaixian.web.domain.AddressDo;
 import com.qinrenzaixian.web.domain.UserDo;
+import com.qinrenzaixian.web.service.AddressService;
 import com.qinrenzaixian.web.service.UserService;
 
 /**
@@ -41,6 +43,8 @@ public class UserAction {
 	private static Logger log = Logger.getLogger(UserAction.class);
 	@Autowired
 	private UserService userService;
+	@Autowired
+	private AddressService addressService;
 
 	@InitBinder  
 	protected void initBinder(HttpServletRequest request,  
@@ -161,6 +165,67 @@ public class UserAction {
 			return new ModelAndView("redirect:"+Constants.URL.USER_CENTER);
 		} catch (Exception e) {
 			log.error("完善用户信息失败：", e);
+			throw e;
+		}
+	}
+	
+	/**
+	 * 删除用户地址
+	 * @return
+	 * @throws Exception
+	 */
+	@RequestMapping(value = "/addressdel", method = RequestMethod.GET)
+	public ModelAndView addressDel(AddressDo addressinfo, Model model)throws Exception {
+		log.info("删除用户地址");
+		try {
+			if(addressinfo != null && addressinfo.getId() != null){
+				addressService.deleteAddress(addressinfo);
+			}
+			return new ModelAndView("redirect:"+Constants.URL.USER_ADDRESSLIST+Constants.SUFFIX);
+		} catch (Exception e) {
+			log.error("删除用户地址：", e);
+			throw e;
+		}
+	}
+	
+	
+	/**
+	 * 新增用户地址
+	 * @return
+	 * @throws Exception
+	 */
+	@RequestMapping(value = "/addaddress", method = RequestMethod.POST)
+	public ModelAndView addressAdd(AddressDo addressinfo, Model model)throws Exception {
+		log.info("新增用户地址");
+		try {
+			if(addressinfo != null ){
+				addressinfo.setCreater(ActionUtil.getCurrentUser().getId());
+				addressinfo.setUserId(ActionUtil.getCurrentUser().getId());
+				addressService.insertAddress(addressinfo);
+			}
+			return new ModelAndView("redirect:"+Constants.URL.USER_ADDRESSEDIT+Constants.SUFFIX);
+		} catch (Exception e) {
+			log.error("新增用户地址：", e);
+			throw e;
+		}
+	}
+	
+	/**
+	 * 新增用户地址
+	 * @return
+	 * @throws Exception
+	 */
+	@RequestMapping(value = "/updateaddress", method = RequestMethod.POST)
+	public ModelAndView addressaEdit(AddressDo addressinfo, Model model)throws Exception {
+		log.info("修改用户地址");
+		try {
+			if(addressinfo != null && addressinfo.getId() != null ){
+				addressinfo.setUpdater(ActionUtil.getCurrentUser().getId());
+				addressService.updateAddress(addressinfo);
+			}
+			return new ModelAndView("redirect:"+Constants.URL.USER_ADDRESSLIST+Constants.SUFFIX);
+		} catch (Exception e) {
+			log.error("修改用户地址：", e);
 			throw e;
 		}
 	}

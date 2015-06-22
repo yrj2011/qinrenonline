@@ -45,7 +45,7 @@ body {
     color: #34495e;
 }
 .container {
-    width: 1100px !important;
+    width: 1000px !important;
 }
 .h1{
     font-size: 36px;font-weight: 500;margin: 0px;
@@ -973,4 +973,7 @@ li{list-style:none}
 }
 .bg_blue{
     background-color:#006599;
+}
+.blue{
+	color:blue;
 }

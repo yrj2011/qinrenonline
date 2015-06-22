@@ -33,6 +33,13 @@ public interface AddressService  {
 	public int updateAddress(AddressDo address) throws Exception;
 	
 	/**
+	 * 删除地址
+	 * @param address 地址信息
+	 * @return
+	 * @throws Exception
+	 */
+	public int deleteAddress(AddressDo address) throws Exception;
+	/**
 	 * 查询地址列表
 	 * @param address 地址信息
 	 * @return

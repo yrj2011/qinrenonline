@@ -36,86 +36,87 @@
 	<!-- 新增地址 -->
 	<insert  id="insertAddress"  parameterType="addresses" useGeneratedKeys="true" keyProperty="id" >
 	   insert  into addresses  (
-	   createtime,
-	   <if test="creater != null  ">  
+	   createtime
+	   <if test="creater != null    ">  
             ,creater
        </if>  
-	   <if test="user_id != null  ">  
+	   <if test="userId != null    ">  
             ,user_id
        </if>  
-       <if test="country_id != null  ">  
+       <if test="countryId != null  ">  
             ,country_id
        </if> 
-       <if test="province_id != null  ">  
+       <if test="provinceId != null    ">  
             ,province_id
        </if> 
-       <if test="city_id != null  ">  
+       <if test="cityId != null   ">  
             ,city_id
        </if> 
-       <if test="district_id != null  ">  
+       <if test="districtId != null   ">  
             ,district_id
        </if> 
-       <if test="address != null  ">  
+       <if test="address != null and  address != ''  ">  
             ,address
        </if> 
-       <if test="zip_code != null  ">  
+       <if test="zipCode != null and  zipCode != '' ">  
             ,zip_code
        </if> 
-       <if test="contact != null  ">  
+       <if test="contact != null  and  contact != '' ">  
             ,contact
        </if> 
        
-       <if test="mobile_phone != null  ">  
+       <if test="mobilePhone != null and  mobilePhone != ''   ">  
             ,mobile_phone
        </if> 
-       <if test="zone != null  ">  
+       <if test="zone != null   and  zone != '' ">  
             ,zone
        </if> 
-       <if test="phone_number != null  ">  
+       <if test="phoneNumber != null and  phoneNumber != '' ">  
             ,phone_number
        </if> 
-       <if test="ext_number != null  ">  
+       <if test="extNumber != null and  extNumber != ''  ">  
             ,ext_number
        </if> 
         ) values (
-       SYSDATE(),<if test="creater != null  ">  
+       SYSDATE()
+       <if test="creater != null     ">  
             ,#{creater}
        </if>  
-	   <if test="user_id != null  ">  
+	   <if test="userId != null  ">  
             ,#{userId}
        </if>  
-       <if test="country_id != null  ">  
+       <if test="countryId != null    ">  
             ,#{countryId}
        </if> 
-       <if test="province_id != null  ">  
+       <if test="provinceId != null      ">  
             ,#{provinceId}
        </if> 
-       <if test="city_id != null  ">  
+       <if test="cityId != null    ">  
             ,#{cityId}
        </if> 
-       <if test="district_id != null  ">  
+       <if test="districtId != null  ">  
             ,#{districtId}
        </if> 
-       <if test="address != null  ">  
+       <if test="address != null   and  address != ''">  
             ,#{address}
        </if> 
-       <if test="zip_code != null  ">  
+       <if test="zipCode != null   and  zipCode != ''">  
             ,#{zipCode}
        </if> 
-       <if test="contact != null  ">  
+       <if test="contact != null   and  contact != ''">  
             ,#{contact}
        </if> 
        
-       <if test="mobile_phone != null  ">  
+       <if test="mobilePhone != null  and  mobilePhone != '' ">  
             ,#{mobilePhone}
        </if> 
-       <if test="zone != null  ">  
+       <if test="zone != null  and  zone != '' ">  
             ,#{zone}
        </if> 
-       <if test="phone_number != null  ">  
+       <if test="phoneNumber != null and  phoneNumber != ''  ">  
             ,#{phoneNumber}
        </if> 
-       <if test="ext_number != null  ">  
+       <if test="extNumber != null and extNumber != ''  ">  
             ,#{extNumber}
        </if> )
 	</insert>
@@ -124,46 +125,19 @@
 	<update  id="updateAddress"  parameterType="addresses"  >
 	  update addresses  set
         updatetime = SYSDATE() 
-        <if test="updater != null  ">  
             ,updater =#{updater}
-       </if>  
-	   <if test="user_id != null  ">  
             ,user_id=#{userId}
-       </if>  
-       <if test="country_id != null  ">  
             ,country_id=#{countryId}
-       </if> 
-       <if test="province_id != null  ">  
             ,province_id=#{provinceId}
-       </if> 
-       <if test="city_id != null  ">  
             ,city_id=#{cityId}
-       </if> 
-       <if test="district_id != null  ">  
             ,district_id=#{districtId}
-       </if> 
-       <if test="address != null  ">  
             ,address=#{address}
-       </if> 
-       <if test="zip_code != null  ">  
             ,zip_code=#{zipCode}
-       </if> 
-       <if test="contact != null  ">  
             ,contact=#{contact}
-       </if> 
-       
-       <if test="mobile_phone != null  ">  
             ,mobile_phone=#{mobilePhone}
-       </if> 
-       <if test="zone != null  ">  
             ,zone=#{zone}
-       </if> 
-       <if test="phone_number != null  ">  
             ,phone_number=#{phoneNumber}
-       </if> 
-       <if test="ext_number != null  ">  
             ,ext_number=#{extNumber}
-       </if> 
 	  where delflag =0 and id = #{id}
 	</update>
 	
@@ -179,14 +153,14 @@
 	</update>
 	
 	<sql id="queryAddressListCondition">
-      <if test="contact != null  ">  
-           and contact=#{contact}
+      <if test="contact != null  and contact != '' ">  
+           and contact like '%${contact}%'
        </if>
-       <if test="phone != null  ">  
-            and phone_number=#{phone}
+       <if test="phone != null   and phone != '' ">  
+            and phone_number like '%${phone}%'
        </if> 
-       <if test="mobile != null  ">  
-            and mobile_phone=#{mobile}
+       <if test="mobile != null   and mobile != '' ">  
+            and mobile_phone like '%${mobile}%'
        </if> 
         <if test="userId != null  ">  
             and user_id=#{userId}
@@ -202,7 +176,8 @@
 	   `delflag`,`status`
 	   from  addresses  where delflag =0 
 	   <include refid="queryAddressListCondition"></include>
-	   limit #{start},#{end}
+	   order by id desc
+	   limit #{start},#{pageSize}
 	</select>
 	
 	<!-- 查询用户地址列表总数 -->

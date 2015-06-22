@@ -1,6 +1,6 @@
 <%@ page contentType="text/html;charset=UTF-8"%>
 <%@ include file="../common/common.inc"%>
-<c:set var="title" value="基本信息" />
+<c:set var="title" value="地址信息" />
 <!DOCTYPE HTML>
 <html>
 <head>
@@ -29,27 +29,25 @@
 <div class="b_inner h1000">
 <div class="container">
 				<div class="form pt10 pb20">
-					<form id="address_search_form" action="${ctx }/address" method="get">
+					<form id="address_search_form" action="${ctx }/user/addresslist.shtml" method="get">
 						<div class="item">
 							<div class="item_subinfo fl">
-								<span class="label">联系人：</span>
+								<span class="label">联系人</span>
 								<div class="fl">
-									<input type="text" class="form-control" name="addressNo"
-										value="${addressDo.contact }" placeholder="请输入联系人">
+									<input type="text" class="form-control" name="contact"
+										value="${addressPage.contact }" placeholder="请输入联系人">
 								</div>
-								<span class="label">手机：</span>
+								<span class="label">手机</span>
 								<div class="fl">
-									<input type="text" class="form-control" name="addressNo"
-										value="${addressDo.mobilePhone }" placeholder="请输入手机">
+									<input type="text" class="form-control" name="mobile"
+										value="${addressPage.mobile }" placeholder="请输入手机">
+								</div>
+								<span class="label">座机</span>
+		                        <div class="fl">
+									<input type="text" class="form-control" name="phone"
+										value="${addressPage.phone }" placeholder="请输入座机">
 								</div>
 							</div>
-							<div class="item_subinfo fl">
-		                        <span class="label">座机：</span>
-		                        <div class="fl">
-									<input type="text" class="form-control" name="addressNo"
-										value="${addressDo.phoneNumber }" placeholder="请输入座机">
-								</div>
-		                    </div>
 						</div>
 					</form>
 					<div class="item" style="border-bottom: none; padding-bottom: 0px;">
@@ -64,6 +62,11 @@
 				<div class="investment_f">
 					<div class="investment_con">
 						<div class="investment_con_list" style="display: block;">
+						   <div style="width:200px;height:29px;">
+						     <a href="${ctx }/user/addressedit.shtml" target="_blank" class="btn btn-block btn-lg btn-main"
+								style="margin-left: 0px;">新增</a> 
+						   </div>
+						   
 							<div class="item" style="border-bottom: none;">
 								<table border=1>
 		                            <tr class="table_title">
@@ -73,6 +76,7 @@
 		                                <th class="tl">座机</th>
 		                                <th class="tl">地址</th>
 		                                <th class="tl">邮编</th>
+		                                <th class="tl" style="text-align:center">操作</th>
 		                            </tr>
 									<c:if test="${addressPage != null }">
 										<c:forEach var="address" items="${addressPage.list }">
@@ -82,7 +86,11 @@
 												<td style="width:150px;">${address.mobilePhone}</td>
 												<td style="width:150px;">${address.phoneNumber }</td>
 												<td style="width:150px;">${address.address}</td>
-												<td style="width:150px;">xxxxxxxxxxxxxx${address.zipCode}</td>
+												<td style="width:150px;">${address.zipCode}</td>
+												<td style="width:120px;">
+													<a class="blue" href="${ctx }/user/addressedit.shtml?id=${address.id }" >修改</a>&nbsp;&nbsp; 
+													<a  class="blue" href="${ctx }/user/addressdel.shtml?id=${address.id }" >删除</a>			
+                                                </td>
 											</tr>
 										</c:forEach>
 										<tr>
@@ -98,7 +106,12 @@
 </div>
 </div>
 </div>
+<script src="${ctx}/js/common/common.js"></script>
 <script>
+ 	 $(function(){
+ 		formReset("#address_search_reset", "#address_search_form");
+ 		fromSubmit("#address_search_btn", "#address_search_form");
+ 	 });
 </script>
 </body>
 </html>

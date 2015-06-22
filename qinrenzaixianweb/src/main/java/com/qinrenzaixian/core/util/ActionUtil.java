@@ -50,7 +50,9 @@ public class ActionUtil {
         if(user != null) {
             return (UserDo) user;
         }
-        return null;
+        UserDo user1 = new UserDo();
+        user1.setId(0L);
+        return user1;
     }
     
     /**

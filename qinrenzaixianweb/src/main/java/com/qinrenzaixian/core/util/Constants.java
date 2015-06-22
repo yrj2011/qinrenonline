@@ -33,6 +33,23 @@ public class Constants {
 	 * servlet 请求路径KEY
 	 */
 	public static final String JAVAX_SERVLET_FORWARD_REQUEST_URI ="javax.servlet.forward.request_uri";
+	/**
+	 * 页面修改、新增标示
+	 */
+	public static final String FLAG = "FLAG";
+	/**
+	 * 页面新增标示
+	 */
+	public static final String FLAG_ADD = "ADD";
+	/**
+	 * 页面修改标示
+	 */
+	public static final String FLAG_UPDATE = "UPDATE";
+	/**
+	 * 后缀
+	 */
+	public static final String SUFFIX = ".shtml";
+	
 	
 	public static class User{
 		/**
@@ -59,6 +76,10 @@ public class Constants {
 		 * 用户地址列表页
 		 */
 		public static final String USER_ADDRESSLIST = "/user/addresslist";
+		/**
+		 * 用户地址编辑页
+		 */
+		public static final String USER_ADDRESSEDIT = "/user/addressedit";
 	}
 	
 	

@@ -36,6 +36,16 @@ public class AddressDao extends BaseDAO{
 	}
 	
 	/**
+	 * 删除地址
+	 * @param address 地址信息
+	 * @return
+	 * @throws Exception
+	 */
+	public int deleteAddress(AddressDo address) throws Exception{
+		 return getSqlSession().update("Address.delAddress",address);
+	}
+	
+	/**
 	 * 查询用户地址列表
 	 * @param address 地址信息
 	 * @return

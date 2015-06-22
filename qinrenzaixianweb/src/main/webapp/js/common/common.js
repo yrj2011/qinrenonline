@@ -1,170 +1,8 @@
-/**
- * Created with IntelliJ IDEA.
 
- * User: fengzq
- * Date: 14-11-24
- * Time: 下午2:19
- * To change this template use File | Settings | File Templates.
- */
 //js文件中需要引用的一些系统常量
 
 $(document).ready(function () {
-	$(".cb-enable").click(function(){
-	    var parent = $(this).parents('.switch');
-	    $('.cb-disable',parent).removeClass('checked');
-	    $(this).addClass('checked');
-	    $('.checkbox',parent).attr('checked', true);
-	});
-	$(".cb-disable").click(function(){
-	    var parent = $(this).parents('.switch');
-	    $('.cb-enable',parent).removeClass('checked');
-	    $(this).addClass('checked');
-	    $('.checkbox',parent).attr('checked', false);
-	});
-	$(".b_logo,.b_name_cn").click(function(){
-		window.location.href=sy.ctx + "/merchant";
-	});
-	/**地址管理模块*/
-	$(".ks-ext-close-x").click(function(){
-	    $(".ks-dialog").hide();
-	});
-	$("#update_address_btn").click(function(){
-	    $(".ks-dialog").show();
-	});
-	$(".trigger").click(function(){
-	    $(this).parent(".gareas").next(".citys").show();
-	});
-	$(".close_button").click(function(){
-	    $(this).parent().parent(".citys").hide();
-	});
-	$(".J_Group").change(function(){
-	    var isChecked = $(this).attr("checked");
-	    var valueArr = $(this).val();
-	    var test = valueArr.split(",");
-	    if(isChecked !== "checked"){
-	        for(var i = 0; i < test.length;i++){
-	            $("#J_Province_"+test[i]).attr("checked",false);
-	            $("#J_Province_"+test[i]).parent().next(".citys").find("input[type=checkbox]").attr("checked",false);
-	            $("#J_Province_"+test[i]).parent().children(".check_num").html("");
-	        }
-	    }else{
-	        for(var i = 0; i < test.length;i++){
-	            $("#J_Province_"+test[i]).attr("checked",true);
-	            $("#J_Province_"+test[i]).parent().next(".citys").find("input[type=checkbox]").attr("checked",true);
-	            var size = $("#J_Province_"+test[i]).parent().next(".citys").find("input[type=checkbox]").size();
-	            $("#J_Province_"+test[i]).parent().children(".check_num").html("("+size+")");
-	        }
-	    }
-	});
-	$(".J_Province").change(function(){
-	    var value = $(this).attr("checked");
-	    var size = $(this).parent().next(".citys").find("input[type=checkbox]").size();
-	    if(value == "checked"){
-	        $(this).parent().next(".citys").find("input[type=checkbox]").attr("checked",true);
-	        $(this).parent().children(".check_num").html("("+size+")");
-	        var provinceSize = $(this).parent().parent().parent(".province-list").find(".J_Province").length;
-	        var checkedProvinceSize = $(this).parent().parent().parent(".province-list").find(".J_Province:checked").length;
-	        /** if选择的 省份数量 等于该大区下所有省份的数量 */
-	        if(provinceSize == checkedProvinceSize){
-	            $(this).parent().parent().parent().parent().find(".group-label").children("input[type=checkbox]").attr("checked",true);
-	        }else{
-	            $(this).parent().parent().parent().parent().find(".group-label").children("input[type=checkbox]").attr("checked",false);
-	        }
-	    }else{
-	        $(this).parent().next(".citys").find("input[type=checkbox]").attr("checked",false);
-	        $(this).parent().children(".check_num").html("");
-	        $(this).parent().parent().parent().parent().find(".group-label").children("input[type=checkbox]").attr("checked",false);
-	    }
-	});
-	$(".J_City").change(function(){
-	    var size = $(this).parent().parent().find("input:checked").size();
-	    var allQuantity = $(this).parent().parent().find("input[type=checkbox]").size();
-	    if(size === allQuantity){
-	        $(this).parent().parent().parent().children(".gareas").children(".J_Province").attr("checked",true);
-	        $(this).parent().parent().parent().children(".gareas").children(".check_num").html("("+size+")");
-	        var provinceSize = $(this).parent().parent().parent().parent(".province-list").find(".J_Province").length;
-	        var checkedProvinceSize = $(this).parent().parent().parent().parent(".province-list").find(".J_Province:checked").length;
-	        if(provinceSize == checkedProvinceSize){
-	            $(this).parent().parent().parent().parent().parent().find(".group-label").children("input[type=checkbox]").attr("checked",true);
-	        }else{
-	            $(this).parent().parent().parent().parent().parent().find(".group-label").children("input[type=checkbox]").attr("checked",false);
-	        }
-	    } else{
-	        $(this).parent().parent().parent().children(".gareas").children(".J_Province").attr("checked",false);
-	        if(size == 0){
-	            $(this).parent().parent().parent().children(".gareas").children(".check_num").html("");
-	        }else{
-	            $(this).parent().parent().parent().children(".gareas").children(".check_num").html("("+size+")");
-	        }
-	        $(this).parent().parent().parent().parent().parent().find(".group-label").children("input[type=checkbox]").attr("checked",false);
-	    }
-	});
-
-	//初始化重置按钮
-	$(".reset_btn").after('<input type="reset" style="display:none;" />');
-
-	//重置按钮
-	$(".reset_btn").click(function(){
-	    $(this).next().click();
-	});
-	var Accordion = function(el, multiple) {
-	    this.el = el || {};
-	    this.multiple = multiple || false;
-
-	    // Variables privadas
-	    var links = this.el.find('.link');
-	    // Evento
-	    links.on('click', {el: this.el, multiple: this.multiple}, this.dropdown)
-	}
-	Accordion.prototype.dropdown = function(e) {
-	    var $el = e.data.el;
-	    $this = $(this),
-	        $next = $this.next();
-   //控制指标的方向
-	    if($this.hasClass("open")) $this.find('.fa-chevron-down').css("background","url("+sy.ctx+"/resources/common/images/chevron-down.png) no-repeat");
-	    else $this.find('.fa-chevron-down').css("background","url("+sy.ctx+"/resources/common/images/checron-up.png) no-repeat");
-	    $next.slideToggle();
-	    $this.toggleClass('open');
-	    //TODO 控制打开当前的   关闭上次打开的
-//	                if (!e.data.multiple) {
-//	                    $el.find('.submenu').not($next).slideUp().parent().removeClass('open');
-//	                };
-	}
-	/*var wH = $(window).height();
-	var DH = $('.container').height() + 120;
-	var SH = wH - 78;
-	if (wH > DH) {
-		$('.container').css('height', SH);
-	}
-	$(window).resize(function() {
-		var wH = $(window).height();
-		var DH = $('.container').height() + 120;
-		var SH = wH - 78;//浏览器时下窗口可视区域高度
-		if (wH > DH) {
-			$('.container').css('height', SH)
-		}
-	});*/
-
-	$('.submenu').css('display', 'none');
-	$('.open').css('display', 'block');
-	var accordion = new Accordion($('#accordion'), true);
-
-	/*tab选项卡*/
-	function tabs(tabTit,on,tabCon){
-	    $(tabCon).each(function(){
-	        $(this).children().eq(0).show();
-	    });
-	    $(tabTit).each(function(){
-	        $(this).children().eq(0).addClass(on);
-	    });
-	    $(tabTit).children().click(function(){
-	        $(this).addClass(on).siblings().removeClass(on);
-	        var index = $(tabTit).children().index(this);
-	        $(tabCon).children().eq(index).show().siblings().hide();
-	    });
-	}
 	
-
 });
 
 /**
@@ -178,6 +16,19 @@ function formReset(resetBtn, resetForm){
 		.val('').removeAttr('checked').removeAttr('selected');
 	});
 }
+
+/**
+ * 表单提交
+ * @param submitBtn        提交按钮
+ * @param submitForm       提交表单
+ */
+function fromSubmit(submitBtn, submitForm){
+	$(submitBtn).click(function(){
+		var tsubmitForm = $(submitForm);
+		tsubmitForm[0].submit();
+	});
+}
+
 /**
  * 左边导航增加样式
  * @param subMenuId    一级菜单ID,从0 1 2往后推

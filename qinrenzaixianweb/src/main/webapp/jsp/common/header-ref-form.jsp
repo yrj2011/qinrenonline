@@ -25,6 +25,7 @@
 <script src="${ctx}/js/plugin/bootstrap/plugin/icheck/icheck.js"></script>
 <script src="${ctx}/js/plugin/bootstrap/plugin/switch/jquery-jtumbler-1.0.1.min.js"></script>
 <script src="${ctx}/js/plugin/bootstrap/plugin/validform/Validform_v5.3.2.js"></script>
+<script src="${ctx}/js/plugin/bootstrap/plugin/validform/jquery.jqtransform-min.js"></script>
 <script src="${ctx}/js/plugin/bootstrap/plugin/dialog/moaModal.minified.js"></script>
 <script src="${ctx}/js/plugin/bootstrap/plugin/switch/jquery-jtumbler-1.0.1.min.js"></script>
 <script src="${ctx}/js/plugin/bootstrap/plugin/My97DatePicker2/WdatePicker.js"></script>

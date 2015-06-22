@@ -18,7 +18,7 @@
     .label{height:40px;line-height:40px;width:90px}
     .label-txt{width:300px}
     .item{padding-left:100px}
-    .item_subinfo a{display:block;margin-left:220px;color:red} 
+    .item_subinfo a{display:block;margin-left:220px;} 
     .item_subinfo {border-bottom:0px solid gray;margin-bottom:5px;}
     </style>
 </head>
@@ -92,7 +92,7 @@
 	                            <span class="label-txt">${userinfo.weibo}</span>
 	                        </div>
 	                        <div class="item_subinfo ">
-	                            <a href="${ctx}/user/info-detail.shtml" target='_self'> 个人信息修改>></a>
+	                            <a href="${ctx}/user/info-detail.shtml" target='_self' class="blue"> 个人信息修改&gt;&gt;</a>
 	                        </div>
 	                    </div>
 	           </div>

@@ -51,7 +51,7 @@ public class PageTag extends TagSupport{
         //请求参数
 		while(enumeration.hasMoreElements()){
 			String key = enumeration.nextElement();
-			if(key.equals("page") || key.equals("perPage")){
+			if(key.equals("page") || key.equals("pageSize")){
 				continue;
 			}
 			String value = request.getParameter(key);
@@ -60,7 +60,17 @@ public class PageTag extends TagSupport{
 		
 		//分页标签view
 		html.append("<div class='pagefy' style='text-align:center;height:40px;line-height:40px;'>");
-		html.append("   <span class='pagerecord'>每页显示 <select id='perPage' name='perPage' onchange=changePageSize"+uuid+"()><option value='25'>25</option><option value='50'>50</option><option value='100'>100</option></select> 条记录</span>");
+		String select ="<option value='10' selected>10</option><option value='25'>25</option><option value='50'>50</option><option value='100'>100</option>";
+		if(page.getPageSize() == 25){
+			 select ="<option value='10' >10</option><option value='25' selected>25</option><option value='50'>50</option><option value='100'>100</option>";
+		}
+		if(page.getPageSize() == 50){
+			 select ="<option value='10' >10</option><option value='25' >25</option><option value='50' selected>50</option><option value='100'>100</option>";
+		}
+		if(page.getPageSize() == 100){
+			 select ="<option value='10' >10</option><option value='25' >25</option><option value='50' >50</option><option value='100' selected>100</option>";
+		}
+		html.append("   <span class='pagerecord'>每页显示 <select id='pageSize' name='pageSize' onchange=changePageSize"+uuid+">"+select+"</select> 条记录</span>");
 		html.append("	<span style='width:100px'><a class='no_classa_decoration' href='javascript:submitPage"+uuid+"(\""+1+"\");'>第一页</a></span>");
 		html.append("	<span style='width:100px'><a class='no_classa_decoration' href='javascript:submitPage"+uuid+"(\""+this.page.getPrevPage()+"\");'>上一页</a>&nbsp;&nbsp;&nbsp;</span>");
 		for(int i = 1; i <= this.page.getTotalPage(); i++){

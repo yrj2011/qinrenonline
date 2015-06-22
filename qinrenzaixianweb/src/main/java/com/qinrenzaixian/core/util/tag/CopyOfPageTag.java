@@ -8,35 +8,36 @@ import javax.servlet.jsp.tagext.TagSupport;
 
 import com.qinrenzaixian.core.util.Constants;
 import com.qinrenzaixian.core.util.StringUtil;
-import com.qinrenzaixian.web.domain.BaseDo;
-import com.qinrenzaixian.web.vo.pagination.Pagination;
 
 /**
  * 分页标签
  * @author yrj
  * @date 2015-06-21 
  */
-public class PageTag extends TagSupport{
+@SuppressWarnings("unchecked")
+public class CopyOfPageTag extends TagSupport{
 
 	private static final long serialVersionUID = 1L;
 
 	/**
 	 * 分页参数
 	 */
-	Pagination<BaseDo>  page = null;
-	private String type;
-	
-	public String getType() {
-		return type;
-	}
+	private int totalPage;
 
-	public void setType(String type) {
-		this.type = type;
-	}
+	private int prevPage;
 
-	@Override
-	public int doStartTag() throws JspException {
-		if(page == null){
+	private int page;
+
+	private int nextPage;
+
+	private int totalCount;
+
+	/** 
+     * @see javax.servlet.jsp.tagext.TagSupport#doEndTag()
+     */
+    @Override
+    public int doEndTag() throws JspException {
+		if(totalCount < 1){
 			return SKIP_BODY;
 		}
 		String uuid = StringUtil.getUUID();
@@ -62,20 +63,20 @@ public class PageTag extends TagSupport{
 		html.append("<div class='pagefy' style='text-align:center;height:40px;line-height:40px;'>");
 		html.append("   <span class='pagerecord'>每页显示 <select id='perPage' name='perPage' onchange=changePageSize"+uuid+"()><option value='25'>25</option><option value='50'>50</option><option value='100'>100</option></select> 条记录</span>");
 		html.append("	<span style='width:100px'><a class='no_classa_decoration' href='javascript:submitPage"+uuid+"(\""+1+"\");'>第一页</a></span>");
-		html.append("	<span style='width:100px'><a class='no_classa_decoration' href='javascript:submitPage"+uuid+"(\""+this.page.getPrevPage()+"\");'>上一页</a>&nbsp;&nbsp;&nbsp;</span>");
-		for(int i = 1; i <= this.page.getTotalPage(); i++){
-			if(i == this.page.getPage()){
+		html.append("	<span style='width:100px'><a class='no_classa_decoration' href='javascript:submitPage"+uuid+"(\""+this.prevPage+"\");'>上一页</a>&nbsp;&nbsp;&nbsp;</span>");
+		for(int i = 1; i <= this.totalPage; i++){
+			if(i == page){
 				html.append("<span class='currentPagefy'>"+i+"</span>");
 				continue;
 			}
 			html.append("	<span class='commonPagefy' ><a href='javascript:submitPage"+uuid+"(\""+i+"\");'>"+i+"</a></span>");
 		}
-		if(this.page.getTotalPage() < 1){
+		if(this.totalPage < 1){
 			html.append("	<span class='commonPagefy' ><a href='javascript:submitPage"+1+"(\""+1+"\");'>"+1+"</a></span>");
 		}
-		html.append("	<span ><a class='no_classa_decoration' href='javascript:submitPage"+uuid+"(\""+(this.page.getNextPage())+"\");'>下一页</a></span>");
-		html.append("	<span ><a class='no_classa_decoration' href='javascript:submitPage"+uuid+"(\""+this.page.getTotalPage()+"\");'>最后一页</a></span>");
-		html.append("   <span class='pageTotalRecord' style='width:100px'>共 "+this.page.getTotalCount()+" 条记录</span>");
+		html.append("	<span ><a class='no_classa_decoration' href='javascript:submitPage"+uuid+"(\""+this.nextPage+"\");'>下一页</a></span>");
+		html.append("	<span ><a class='no_classa_decoration' href='javascript:submitPage"+uuid+"(\""+this.totalPage+"\");'>最后一页</a></span>");
+		html.append("   <span class='pageTotalRecord' style='width:100px'>共 "+this.totalCount+" 条记录</span>");
 		html.append("</div>");
 		
 		html.append("</form>");
@@ -101,13 +102,45 @@ public class PageTag extends TagSupport{
 		return SKIP_BODY;
 	}
 
-	public Pagination<BaseDo> getPage() {
+	public int getTotalPage() {
+		return totalPage;
+	}
+
+	public void setTotalPage(int totalPage) {
+		this.totalPage = totalPage;
+	}
+
+	public int getPrevPage() {
+		return prevPage;
+	}
+
+	public void setPrevPage(int prevPage) {
+		this.prevPage = prevPage;
+	}
+
+	public int getPage() {
 		return page;
 	}
 
-	public void setPage(Pagination<BaseDo> page) {
+	public void setPage(int page) {
 		this.page = page;
 	}
 
+	public int getNextPage() {
+		return nextPage;
+	}
+
+	public void setNextPage(int nextPage) {
+		this.nextPage = nextPage;
+	}
+
+	public int getTotalCount() {
+		return totalCount;
+	}
+
+	public void setTotalCount(int totalCount) {
+		this.totalCount = totalCount;
+	}
+	
 	
 }

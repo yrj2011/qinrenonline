@@ -26,7 +26,7 @@
 <jsp:include page="../common/header.jsp" />
 <jsp:include page="../user/center-nav.jsp" />
 <div class="b_content">
-<div class="b_inner h1800">
+<div class="b_inner h1000">
 <div class="container">
 				<div class="form pt10 pb20">
 					<form id="address_search_form" action="${ctx }/address" method="get">
@@ -65,9 +65,9 @@
 					<div class="investment_con">
 						<div class="investment_con_list" style="display: block;">
 							<div class="item" style="border-bottom: none;">
-								<table>
+								<table border=1>
 		                            <tr class="table_title">
-		                                <th class="tl">地址编号</th>
+		                                <th class="tl">地址编号${addressPage.totalCount}</th>
 		                                <th class="tl">联系人</th>
 		                                <th class="tl">手机</th>
 		                                <th class="tl">座机</th>
@@ -77,17 +77,17 @@
 									<c:if test="${addressPage != null }">
 										<c:forEach var="address" items="${addressPage.list }">
 											<tr class="table_content">
-												<td><span class="c_qiye toolong">${address.id }</span></td>
-												<td class="c_zy">${address.contact}</td>
-												<td class="c_addr">${address.mobilePhone}</td>
-												<td class="c_gtel">${address.phoneNumber }</td>
-												<td class="c_mail">${address.address}</td>
-												<td class="c_faren tdAmount">${address.zipCode}</td>
+												<td style="width:150px;"><span class="c_qiye toolong">${address.id }</span></td>
+												<td style="width:150px;">${address.contact}</td>
+												<td style="width:150px;">${address.mobilePhone}</td>
+												<td style="width:150px;">${address.phoneNumber }</td>
+												<td style="width:150px;">${address.address}</td>
+												<td style="width:150px;">xxxxxxxxxxxxxx${address.zipCode}</td>
 											</tr>
 										</c:forEach>
 										<tr>
 										 
-											<td colspan="6"> ${addressPage }<q:pageTag page="${addresssPage}" type="1"></q:pageTag></td>
+											<td colspan="6"><q:page  page="${addressPage}" /></td>
 										</tr>
 									</c:if>
 								</table>

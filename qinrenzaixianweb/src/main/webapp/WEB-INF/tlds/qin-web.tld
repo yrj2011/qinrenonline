@@ -18,22 +18,25 @@
 			<rtexprvalue>true</rtexprvalue>
 		</attribute>
 	</tag>
+	<!-- 自定义标签的描述信息 -->
 	<tag>
-		<description><![CDATA[page tag]]></description>
-		<name>pageTag</name>
+	    <description><![CDATA[page tag]]></description>
+		<!-- 标签名 -->
+		<name>page</name>
+		<!-- 对应的标签处理类全限定名 -->
 		<tag-class>com.qinrenzaixian.core.util.tag.PageTag</tag-class>
-		<body-content>JSP</body-content>
+		<!-- 标签主体的类型 -->
+		<body-content>empty</body-content>
 		<attribute>
-			<description><![CDATA[HTML page attribute]]></description>
+			<!-- 属性名,分页对象 -->
 			<name>page</name>
+			<!-- 该属性是否为必要的 -->
 			<required>true</required>
+			<!-- 属性值是否可以在JSP运行时期动态产生 -->
 			<rtexprvalue>true</rtexprvalue>
+			<!-- 属性的数据类型 -->
+			<type>com.qinrenzaixian.core.util.tag.PageTag</type>
 		</attribute>
-		<attribute>
-			<description><![CDATA[HTML type attribute]]></description>
-			<name>type</name>
-			<required>true</required>
-			<rtexprvalue>true</rtexprvalue>
-		</attribute>
+		
 	</tag>
 </taglib>

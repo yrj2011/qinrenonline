@@ -35,8 +35,198 @@
 			<!-- 属性值是否可以在JSP运行时期动态产生 -->
 			<rtexprvalue>true</rtexprvalue>
 			<!-- 属性的数据类型 -->
-			<type>com.qinrenzaixian.core.util.tag.PageTag</type>
+			<type>com.qinrenzaixian.web.vo.pagination.Pagination</type>
 		</attribute>
 		
+	</tag>
+	<tag>
+		<!-- 标签名 :省份下拉框-->
+		<name>province</name>
+		<!-- 对应的标签处理类全限定名 -->
+		<tag-class>com.qinrenzaixian.core.util.tag.area.ProvinceTag</tag-class>
+		<!-- 标签主体的类型 -->
+		<body-content>empty</body-content>
+		<attribute>
+			<!-- 属性名 -->
+			<name>id</name>
+			<!-- 该属性是否为必要的 -->
+			<required>true</required>
+			<!-- 属性的数据类型 -->
+			<type>java.lang.String</type>
+		</attribute>
+		<attribute>
+			<!-- 属性名 -->
+			<name>defaultText</name>
+			<!-- 该属性是否为必要的 -->
+			<required>false</required>
+			<!-- 属性的数据类型 -->
+			<type>java.lang.String</type>
+		</attribute>
+		<attribute>
+			<!-- 属性名 -->
+			<name>defaultValue</name>
+			<!-- 该属性是否为必要的 -->
+			<required>false</required>
+			<!-- 属性的数据类型 -->
+			<type>java.lang.String</type>
+		</attribute>
+		<attribute>
+			<!-- 属性名 -->
+			<name>subId</name>
+			<!-- 该属性是否为必要的 -->
+			<required>true</required>
+			<!-- 属性的数据类型 -->
+			<type>java.lang.String</type>
+		</attribute>
+		<attribute>
+			<!-- 属性名 -->
+			<name>className</name>
+			<!-- 该属性是否为必要的 -->
+			<required>false</required>
+			<!-- 属性的数据类型 -->
+			<type>java.lang.String</type>
+		</attribute>
+		<attribute>
+			<!-- 自定义属性 -->
+			<name>attr</name>
+			<!-- 该属性是否为必要的 -->
+			<required>false</required>
+			<!-- 属性的数据类型 -->
+			<type>java.lang.String</type>
+		</attribute>
+		<attribute>
+			<!-- 值 -->
+			<name>value</name>
+			<!-- 该属性是否为必要的 -->
+			<required>false</required>
+			<!-- 属性值是否可以在JSP运行时期动态产生 -->
+			<rtexprvalue>true</rtexprvalue>
+			<!-- 属性的数据类型 -->
+			<type>java.lang.String</type>
+		</attribute>
+	</tag>
+	<tag>
+		<!-- 标签名:市下拉框 -->
+		<name>city</name>
+		<!-- 对应的标签处理类全限定名 -->
+		<tag-class>com.qinrenzaixian.core.util.tag.area.CityTag</tag-class>
+		<!-- 标签主体的类型 -->
+		<body-content>empty</body-content>
+		<attribute>
+			<!-- 属性名 -->
+			<name>id</name>
+			<!-- 该属性是否为必要的 -->
+			<required>true</required>
+			<!-- 属性的数据类型 -->
+			<type>java.lang.String</type>
+		</attribute>
+		<attribute>
+			<!-- 属性名 -->
+			<name>defaultText</name>
+			<!-- 该属性是否为必要的 -->
+			<required>false</required>
+			<!-- 属性的数据类型 -->
+			<type>java.lang.String</type>
+		</attribute>
+		<attribute>
+			<!-- 属性名 -->
+			<name>defaultValue</name>
+			<!-- 该属性是否为必要的 -->
+			<required>false</required>
+			<!-- 属性的数据类型 -->
+			<type>java.lang.String</type>
+		</attribute>
+		<attribute>
+			<!-- 属性名 -->
+			<name>subId</name>
+			<!-- 该属性是否为必要的 -->
+			<required>true</required>
+			<!-- 属性的数据类型 -->
+			<type>java.lang.String</type>
+		</attribute>
+		<attribute>
+			<!-- 属性名 -->
+			<name>className</name>
+			<!-- 该属性是否为必要的 -->
+			<required>false</required>
+			<!-- 属性的数据类型 -->
+			<type>java.lang.String</type>
+		</attribute>
+		<attribute>
+			<!-- 自定义属性 -->
+			<name>attr</name>
+			<!-- 该属性是否为必要的 -->
+			<required>false</required>
+			<!-- 属性的数据类型 -->
+			<type>java.lang.String</type>
+		</attribute>
+		<attribute>
+			<!-- 值 -->
+			<name>value</name>
+			<!-- 该属性是否为必要的 -->
+			<required>false</required>
+			<!-- 属性值是否可以在JSP运行时期动态产生 -->
+			<rtexprvalue>true</rtexprvalue>
+			<!-- 属性的数据类型 -->
+			<type>java.lang.String</type>
+		</attribute>
+	</tag>
+	<tag>
+		<!-- 标签名:区下拉框 -->
+		<name>district</name>
+		<!-- 对应的标签处理类全限定名 -->
+		<tag-class>com.qinrenzaixian.core.util.tag.area.DistrictTag</tag-class>
+		<!-- 标签主体的类型 -->
+		<body-content>empty</body-content>
+		<attribute>
+			<!-- 属性名 -->
+			<name>id</name>
+			<!-- 该属性是否为必要的 -->
+			<required>true</required>
+			<!-- 属性的数据类型 -->
+			<type>java.lang.String</type>
+		</attribute>
+		<attribute>
+			<!-- 属性名 -->
+			<name>defaultText</name>
+			<!-- 该属性是否为必要的 -->
+			<required>false</required>
+			<!-- 属性的数据类型 -->
+			<type>java.lang.String</type>
+		</attribute>
+		<attribute>
+			<!-- 属性名 -->
+			<name>defaultValue</name>
+			<!-- 该属性是否为必要的 -->
+			<required>false</required>
+			<!-- 属性的数据类型 -->
+			<type>java.lang.String</type>
+		</attribute>
+		<attribute>
+			<!-- 属性名 -->
+			<name>className</name>
+			<!-- 该属性是否为必要的 -->
+			<required>false</required>
+			<!-- 属性的数据类型 -->
+			<type>java.lang.String</type>
+		</attribute>
+		<attribute>
+			<!-- 自定义属性 -->
+			<name>attr</name>
+			<!-- 该属性是否为必要的 -->
+			<required>false</required>
+			<!-- 属性的数据类型 -->
+			<type>java.lang.String</type>
+		</attribute>
+		<attribute>
+			<!-- 值 -->
+			<name>value</name>
+			<!-- 该属性是否为必要的 -->
+			<required>false</required>
+			<!-- 属性值是否可以在JSP运行时期动态产生 -->
+			<rtexprvalue>true</rtexprvalue>
+			<!-- 属性的数据类型 -->
+			<type>java.lang.String</type>
+		</attribute>
 	</tag>
 </taglib>

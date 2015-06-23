@@ -5,7 +5,8 @@
     xmlns:tx="http://www.springframework.org/schema/tx"  
     xmlns:context="http://www.springframework.org/schema/context"    
     xmlns:mvc="http://www.springframework.org/schema/mvc"    
-    xmlns:aop="http://www.springframework.org/schema/aop"    
+    xmlns:aop="http://www.springframework.org/schema/aop"
+    xmlns:cache="http://www.springframework.org/schema/cache"     
     xsi:schemaLocation="http://www.springframework.org/schema/beans   
     http://www.springframework.org/schema/beans/spring-beans-4.1.xsd  
     http://www.springframework.org/schema/tx   
@@ -15,7 +16,9 @@
     http://www.springframework.org/schema/mvc  
     http://www.springframework.org/schema/mvc/spring-mvc-4.1.xsd
     http://www.springframework.org/schema/aop
-    http://www.springframework.org/schema/aop/spring-aop-4.1.xsd"> 
+    http://www.springframework.org/schema/aop/spring-aop-4.1.xsd
+    http://www.springframework.org/schema/cache
+    http://www.springframework.org/schema/cache/spring-cache-4.1.xsd"> 
     <!-- 用于持有ApplicationContext,可以使用SpringContextHolder.getBean('xxxx')的静态方法得到spring bean对象 -->
     <!-- <bean class="com.xxl.app.base.SpringContextHolder" lazy-init="false" /> -->
     <!-- 自动扫描的包名 -->  

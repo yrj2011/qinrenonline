@@ -1,5 +1,7 @@
 package com.qinrenzaixianweb.cache;
 
+import java.io.Serializable;
+
 import net.sf.ehcache.Cache;
 import net.sf.ehcache.CacheManager;
 import net.sf.ehcache.Element;
@@ -11,7 +13,11 @@ import org.junit.Test;
 import org.springframework.cache.ehcache.EhCacheCacheManager;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
-class User {
+class User implements Serializable {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 7207448133256412042L;
 	String name;
 	String name2;
 	public User(String n ,String n2){
@@ -38,7 +44,7 @@ public class EhcacheSpringTest {
     public void destory() {  
         cacheManager.shutdown();  
     }  
-  
+  /*
     @Test  
     public void testEhcacheString() {  
         String key = "hello";  
@@ -63,4 +69,14 @@ public class EhcacheSpringTest {
         Assert.assertEquals(value, objSer);  
         System.out.println(objSer);  
     }  
-}  
+}     */
+    @Test  
+    public void testGetEhcacheObj() {  
+        String key = "user";  
+        Element element = cache.get(key);  
+        Object obj = element.getObjectValue();  
+        System.out.println(obj);  
+        Object objSer = element.getValue();  
+        System.out.println(objSer);  
+    }  
+ 

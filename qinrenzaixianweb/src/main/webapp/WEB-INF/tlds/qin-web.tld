@@ -80,6 +80,14 @@
 		</attribute>
 		<attribute>
 			<!-- 属性名 -->
+			<name>name</name>
+			<!-- 该属性是否为必要的 -->
+			<required>false</required>
+			<!-- 属性的数据类型 -->
+			<type>java.lang.String</type>
+		</attribute>
+		<attribute>
+			<!-- 属性名 -->
 			<name>className</name>
 			<!-- 该属性是否为必要的 -->
 			<required>false</required>
@@ -146,6 +154,14 @@
 		</attribute>
 		<attribute>
 			<!-- 属性名 -->
+			<name>name</name>
+			<!-- 该属性是否为必要的 -->
+			<required>false</required>
+			<!-- 属性的数据类型 -->
+			<type>java.lang.String</type>
+		</attribute>
+		<attribute>
+			<!-- 属性名 -->
 			<name>className</name>
 			<!-- 该属性是否为必要的 -->
 			<required>false</required>
@@ -204,6 +220,14 @@
 		</attribute>
 		<attribute>
 			<!-- 属性名 -->
+			<name>name</name>
+			<!-- 该属性是否为必要的 -->
+			<required>false</required>
+			<!-- 属性的数据类型 -->
+			<type>java.lang.String</type>
+		</attribute>
+		<attribute>
+			<!-- 属性名 -->
 			<name>className</name>
 			<!-- 该属性是否为必要的 -->
 			<required>false</required>
@@ -221,6 +245,93 @@
 		<attribute>
 			<!-- 值 -->
 			<name>value</name>
+			<!-- 该属性是否为必要的 -->
+			<required>false</required>
+			<!-- 属性值是否可以在JSP运行时期动态产生 -->
+			<rtexprvalue>true</rtexprvalue>
+			<!-- 属性的数据类型 -->
+			<type>java.lang.String</type>
+		</attribute>
+	</tag>
+	<tag>
+		<!-- 标签名:地址显示 -->
+		<name>address</name>
+		<!-- 对应的标签处理类全限定名 -->
+		<tag-class>com.qinrenzaixian.core.util.tag.area.AddressTag</tag-class>
+		<!-- 标签主体的类型 -->
+		<body-content>empty</body-content>
+		<attribute>
+			<!-- 属性名 -->
+			<name>province</name>
+			<!-- 该属性是否为必要的 -->
+			<required>false</required>
+			<!-- 属性值是否可以在JSP运行时期动态产生 -->
+			<rtexprvalue>true</rtexprvalue>
+			<!-- 属性的数据类型 -->
+			<type>java.lang.Long</type>
+		</attribute>
+		<attribute>
+			<!-- 属性名 -->
+			<name>city</name>
+			<!-- 该属性是否为必要的 -->
+			<required>false</required>
+			<!-- 属性值是否可以在JSP运行时期动态产生 -->
+			<rtexprvalue>true</rtexprvalue>
+			<!-- 属性的数据类型 -->
+			<type>java.lang.Long</type>
+		</attribute>
+		<attribute>
+			<!-- 值 -->
+			<name>district</name>
+			<!-- 该属性是否为必要的 -->
+			<required>false</required>
+			<!-- 属性值是否可以在JSP运行时期动态产生 -->
+			<rtexprvalue>true</rtexprvalue>
+			<!-- 属性的数据类型 -->
+			<type>java.lang.Long</type>
+		</attribute>
+		<attribute>
+			<!-- 值 -->
+			<name>address</name>
+			<!-- 该属性是否为必要的 -->
+			<required>false</required>
+			<!-- 属性值是否可以在JSP运行时期动态产生 -->
+			<rtexprvalue>true</rtexprvalue>
+			<!-- 属性的数据类型 -->
+			<type>java.lang.String</type>
+		</attribute>
+	</tag>
+	
+	<tag>
+		<!-- 标签名:地址显示 -->
+		<name>phone</name>
+		<!-- 对应的标签处理类全限定名 -->
+		<tag-class>com.qinrenzaixian.core.util.tag.PhoneTag</tag-class>
+		<!-- 标签主体的类型 -->
+		<body-content>empty</body-content>
+		<attribute>
+			<!-- 属性名 -->
+			<name>zone</name>
+			<!-- 该属性是否为必要的 -->
+			<required>false</required>
+			<!-- 属性值是否可以在JSP运行时期动态产生 -->
+			<rtexprvalue>true</rtexprvalue>
+			<!-- 属性的数据类型 -->
+			<type>java.lang.String</type>
+		</attribute>
+		<attribute>
+			<!-- 属性名 -->
+			<name>phone</name>
+			<!-- 该属性是否为必要的 -->
+			<required>false</required>
+			<!-- 属性值是否可以在JSP运行时期动态产生 -->
+			<rtexprvalue>true</rtexprvalue>
+			<!-- 属性的数据类型 -->
+			<type>java.lang.String</type>
+		</attribute>
+		<attribute>
+			<!-- 值 -->
+			<name>extral</name>
 			<!-- 该属性是否为必要的 -->
 			<required>false</required>
 			<!-- 属性值是否可以在JSP运行时期动态产生 -->

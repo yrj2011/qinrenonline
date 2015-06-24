@@ -88,7 +88,7 @@ public class ProvinceTag extends TagSupport{
 			html.append("			return;");
 			html.append("		}");
 			html.append("		$.ajax({");
-			html.append("			url:'"+ActionUtil.getRequest().getContextPath()+Constants.URL.COMMON_GETCITYLIST+Constants.SUFFIX+"?privinceId="+getValue()+",");
+			html.append("			url:'"+ActionUtil.getRequest().getContextPath()+Constants.URL.COMMON_GETCITYLIST+Constants.SUFFIX+"?privinceId='+id,");
 			html.append("			type:'get',");
 			html.append("			success: function (data){");
 			html.append("					$.each(data,function(i, item){");

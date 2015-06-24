@@ -754,7 +754,7 @@ h4,h5,h6 {
 }
 
 .w90 {
-	width: 90px;
+	width: 90px !important;
 }
 
 .w95 {

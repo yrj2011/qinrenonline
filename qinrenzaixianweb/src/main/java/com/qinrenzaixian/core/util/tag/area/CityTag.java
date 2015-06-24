@@ -74,7 +74,7 @@ public class CityTag extends TagSupport{
 			html.append("			return;");
 			html.append("		}");
 			html.append("		$.ajax({");
-			html.append("			url:'"+ActionUtil.getRequest().getContextPath()+Constants.URL.COMMON_GETDISTRACTLIST+Constants.SUFFIX+"'?cityId=id,");
+			html.append("			url:'"+ActionUtil.getRequest().getContextPath()+Constants.URL.COMMON_GETDISTRACTLIST+Constants.SUFFIX+"?cityId='+id,");
 			html.append("			type:'get',");
 			html.append("			success: function (data){");
 			html.append("					$.each(data,function(i, item){");

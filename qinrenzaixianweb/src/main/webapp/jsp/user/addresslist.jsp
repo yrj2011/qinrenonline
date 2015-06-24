@@ -84,8 +84,11 @@
 												<td style="width:150px;"><span class="c_qiye toolong">${address.id }</span></td>
 												<td style="width:150px;">${address.contact}</td>
 												<td style="width:150px;">${address.mobilePhone}</td>
-												<td style="width:150px;">${address.phoneNumber }</td>
-												<td style="width:150px;">${address.address}</td>
+												<td style="width:150px;"><q:phone zone="${address.zone }" extral="${address.extNumber }" phone="${address.phoneNumber }"/></td>
+												<td style="width:150px;">
+												
+												<q:address address="${address.address}" province="${address.provinceId}" city="${address.cityId}" district="${address.districtId}"/>
+												</td>
 												<td style="width:150px;">${address.zipCode}</td>
 												<td style="width:120px;">
 													<a class="blue" href="${ctx }/user/addressedit.shtml?id=${address.id }" >修改</a>&nbsp;&nbsp; 

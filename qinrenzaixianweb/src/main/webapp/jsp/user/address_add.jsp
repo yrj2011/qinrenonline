@@ -38,40 +38,21 @@
 <div class="b_content">
 <div class="b_inner h1000">
 <div class="container">
-				<div class="form pt10 pb20">
+				<div class="form pt10 pl160 pb20" >
 					 <form:form id="address_form" class="address_form" commandName="addressinfo" action="${formAction }" method="${formMethod }">
 						<div class="item">
 							<div class="item_subinfo fl">
-								<span class="label">省</span>
+								<span class="label">详细地址</span>
 								<div class="fl">
-									<select class="select-main category fl " id="sheng" style="display:block;height:35px;" >
-			                        	<option value="0"  class="select-option">北京</option>
-			                        	<option value="1"  >上海</option>
-			                        </select>
+								    <q:province subId="selcity" id="selprovince" name="provinceId" attr="datatype='*'" value="${addressinfo.provinceId}" className="select-main category fl w90 "/>
+									<q:city subId="seldistrict" id="selcity" name="cityId" attr="datatype='*'" value="${addressinfo.cityId}" className="select-main category fl w90 "/>
+								    <q:district  id="seldistrict" name="districtId" attr="datatype='*'" value="${addressinfo.districtId}" className="select-main category fl w90"/>
 								</div>
 							</div>
-							<div class="item_subinfo fl">
-		                        <span class="label">市</span>
-								<div class="fl">
-									<select class="select-main category fl " id="sheng" style="display:block;height:35px;" >
-			                        	<option value="0"  class="select-option">北京</option>
-			                        	<option value="1"  >上海</option>
-			                        </select>
-								</div>
-		                    </div>
-		                    <div class="item_subinfo fl">
-		                        <span class="label">区县</span>
-								<div class="fl">
-									<select class="select-main category fl " id="sheng" style="display:block;height:35px;" >
-			                        	<option value="0"  class="select-option">北京</option>
-			                        	<option value="1"  >上海</option>
-			                        </select>
-								</div>
-		                    </div>
-		                    <div class="item_subinfo fl" >
-	                            <span class="label">详细地址</span>
+							<div class="item_subinfo fl" >
+	                            <span class="label">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
 	                            <div class="fl">
-	                               <form:input path="address"   placeholder="请输入详细地址" class="form-control fl" style="width: 265px;"/>
+	                               <form:input path="address"   placeholder="请输入详细地址" datatype='*' nullmsg="请输入详细地址" class="form-control fl " style="width: 265px;"/>
 	                                <div class="Validform_checktip"></div>
 	                            </div>
 	                        </div>
@@ -101,7 +82,7 @@
 	                            <div class="fl">
 	                                 <form:input path="zone" placeholder="区号" class="form-control fl"  datatype="empty|n3-5"  style="width: 60px;" errormsg="3至5位数字" />
 	                                 <form:input path="phoneNumber" placeholder="请输入电话号" class="form-control fl"  datatype="empty|n6-8"  style="width: 130px;" errormsg="6至8位数字" />
-	                                 <form:input path="extNumber" placeholder="分机号" class="form-control fl"  datatype="empty|n1-3"  style="width: 75px;" errormsg="1至5位数字" />
+	                                 <form:input path="extNumber" placeholder="分机号" class="form-control fl"  datatype="empty|n1-5"  style="width: 75px;" errormsg="1至5位数字" />
 	                                <div class="Validform_checktip"></div>
 	                            </div>
 	                        </div>
@@ -111,9 +92,9 @@
 					</form:form>
 					<div class="item" style="border-bottom: none; padding-bottom: 0px;">
 						<div class="item_subinfo fl btn_list">
-							<a href="javascript:void(0)" id="address_btn" class="btn btn-block btn-lg btn-main"
-								style="margin-left: 305px;width:120px;">保存</a> 
-							<a href="javascript:void(0)" id="address_reset" class="btn btn-block btn-lg btn-invice"
+							<a href="javascript:void(0)" id="address_btn" class="btn btn-block  btn-main"
+								style="margin-left: 305px;width: 65px;">保存</a> 
+							<a href="javascript:void(0)" id="address_reset" class="btn btn-block  btn-main"
 								style="width: 65px;">重置</a>
 						</div>
 					</div>

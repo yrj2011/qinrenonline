@@ -117,7 +117,7 @@ public class CommonAction {
 	 * @return
 	 */
 	@ResponseBody
-	@RequestMapping(value=Constants.URL.COMMON_GETPRIVCELIST,method=RequestMethod.GET)
+	@RequestMapping(value=Constants.URL.COMMON_GETDISTRACTLIST,method=RequestMethod.GET)
 	public Object getDistractList(Long cityId){
 		try {
 			

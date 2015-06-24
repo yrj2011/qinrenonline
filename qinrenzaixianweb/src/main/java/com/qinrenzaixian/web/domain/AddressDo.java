@@ -14,7 +14,7 @@ public class AddressDo extends BaseDo {
 	 /**
 	  * 国家
 	  */
-	 private Long countryId;
+	 private Long countryId =0L;
 	 /**
 	  * 省
 	  */

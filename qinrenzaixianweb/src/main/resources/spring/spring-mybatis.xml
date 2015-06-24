@@ -5,6 +5,7 @@
     <typeAliases>
         <typeAlias alias="user"      type="com.qinrenzaixian.web.domain.UserDo"/>
         <typeAlias alias="addresses" type="com.qinrenzaixian.web.domain.AddressDo"/>
+        <typeAlias alias="city" type="com.qinrenzaixian.web.domain.CityDo"/>
     </typeAliases>
         
 </configuration>

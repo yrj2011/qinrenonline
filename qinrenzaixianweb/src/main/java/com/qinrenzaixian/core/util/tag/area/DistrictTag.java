@@ -5,6 +5,7 @@ import java.io.IOException;
 import javax.servlet.jsp.JspException;
 import javax.servlet.jsp.tagext.TagSupport;
 
+import com.qinrenzaixian.core.util.ObjectUtil;
 import com.qinrenzaixian.core.util.StringUtil;
 
 /**
@@ -16,12 +17,26 @@ public class DistrictTag extends TagSupport{
 
 	private static final long serialVersionUID = 1L;
 
-	//字段,从userInfo里取字段
+	/**
+	 * 标签唯一标识
+	 */
 	private String id;
+	/**
+	 * 标签name属性值
+	 */
 	private String name;
+	/**
+	 * css 样式类
+	 */
 	private String className;
+	/**
+	 * 属性值
+	 */
 	private String attr;
-	private String value;
+	/**
+	 * 值
+	 */
+	private Long value;
 	private String defaultValue = "";
 	private String defaultText = "请选择";
 	
@@ -44,7 +59,7 @@ public class DistrictTag extends TagSupport{
 			html.append("</select>");
 			html.append("<script type='text/javascript'>");
 			html.append("	function firstSelected"+this.getId()+"(){");
-			if(StringUtil.isNotBlank(this.getValue())){
+			if(ObjectUtil.isNotNull(this.getValue())){
 				html.append("		$('#"+this.getId()+"').find('option[value=\""+this.getValue()+"\"]').attr('selected','selected');");
 			}
 			html.append("	}");
@@ -94,12 +109,12 @@ public class DistrictTag extends TagSupport{
 	}
 
 
-	public String getValue() {
+	public Long getValue() {
 		return value;
 	}
 
 
-	public void setValue(String value) {
+	public void setValue(Long value) {
 		this.value = value;
 	}
 

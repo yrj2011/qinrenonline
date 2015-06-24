@@ -51,6 +51,30 @@ public class Constants {
 	public static final String SUFFIX = ".shtml";
 	
 	
+	/**
+	 * 地址相关
+	 * @author yrj
+	 *
+	 */
+	public static class Area{
+		/**
+		 * 国家
+		 */
+		public static final int COUNTRY = 0;
+		/**
+		 *  省
+		 */
+		public static final int PRIVINCE = 1;
+		/**
+		 * 市
+		 */
+		public static final int CITY = 2;
+		/**
+		 * 区
+		 */
+		public static final int DISTRICT = 3;
+	}
+	
 	public static class User{
 		/**
 		 * session 登录用户key
@@ -80,6 +104,27 @@ public class Constants {
 		 * 用户地址编辑页
 		 */
 		public static final String USER_ADDRESSEDIT = "/user/addressedit";
+		
+		/**
+		 * 文件上传
+		 */
+		public static final String COMMON_UPLOAD = "/upload";
+		
+		/**
+		 * 获取省份信息
+		 */
+		public static final String COMMON_GETPRIVCELIST = "/getprivcelist";
+		
+		/**
+		 * 获取城市信息
+		 */
+		public static final String COMMON_GETCITYLIST = "/getcitylist";
+		
+		
+		/**
+		 * 获取区县信息
+		 */
+		public static final String COMMON_GETDISTRACTLIST = "/getdistractlist";
 	}
 	
 	

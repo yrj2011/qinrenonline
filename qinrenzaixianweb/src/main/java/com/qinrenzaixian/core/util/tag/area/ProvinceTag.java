@@ -1,14 +1,17 @@
 package com.qinrenzaixian.core.util.tag.area;
 
 import java.io.IOException;
-import java.util.Map;
+import java.util.List;
 
 import javax.servlet.jsp.JspException;
 import javax.servlet.jsp.tagext.TagSupport;
 
 import com.qinrenzaixian.core.util.ActionUtil;
+import com.qinrenzaixian.core.util.Constants;
+import com.qinrenzaixian.core.util.ObjectUtil;
 import com.qinrenzaixian.core.util.StringUtil;
-import com.qinrenzaixian.core.util.json.JsonUtils;
+import com.qinrenzaixian.web.domain.CityDo;
+import com.qinrenzaixian.web.util.CityUtil;
 
 /**
  * 省级 下拉框
@@ -20,13 +23,30 @@ public class ProvinceTag extends TagSupport{
 
 	private static final long serialVersionUID = 1L;
 
-	//字段,从userInfo里取字段
+	/**
+	 * 标签唯一标识
+	 */
 	private String id;
+	/**
+	 * 标签name属性值
+	 */
 	private String name;
+	/**
+	 * 下级选择标签ID
+	 */
 	private String subId; 
+	/**
+	 * css 样式类
+	 */
 	private String className;
+	/**
+	 * 属性值
+	 */
 	private String attr;
-	private String value;
+	/**
+	 * 值
+	 */
+	private Long value;
 	private String defaultValue = "";
 	private String defaultText = "请选择";
 	
@@ -36,7 +56,7 @@ public class ProvinceTag extends TagSupport{
 		//输出的html
 		StringBuffer html = new StringBuffer();
 		
-		Map<String,String> provs = MetaUtils.getProvincePair("1");
+		List<CityDo> provs = CityUtil.getAllPrivinceList();
 		
 		try {
 			html.append("<select onChange=\"handleTagChange"+this.getId()+"('"+this.getSubId()+"')\" id='"+ this.getId() +"' name='"+this.getName()+"'");
@@ -48,13 +68,13 @@ public class ProvinceTag extends TagSupport{
 			}
 			html.append(" >");
 			html.append("	<option value='"+this.getDefaultValue()+"'>"+this.getDefaultText()+"</option>");
-			for(Object provId : provs.keySet()){
-				Map<String,String> pair = JsonUtils.fromJson(provs.get(provId), Map.class);
-				html.append("	<option value='"+provId+"' ");
-				if(StringUtil.isNoneBlank(this.getValue()) && provId.equals(this.getValue())){
+			for(CityDo prov : provs){
+				
+				html.append("	<option value='"+prov.getId()+"' ");
+				if(ObjectUtil.isNotNull(this.getValue()) && this.getValue().equals(prov.getId())){
 					html.append(" selected='selected' ");
 				}
-				html.append(">").append(pair.get(ActionUtil.getLanguage())).append("</option>");
+				html.append(">").append(prov.getName()).append("</option>");
 			}
 			html.append("</select>");
 			//ajax获取市级列表
@@ -68,11 +88,11 @@ public class ProvinceTag extends TagSupport{
 			html.append("			return;");
 			html.append("		}");
 			html.append("		$.ajax({");
-			html.append("			url:'"+ActionUtil.getRequest().getContextPath()+"/meta/cities/'+ id,");
+			html.append("			url:'"+ActionUtil.getRequest().getContextPath()+Constants.URL.COMMON_GETCITYLIST+Constants.SUFFIX+"?privinceId="+getValue()+",");
 			html.append("			type:'get',");
 			html.append("			success: function (data){");
 			html.append("					$.each(data,function(i, item){");
-			html.append("						$('#"+this.getSubId()+"').append('<option value='+item.key+'>'+item.value+'</option>');");
+			html.append("						$('#"+this.getSubId()+"').append('<option value='+item.id+'>'+item.name+'</option>');");
 			html.append("					});");
 			html.append("					if(flag"+this.getId()+" == 1){");
 			html.append("						firstSelected"+this.getSubId()+"();");
@@ -145,12 +165,12 @@ public class ProvinceTag extends TagSupport{
 	}
 
 
-	public String getValue() {
+	public Long getValue() {
 		return value;
 	}
 
 
-	public void setValue(String value) {
+	public void setValue(Long value) {
 		this.value = value;
 	}
 

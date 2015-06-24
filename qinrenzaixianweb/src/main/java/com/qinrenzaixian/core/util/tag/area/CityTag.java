@@ -6,6 +6,8 @@ import javax.servlet.jsp.JspException;
 import javax.servlet.jsp.tagext.TagSupport;
 
 import com.qinrenzaixian.core.util.ActionUtil;
+import com.qinrenzaixian.core.util.Constants;
+import com.qinrenzaixian.core.util.ObjectUtil;
 import com.qinrenzaixian.core.util.StringUtil;
 
 /**
@@ -18,14 +20,29 @@ public class CityTag extends TagSupport{
 	private static final long serialVersionUID = 1L;
 
 	/**
-	 * 字段,从userInfo里取字段
+	 * 标签唯一标识
 	 */
 	private String id;
+	/**
+	 * 标签name属性值
+	 */
 	private String name;
+	/**
+	 * 下级选择标签ID
+	 */
 	private String subId; 
+	/**
+	 * css 样式类
+	 */
 	private String className;
+	/**
+	 * 属性值
+	 */
 	private String attr;
-	private String value;
+	/**
+	 * 值
+	 */
+	private Long value;
 	private String defaultValue = "";
 	private String defaultText = "请选择";
 	
@@ -57,11 +74,11 @@ public class CityTag extends TagSupport{
 			html.append("			return;");
 			html.append("		}");
 			html.append("		$.ajax({");
-			html.append("			url:'"+ActionUtil.getRequest().getContextPath()+"/meta/districts/'+ id,");
+			html.append("			url:'"+ActionUtil.getRequest().getContextPath()+Constants.URL.COMMON_GETDISTRACTLIST+Constants.SUFFIX+"'?cityId=id,");
 			html.append("			type:'get',");
 			html.append("			success: function (data){");
 			html.append("					$.each(data,function(i, item){");
-			html.append("						$('#"+this.getSubId()+"').append('<option value='+item.key+'>'+item.value+'</option>');");
+			html.append("						$('#"+this.getSubId()+"').append('<option value='+item.id+'>'+item.name+'</option>');");
 			html.append("					});");
 			html.append("					if(flag"+this.getId()+" == 1){");
 			html.append("						firstSelected"+this.getSubId()+"();");
@@ -71,7 +88,7 @@ public class CityTag extends TagSupport{
 			html.append("		});");
 			html.append("	}");
 			html.append("	function firstSelected"+this.getId()+"(){");
-			if(StringUtil.isNotBlank(this.getValue())){
+			if(ObjectUtil.isNotNull(this.getValue())){
 				html.append("		$('#"+this.getId()+"').find('option[value=\""+this.getValue()+"\"]').attr('selected','selected');");
 				html.append("		$('#"+this.getId()+"').change();");
 			}
@@ -131,12 +148,12 @@ public class CityTag extends TagSupport{
 	}
 
 
-	public String getValue() {
+	public Long getValue() {
 		return value;
 	}
 
 
-	public void setValue(String value) {
+	public void setValue(Long value) {
 		this.value = value;
 	}
 

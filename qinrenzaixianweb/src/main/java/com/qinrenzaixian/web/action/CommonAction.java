@@ -2,6 +2,7 @@ package com.qinrenzaixian.web.action;
 
 import java.io.File;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import org.apache.log4j.Logger;
@@ -14,9 +15,13 @@ import org.springframework.web.multipart.MultipartFile;
 
 import com.qinrenzaixian.core.util.Constants;
 import com.qinrenzaixian.core.util.FileUtil;
+import com.qinrenzaixian.core.util.ListUtil;
+import com.qinrenzaixian.core.util.ObjectUtil;
 import com.qinrenzaixian.core.util.StringUtil;
 import com.qinrenzaixian.core.util.json.JsonUtils;
+import com.qinrenzaixian.web.domain.CityDo;
 import com.qinrenzaixian.web.exception.CommonException;
+import com.qinrenzaixian.web.util.CityUtil;
 
 /**
  * 
@@ -36,7 +41,7 @@ public class CommonAction {
 	 * @return
 	 */
 	@ResponseBody
-	@RequestMapping(value="upload",method=RequestMethod.POST)
+	@RequestMapping(value=Constants.URL.COMMON_UPLOAD,method=RequestMethod.POST)
 	public Object upload(MultipartFile uploadFile){
 		try {
 			if(uploadFile == null){
@@ -64,6 +69,64 @@ public class CommonAction {
 			return JsonUtils.toJson(rs);
 		} catch (Exception e) {
 			log.error("上传文件失败："+e.getMessage() ,e);
+		}
+		return null;
+	}
+	
+	/**
+	 * 获取省份信息
+	 * @return
+	 */
+	@ResponseBody
+	@RequestMapping(value=Constants.URL.COMMON_GETPRIVCELIST,method=RequestMethod.GET)
+	public Object getPrivceList(){
+		try {
+			
+			List<CityDo>  list = CityUtil.getAllPrivinceList();
+			if(ListUtil.isNotEmpty(list)){
+				return JsonUtils.toJson(list);
+			}
+		} catch (Exception e) {
+			log.error("获取省份信息失败："+e.getMessage() ,e);
+		}
+		return null;
+	}
+	
+	/**
+	 * 获取城市信息
+	 * @return
+	 */
+	@ResponseBody
+	@RequestMapping(value=Constants.URL.COMMON_GETCITYLIST,method=RequestMethod.GET)
+	public Object getCityList(Long privinceId){
+		try {
+			if(ObjectUtil.isNull(privinceId))
+				return null;
+			List<CityDo>  list = CityUtil.getAllCityList(privinceId);
+			if(ListUtil.isNotEmpty(list)){
+				return JsonUtils.toJson(list);
+			}
+		} catch (Exception e) {
+			log.error("获取城市信息失败："+e.getMessage() ,e);
+		}
+		return null;
+	}
+	
+	/**
+	 * 获取区县信息
+	 * @return
+	 */
+	@ResponseBody
+	@RequestMapping(value=Constants.URL.COMMON_GETPRIVCELIST,method=RequestMethod.GET)
+	public Object getDistractList(Long cityId){
+		try {
+			
+			List<CityDo>  list = CityUtil.getAllCityList(cityId);
+			if(ListUtil.isNotEmpty(list)){
+				return JsonUtils.toJson(list);
+			}
+		} catch (Exception e) {
+			log.error("获取区县信息失败："+e.getMessage() ,e);
 		}
 		return null;
 	}

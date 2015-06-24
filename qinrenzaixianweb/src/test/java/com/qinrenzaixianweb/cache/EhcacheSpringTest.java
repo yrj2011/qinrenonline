@@ -18,7 +18,7 @@ class User implements Serializable {
 	 * 
 	 */
 	private static final long serialVersionUID = 7207448133256412042L;
-	String name;
+	String  name;
 	String name2;
 	public User(String n ,String n2){
 		this.name = n;
@@ -69,7 +69,7 @@ public class EhcacheSpringTest {
         Assert.assertEquals(value, objSer);  
         System.out.println(objSer);  
     }  
-}     */
+    */
     @Test  
     public void testGetEhcacheObj() {  
         String key = "user";  
@@ -79,4 +79,4 @@ public class EhcacheSpringTest {
         Object objSer = element.getValue();  
         System.out.println(objSer);  
     }  
- 
+}  

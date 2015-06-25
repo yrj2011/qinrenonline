@@ -134,7 +134,7 @@ CREATE TABLE `softtip` (
 DROP TABLE IF EXISTS `pictrue`;
 CREATE TABLE `pictrue` (
   `ID` int(11) unsigned NOT NULL AUTO_INCREMENT,
-  `path` tinyint(11) NOT NULL COMMENT '类型 1 父母寻子，2 子寻父母 ，3 好人线索',
+  `path` tinyint(11) NOT NULL COMMENT '路径',
   `sort` tinyint(4) DEFAULT '0'  COMMENT '排序号',
   `createtime` datetime NOT NULL COMMENT '创建时间',
   `creater` int(11) NOT NULL COMMENT '创建人',
@@ -190,11 +190,14 @@ CREATE TABLE `publicmessage` (
   `ID` int(11) unsigned NOT NULL AUTO_INCREMENT,
   `type` tinyint(11) NOT NULL COMMENT '类型 1 父母寻子，2 子寻父母 ，3 好人线索',
   `parent_id` int(11) unsigned NOT NULL COMMENT '发表信息父消息',
+  `name` varchar(64) NOT NULL COMMENT '姓名',
+  `sex` int(1) NOT NULL COMMENT '性别',
+  `birthday` datetime DEFAULT null COMMENT '生日',
+  `age` int(2) DEFAULT 0 COMMENT '年龄',
   `happen_addr`  int(11)  NOT NULL COMMENT '失散地点 丢失地点 发现地点 ',
   `description` varchar(2048) NOT NULL COMMENT '特征描述',
   `remark` varchar(1024)  NULL COMMENT '备注',
   `sort` int(11) DEFAULT '0'  COMMENT '排序号',
-  `contract_id`  int(11) NOT NULL COMMENT '联系人ID',
   `createtime` datetime NOT NULL COMMENT '创建时间',
   `creater` int(11) NOT NULL COMMENT '创建人',
   `updatetime` datetime  NULL COMMENT '修改时间',
@@ -203,4 +206,24 @@ CREATE TABLE `publicmessage` (
   `status` tinyint(1) DEFAULT '0' COMMENT '状态',
    PRIMARY KEY (`ID`)
 ) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COMMENT='发布信息表';
+
+-- ----------------------------
+-- publicmessage 发布信息联系地址
+-- ----------------------------
+DROP TABLE IF EXISTS `publicmessage_addr`;
+CREATE TABLE `publicmessage_addr` (
+  `publicmessage_id` int(11)  COMMENT  '发布信息ID',
+  `address_id` int(11)  COMMENT  '联系地址ID' ,
+  `sort` int(3) DEFAULT '0'  COMMENT '排序号'
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COMMENT='发布信息联系地址';
+
+-- ----------------------------
+-- publicmessage 发布信息图片
+-- ----------------------------
+DROP TABLE IF EXISTS `publicmessage_pic`;
+CREATE TABLE `publicmessage_pic` (
+  `publicmessage_id` int(11)  COMMENT  '发布信息ID',
+  `pictrue_id` int(11)  COMMENT  '图片ID' ,
+  `sort` int(3) DEFAULT '0'  COMMENT '排序号'
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COMMENT='发布信息图片';
 

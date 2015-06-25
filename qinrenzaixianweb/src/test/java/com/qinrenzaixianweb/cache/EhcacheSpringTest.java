@@ -42,7 +42,7 @@ public class EhcacheSpringTest {
       
     @After  
     public void destory() {  
-        cacheManager.shutdown();  
+       // cacheManager.shutdown();  
     }  
   /*
     @Test  
@@ -55,12 +55,13 @@ public class EhcacheSpringTest {
         Assert.assertEquals(value, obj);  
         System.out.println(obj);  
     }  
-  
-    @Test  
+   */
+    /*@Test  
     public void testEhcacheObj() {  
-        String key = "user";  
-        User value = new User("zhangsan", "lisi");  
+        String key = "user2";  
+        User value = new User("zhangsan2", "lisi2");  
         cache.put(new Element(key, value));  
+        //cache.flush();
         Element element = cache.get(key);  
         Object obj = element.getObjectValue();  
         Assert.assertEquals(value, obj);  
@@ -68,15 +69,16 @@ public class EhcacheSpringTest {
         Object objSer = element.getValue();  
         Assert.assertEquals(value, objSer);  
         System.out.println(objSer);  
-    }  
-    */
+    }*/
+   
     @Test  
     public void testGetEhcacheObj() {  
-        String key = "user";  
+    	System.out.println();
+        String key = "user2";  
         Element element = cache.get(key);  
-        Object obj = element.getObjectValue();  
-        System.out.println(obj);  
-        Object objSer = element.getValue();  
-        System.out.println(objSer);  
-    }  
+        User obj = (User) element.getObjectValue();  
+        System.out.println(obj.name);  
+        User objSer = (User) element.getValue();  
+        System.out.println(objSer.name2);  
+    } 
 }  

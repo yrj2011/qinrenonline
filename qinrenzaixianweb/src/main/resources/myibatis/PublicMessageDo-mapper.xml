@@ -1,0 +1,276 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="Publicmessage">
+    <!-- 关联联系地址 -->
+    <resultMap  id="publicmessageaddr_rm" type="addresses">
+    	  <id property="id" column="id"/>
+    	  <result property="contact" column="contact" />
+    	  <result property="userId" column="user_id" />
+    	  <result property="countryId" column="country_id" />
+    	  <result property="provinceId" column="province_id" />
+    	  <result property="cityId" column="city_id" />
+    	  <result property="districtId" column="district_id" />
+    	  <result property="address" column="address" />
+    	  <result property="zipCode" column="zip_code" />
+    	  <result property="mobilePhone" column="mobile_phone" />
+    	  <result property="zone" column="zone" />
+    	  <result property="phoneNumber" column="phone_number" />
+    	  <result property="extNumber" column="ext_number" />
+          <result property="createTime" column="createtime" />
+    	  <result property="creater" column="creater" />
+    	  <result property="updateTime" column="updatetime" />
+    	  <result property="updater" column="updater" />
+    	  <result property="delflag" column="delflag" />
+    	  <result property="status" column="status" />
+    </resultMap>
+    <!--  关联图片 -->
+    <resultMap  id="publicmessagepic_rm" type="pictrue">
+    	  <id property="id" column="id"/>
+    	  <result property="path" column="path" />
+    	  <result property="sort" column="sort" />
+    </resultMap>
+    
+    <!-- 发布消息 -->
+    <resultMap  id="publicmessage_rm" type="publicmessage">
+    	  <id property="id" column="id"/>
+    	  <result property="userId" column="user_id" />
+    	  <result property="type" column="type" />
+    	  <result property="parentId" column="parent_id" />
+    	  <result property="name" column="name" />
+    	  <result property="sex" column="sex" />
+    	  <result property="birthday" column="birthday" />
+    	  <result property="age" column="age" />
+    	  <result property="provinceId" column="province_id" />
+    	  <result property="cityId" column="city_id" />
+    	  <result property="districtId" column="district_id" />
+    	  <result property="address" column="address" />
+    	  <result property="description" column="description" />
+    	  <result property="remark" column="remark" />
+          <result property="sort" column="sort" />
+          <result property="createTime" column="createtime" />
+    	  <result property="creater" column="creater" />
+    	  <result property="updateTime" column="updatetime" />
+    	  <result property="updater" column="updater" />
+    	  <result property="delflag" column="delflag" />
+    	  <result property="status" column="status" />
+    </resultMap>
+    
+    <!-- 发布消息与地址、图片关联 -->
+    <resultMap id="publicmessage_rm_addr_pic" extends="publicmessage_rm" type="publicmessage" >  
+            <collection property="addresses" ofType="addresses">  
+                  <id property="id" column="addr_id"/>
+    	          <result property="contact" column="addr_contact" />
+            </collection>
+            <collection property="pictrues" ofType="pictrue">  
+                   <id property="id" column="pic_id"/>
+    	           <result property="path" column="pic_path" />
+            </collection>  
+    </resultMap>  
+  
+    
+    <!-- 查询发布消息 -->
+	<select id="findPublicmessageById" parameterType="java.lang.Long"  resultMap="publicmessage_rm">
+	   select id ,  type ,user_id,
+	   `parent_id`,`name`,`sex` ,`birthday`,
+	   `age`, `province_id`,`city_id`,
+	   `district_id`,`address`,`description` ,`remark`,`sort`,
+	   `createtime`,`creater` ,`updatetime`,`updater`,
+	   `delflag`,`status`
+	   from  publicmessage  where delflag =0 and id=#{id}
+	</select>
+	
+	<!-- 查询发布消息 -->
+	<select id="findPublicmessageWithAddrPicById" parameterType="java.lang.Long"  resultMap="publicmessage_rm_addr_pic">
+	   select p.id ,  p.type ,p.user_id,
+	   p.`parent_id`,p.`name`,p.`sex` ,p.`birthday`,
+	   p.`age`, p.`province_id`,p.`city_id`,
+	   p.`district_id`,p.`address`,p.`description` ,p.`remark`,p.`sort`,
+	   p.`createtime`,p.`creater` ,p.`updatetime`,p.`updater`,
+	   p.`delflag`,p.`status` , ad.id addr_id , ad.contact addr_contact,
+	   pi.id pic_id, pi.path pic_path
+	   from  publicmessage p  
+	   left join publicmessage_addr pa on p.id=pa.publicmessage_id  
+       left join addresses ad on ad.id=pa.address_id
+       left join publicmessage_pic pp on p.id=pp.publicmessage_id  
+       left join pictrue pi on pi.id=pp.pictrue_id
+	   where p.delflag =0 and pa.delfalg=0 and pp.delfalg=0 and p.id=#{id}
+	</select>
+	
+	<!-- 新增发布消息 -->
+	<insert  id="insertPublicmessage"  parameterType="publicmessage" useGeneratedKeys="true" keyProperty="id" >
+	   insert  into publicmessage  (
+	   createtime , user_id,
+	   <if test="creater != null    ">  
+            ,creater
+       </if>  
+	   <if test="type != null    ">  
+            ,type
+       </if>  
+       <if test="name != null  ">  
+            ,name
+       </if> 
+       <if test="sex != null    ">  
+            ,sex
+       </if> 
+       <if test="birthday != null   ">  
+            ,birthday
+       </if> 
+       <if test="age != null   ">  
+            ,age
+       </if> 
+       <if test="provinceId != null ">  
+            ,province_id
+       </if> 
+       
+       <if test="cityId != null ">  
+            ,city_id
+       </if> 
+       
+       <if test="districtId != null ">  
+            ,district_id
+       </if> 
+       <if test="address != null and  address != ''  ">  
+            ,address
+       </if> 
+       
+       <if test="description != null  and  description != '' ">  
+            ,description
+       </if> 
+       
+       <if test="remark != null and  remark != ''   ">  
+            ,remark
+       </if> 
+       <if test="sort != null  ">  
+            ,sort
+       </if> 
+        ) values (
+       SYSDATE(),#{userId}
+       <if test="creater != null    ">  
+            ,#{creater}
+       </if>  
+	   <if test="type != null    ">  
+            ,#{type}
+       </if>  
+       <if test="name != null  ">  
+            ,#{name}
+       </if> 
+       <if test="sex != null    ">  
+            ,#{sex}
+       </if> 
+       <if test="birthday != null   ">  
+            ,#{birthday}
+       </if> 
+       <if test="age != null   ">  
+            ,#{age}
+       </if> 
+       <if test="provinceId != null ">  
+            ,#{provinceId}
+       </if> 
+       
+       <if test="cityId != null ">  
+            ,#{cityId}
+       </if> 
+       
+       <if test="districtId != null ">  
+            ,#{districtId}
+       </if> 
+       <if test="address != null and  address != ''  ">  
+            ,#{address}
+       </if> 
+       
+       <if test="description != null  and  description != '' ">  
+            ,#{description}
+       </if> 
+       
+       <if test="remark != null and  remark != ''   ">  
+            ,#{remark}
+       </if> 
+       <if test="sort != null  ">  
+            ,#{sort}
+       </if> )
+	</insert>
+	
+	<!-- 新增发布消息地址 -->
+	<insert  id="insertPublicmessageAddr"  parameterType="publicmessageaddr" >
+	   insert  into publicmessage_addr  
+	   ( publicmessage_id,address_id,sort) values 
+	   (#{publicmessageId},#{addressId},#{sort} )
+	</insert>
+	
+	<!-- 新增发布消息图片 -->
+	<insert  id="insertPublicmessagePic"  parameterType="publicmessagepic" >
+	   insert  into publicmessage_pic  
+	   ( publicmessage_id,pictrue_id,sort) values 
+	   (#{publicmessageId},#{pictrueId},#{sort} )
+	</insert>
+	
+	<!-- 修改发布消息 -->
+	<update  id="updatePublicmessage"  parameterType="publicmessage"  >
+	  update publicmessage  set
+            updatetime = SYSDATE() 
+            ,updater =#{updater}
+            ,type =#{type}
+            ,name=#{name}
+            ,sex=#{sex}
+            ,birthday=#{birthday}
+            ,age=#{age}
+            ,province_id=#{provinceId}
+            ,city_id=#{cityId}
+            ,district_id=#{districtId}
+            ,address=#{address}
+            ,description=#{description}
+            ,remark=#{remark}
+            ,sort=#{sort}
+	    where delflag =0 and id = #{id}
+	</update>
+	
+	<!-- 删除发布地址消息 -->
+	<update  id="delPublicmessageAddr"  parameterType="publicmessageaddr"  >
+	  update publicmessage_addr  set
+        delflag=1
+	   where delflag =0 
+	   and publicmessage_id=#{publicmessageId} 
+	</update>
+	<!-- 删除发布图片消息 -->
+	<update  id="delPublicmessagePic"  parameterType="publicmessagepic"  >
+	   update publicmessage_pic  set
+       delflag=1
+	   where delflag =0 
+	   and publicmessage_id=#{publicmessageId} 
+	</update>
+	<!-- 删除发布消息 -->
+	<update  id="delPublicmessage"  parameterType="publicmessage"  >
+	  update publicmessage  set
+        updatetime = SYSDATE() 
+        <if test="updater != null  ">  
+            ,updater =#{updater}
+       </if>  
+	   ,delflag=1
+	  where delflag =0 and id = #{id}
+	</update>
+	
+	<sql id="queryPublicmessageListCondition">
+	    and type = ${type}
+	</sql>
+	<!-- 查询用户发布消息列表 -->
+	<select id="queryPublicmessageList"  parameterType="com.qinrenzaixian.web.domain.PublicmessagePagination" resultMap="publicmessage_rm">
+	   select p.id ,  p.type ,
+	   p.`parent_id`,p.`name`,p.`sex` ,p.`birthday`,
+	   p.`age`, p.`province_id`,p.`city_id`,
+	   p.`district_id`,p.`address`,p.`description` ,p.`remark`,p.`sort`,
+	   p.`createtime`,p.`creater` ,p.`updatetime`,p.`updater`,
+	   p.`delflag`,p.`status`
+	   from  publicmessage p    where p.delflag =0 
+	   <include refid="queryPublicmessageListCondition"></include>
+	   order by p.id desc
+	   limit #{start},#{pageSize}
+	</select>
+	
+	<!-- 查询用户发布消息列表总数 -->
+	<select id="queryPublicmessageListCount"  parameterType="com.qinrenzaixian.web.domain.PublicMessagePagination" resultType="java.lang.Integer">
+	   select count(1)
+	   from  publicmessage  p where p.delflag =0 
+	   <include refid="queryPublicmessageListCondition"></include>
+	</select>
+</mapper>

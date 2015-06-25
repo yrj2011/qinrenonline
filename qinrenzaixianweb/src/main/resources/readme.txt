@@ -24,3 +24,5 @@ qq 接口调试
 http://connect.qq.com/sdk/webtools/index.html
 qq demo
 http://qzonestyle.gtimg.cn/qzone/openapi/js-sdk-demo.html
+mybatis 1对多插入
+http://blog.csdn.net/jubincn/article/details/7446316

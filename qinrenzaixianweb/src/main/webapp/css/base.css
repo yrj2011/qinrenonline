@@ -1795,4 +1795,7 @@ input:-moz-placeholder {
 }
 .h13{height:13px;}
 .r_nickName {width:70px; overflow:hidden}
+.hide{
+	display:none
+}
 

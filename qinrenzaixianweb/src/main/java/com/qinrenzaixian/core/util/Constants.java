@@ -50,6 +50,19 @@ public class Constants {
 	 */
 	public static final String SUFFIX = ".shtml";
 	
+	/**
+	 * 父母寻子
+	 */
+	public static final int FIND_CHILD=1;
+	/**
+	 * 子寻父母 
+	 */
+	public static final int FIND_PARENT=2;
+	/**
+	 * 好人线索
+	 */
+	public static final int FIND_GOODMAN=3;
+	
 	
 	/**
 	 * 地址相关
@@ -120,11 +133,34 @@ public class Constants {
 		 */
 		public static final String COMMON_GETCITYLIST = "/getcitylist";
 		
-		
 		/**
 		 * 获取区县信息
 		 */
 		public static final String COMMON_GETDISTRACTLIST = "/getdistractlist";
+		/**
+		 * 寻子信息列表页
+		 */
+		public static final String PUBLICKMESSAGE_FC_LIST = "/publicmessage/fclist";
+		/**
+		 * 寻子信息编辑页
+		 */
+		public static final String PUBLICKMESSAGE_FC_EDIT = "/publicmessage/fcedit";
+		/**
+		 * 寻父母信息列表页
+		 */
+		public static final String PUBLICKMESSAGE_FP_LIST = "/publicmessage/fplist";
+		/**
+		 * 寻父母信息编辑页
+		 */
+		public static final String PUBLICKMESSAGE_FP_EDIT = "/publicmessage/fpedit";
+		/**
+		 * 好人信息列表页
+		 */
+		public static final String PUBLICKMESSAGE_GM_LIST = "/publicmessage/gmlist";
+		/**
+		 * 好人信息编辑页
+		 */
+		public static final String PUBLICKMESSAGE_GM_EDIT = "/publicmessage/gmedit";
 	}
 	
 	

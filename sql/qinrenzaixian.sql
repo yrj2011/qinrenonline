@@ -194,7 +194,10 @@ CREATE TABLE `publicmessage` (
   `sex` int(1) NOT NULL COMMENT '性别',
   `birthday` datetime DEFAULT null COMMENT '生日',
   `age` int(2) DEFAULT 0 COMMENT '年龄',
-  `happen_addr`  int(11)  NOT NULL COMMENT '失散地点 丢失地点 发现地点 ',
+  `province_id` int(11)  NULL COMMENT '省',
+  `city_id` int(11)  NULL COMMENT '市',
+  `district_id` int(11) NULL COMMENT '区县',
+  `address` varchar(255) DEFAULT NULL COMMENT '详细地址',
   `description` varchar(2048) NOT NULL COMMENT '特征描述',
   `remark` varchar(1024)  NULL COMMENT '备注',
   `sort` int(11) DEFAULT '0'  COMMENT '排序号',
@@ -208,7 +211,7 @@ CREATE TABLE `publicmessage` (
 ) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COMMENT='发布信息表';
 
 -- ----------------------------
--- publicmessage 发布信息联系地址
+-- publicmessage_addr 发布信息联系地址
 -- ----------------------------
 DROP TABLE IF EXISTS `publicmessage_addr`;
 CREATE TABLE `publicmessage_addr` (
@@ -218,7 +221,7 @@ CREATE TABLE `publicmessage_addr` (
 ) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COMMENT='发布信息联系地址';
 
 -- ----------------------------
--- publicmessage 发布信息图片
+-- publicmessage_pic 发布信息图片
 -- ----------------------------
 DROP TABLE IF EXISTS `publicmessage_pic`;
 CREATE TABLE `publicmessage_pic` (

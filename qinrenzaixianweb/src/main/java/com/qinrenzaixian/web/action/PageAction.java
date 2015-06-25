@@ -13,6 +13,8 @@ import com.qinrenzaixian.core.util.ActionUtil;
 import com.qinrenzaixian.core.util.Constants;
 import com.qinrenzaixian.web.domain.AddressDo;
 import com.qinrenzaixian.web.domain.AddressPagination;
+import com.qinrenzaixian.web.domain.PublicMessageDo;
+import com.qinrenzaixian.web.domain.PublicMessagePagination;
 import com.qinrenzaixian.web.domain.UserDo;
 import com.qinrenzaixian.web.service.AddressService;
 import com.qinrenzaixian.web.service.UserService;
@@ -207,6 +209,23 @@ public class PageAction {
 		}
 	    mov.addObject("addressinfo", addressinfo);
 		mov.setViewName("user/address_add");
+		return mov;
+	}
+	
+	
+	/**
+	 * 寻子发布信息列表
+	 * 
+	 * @return
+	 * @throws Exception 
+	 */
+	@RequestMapping(value = Constants.URL.PUBLICKMESSAGE_FC_LIST, method = RequestMethod.GET)
+	public ModelAndView publicmessageFcList(Model model, PublicMessagePagination<PublicMessageDo> publickmessagePage) throws Exception {
+		publickmessagePage.setType(Constants.FIND_CHILD);
+		ModelAndView mov = new ModelAndView();
+	    addressService.queryAddressList(addressPage);
+	    mov.addObject("addressPage", addressPage);
+		mov.setViewName("user/addresslist");
 		return mov;
 	}
 }

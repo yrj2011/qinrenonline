@@ -6,6 +6,10 @@
         <typeAlias alias="user"      type="com.qinrenzaixian.web.domain.UserDo"/>
         <typeAlias alias="addresses" type="com.qinrenzaixian.web.domain.AddressDo"/>
         <typeAlias alias="city" type="com.qinrenzaixian.web.domain.CityDo"/>
+        <typeAlias alias="publicmessageaddr" type="com.qinrenzaixian.web.domain.PublicMessageAddrDo"/>
+        <typeAlias alias="publicmessage" type="com.qinrenzaixian.web.domain.PublicMessageDo"/>
+        <typeAlias alias="publicmessagepic" type="com.qinrenzaixian.web.domain.PublicMessagePicDo"/>
+        <typeAlias alias="pictrue" type="com.qinrenzaixian.web.domain.PictrueDo"/>
     </typeAliases>
         
 </configuration>

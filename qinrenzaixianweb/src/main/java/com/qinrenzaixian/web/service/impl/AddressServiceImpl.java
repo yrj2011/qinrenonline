@@ -4,12 +4,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.qinrenzaixian.web.dao.AddressDao;
-import com.qinrenzaixian.web.dao.UserDao;
 import com.qinrenzaixian.web.domain.AddressDo;
 import com.qinrenzaixian.web.domain.AddressPagination;
-import com.qinrenzaixian.web.domain.UserDo;
 import com.qinrenzaixian.web.service.AddressService;
-import com.qinrenzaixian.web.service.UserService;
 
 @Service("addressService")
 public class AddressServiceImpl implements AddressService {

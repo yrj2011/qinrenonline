@@ -188,6 +188,7 @@ CREATE TABLE `contract` (
 DROP TABLE IF EXISTS `publicmessage`;
 CREATE TABLE `publicmessage` (
   `ID` int(11) unsigned NOT NULL AUTO_INCREMENT,
+  `USER_ID` int(11) ,
   `type` tinyint(11) NOT NULL COMMENT '类型 1 父母寻子，2 子寻父母 ，3 好人线索',
   `parent_id` int(11) unsigned NOT NULL COMMENT '发表信息父消息',
   `name` varchar(64) NOT NULL COMMENT '姓名',
@@ -217,7 +218,8 @@ DROP TABLE IF EXISTS `publicmessage_addr`;
 CREATE TABLE `publicmessage_addr` (
   `publicmessage_id` int(11)  COMMENT  '发布信息ID',
   `address_id` int(11)  COMMENT  '联系地址ID' ,
-  `sort` int(3) DEFAULT '0'  COMMENT '排序号'
+  `sort` int(3) DEFAULT '0'  COMMENT '排序号',
+  `delflag` tinyint(1) DEFAULT '0'  COMMENT '删除标志0 可用，1 删除'
 ) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COMMENT='发布信息联系地址';
 
 -- ----------------------------
@@ -227,6 +229,7 @@ DROP TABLE IF EXISTS `publicmessage_pic`;
 CREATE TABLE `publicmessage_pic` (
   `publicmessage_id` int(11)  COMMENT  '发布信息ID',
   `pictrue_id` int(11)  COMMENT  '图片ID' ,
-  `sort` int(3) DEFAULT '0'  COMMENT '排序号'
+  `sort` int(3) DEFAULT '0'  COMMENT '排序号',
+  `delflag` tinyint(1) DEFAULT '0'  COMMENT '删除标志0 可用，1 删除'
 ) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COMMENT='发布信息图片';
 

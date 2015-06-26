@@ -17,6 +17,7 @@ import com.qinrenzaixian.web.domain.PublicMessageDo;
 import com.qinrenzaixian.web.domain.PublicMessagePagination;
 import com.qinrenzaixian.web.domain.UserDo;
 import com.qinrenzaixian.web.service.AddressService;
+import com.qinrenzaixian.web.service.PublicMessageService;
 import com.qinrenzaixian.web.service.UserService;
 
 /**
@@ -35,6 +36,8 @@ public class PageAction {
 	private UserService userService;
 	@Autowired
 	private AddressService addressService;
+	@Autowired
+	private PublicMessageService publicMessageService;
     /**
      * 地址列表
      */
@@ -223,9 +226,31 @@ public class PageAction {
 	public ModelAndView publicmessageFcList(Model model, PublicMessagePagination<PublicMessageDo> publickmessagePage) throws Exception {
 		publickmessagePage.setType(Constants.FIND_CHILD);
 		ModelAndView mov = new ModelAndView();
-	    addressService.queryAddressList(addressPage);
-	    mov.addObject("addressPage", addressPage);
-		mov.setViewName("user/addresslist");
+		publicMessageService.queryPublicMessageList(publickmessagePage);
+	    mov.addObject("pmPage", publickmessagePage);
+		mov.setViewName("publicmessage/publicmessage_fc_list");
+		return mov;
+	}
+	
+	/**
+	 * 寻子发布信息编辑
+	 * 
+	 * @return
+	 * @throws Exception 
+	 */
+	@RequestMapping(value = Constants.URL.PUBLICKMESSAGE_FC_EDIT, method = RequestMethod.GET)
+	public ModelAndView publicmessageFcEdit(Model model, PublicMessageDo pminfo) throws Exception {
+		ModelAndView mov = new ModelAndView();
+		mov.addObject(Constants.FLAG, Constants.FLAG_ADD);
+		if(pminfo ==  null){
+			pminfo = new PublicMessageDo();
+		}
+		if(pminfo.getId() != null && pminfo.getId().longValue() >0){
+			pminfo = publicMessageService.selectPublicMessageById(pminfo.getId());
+			mov.addObject(Constants.FLAG, Constants.FLAG_UPDATE);
+		}
+	    mov.addObject("pminfo", pminfo);
+		mov.setViewName("user/address_add");
 		return mov;
 	}
 }

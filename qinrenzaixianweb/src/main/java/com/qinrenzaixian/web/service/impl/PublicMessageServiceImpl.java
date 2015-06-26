@@ -4,12 +4,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.qinrenzaixian.web.dao.PublicMessageDao;
-import com.qinrenzaixian.web.domain.AddressPagination;
 import com.qinrenzaixian.web.domain.PublicMessageDo;
-import com.qinrenzaixian.web.service.AddressService;
+import com.qinrenzaixian.web.domain.PublicMessagePagination;
+import com.qinrenzaixian.web.service.PublicMessageService;
 
 @Service("publicMessageService")
-public class PublicMessageServiceImpl implements AddressService {
+public class PublicMessageServiceImpl implements PublicMessageService {
 
 	@Autowired
 	private PublicMessageDao publicmessageDao;
@@ -20,7 +20,7 @@ public class PublicMessageServiceImpl implements AddressService {
 	 * @return
 	 */
 	@Override
-	public PublicMessageDo selectAddressById(Long id){
+	public PublicMessageDo selectPublicMessageById(Long id){
 		return publicmessageDao.selectPublicMessageById(id);
 	}
 	/**
@@ -30,8 +30,8 @@ public class PublicMessageServiceImpl implements AddressService {
 	 * @throws Exception
 	 */
 	@Override
-	public int insertAddress(PublicMessageDo publicmessage) throws Exception{
-		return publicmessageDao.insertAddress(publicmessage);
+	public int insertPublicMessage(PublicMessageDo publicmessage) throws Exception{
+		return publicmessageDao.insertPublicMessage(publicmessage);
 	}
 	
 	/**
@@ -41,8 +41,8 @@ public class PublicMessageServiceImpl implements AddressService {
 	 * @throws Exception
 	 */
 	@Override
-	public int updateAddress(PublicMessageDo publicmessage) throws Exception{
-		return publicmessageDao.updateAddress(publicmessage);
+	public int updatePublicMessage(PublicMessageDo publicmessage) throws Exception{
+		return publicmessageDao.updatePublicMessage(publicmessage);
 	}
 	
 	/**
@@ -52,8 +52,8 @@ public class PublicMessageServiceImpl implements AddressService {
 	 * @throws Exception
 	 */
 	@Override
-	public int deleteAddress(PublicMessageDo publicmessage) throws Exception{
-		return publicmessageDao.deleteAddress(publicmessage);
+	public int deletePublicMessage(PublicMessageDo publicmessage) throws Exception{
+		return publicmessageDao.deletePublicMessage(publicmessage);
 	}
 	/**
 	 * 查询发布消息列表
@@ -62,7 +62,7 @@ public class PublicMessageServiceImpl implements AddressService {
 	 * @throws Exception
 	 */
 	@Override
-	public void queryAddressList(AddressPagination<PublicMessageDo> pagination) throws Exception{
-		publicmessageDao.queryUserAddress(pagination);
+	public void queryPublicMessageList(PublicMessagePagination<PublicMessageDo> pagination) throws Exception{
+		publicmessageDao.queryUserPublicMessage(pagination);
 	}
 }

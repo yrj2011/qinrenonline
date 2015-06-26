@@ -211,7 +211,7 @@ public class UserAction {
 	}
 	
 	/**
-	 * 新增用户地址
+	 * 修改用户地址
 	 * @return
 	 * @throws Exception
 	 */

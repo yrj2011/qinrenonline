@@ -29,32 +29,32 @@
 <div class="b_inner h1000">
 <div class="container">
 				<div class="form pt10 pb20 hide" >
-					<form id="address_search_form" action="${ctx }/user/addresslist.shtml" method="get">
+					<form id="pm_search_form" action="${ctx }/user/pmlist.shtml" method="get">
 						<div class="item">
 							<div class="item_subinfo fl">
 								<span class="label">联系人</span>
 								<div class="fl">
 									<input type="text" class="form-control" name="contact"
-										value="${addressPage.contact }" placeholder="请输入联系人">
+										value="${pmPage.contact }" placeholder="请输入联系人">
 								</div>
 								<span class="label">手机</span>
 								<div class="fl">
 									<input type="text" class="form-control" name="mobile"
-										value="${addressPage.mobile }" placeholder="请输入手机">
+										value="${pmPage.mobile }" placeholder="请输入手机">
 								</div>
 								<span class="label">座机</span>
 		                        <div class="fl">
 									<input type="text" class="form-control" name="phone"
-										value="${addressPage.phone }" placeholder="请输入座机">
+										value="${pmPage.phone }" placeholder="请输入座机">
 								</div>
 							</div>
 						</div>
 					</form>
 					<div class="item" style="border-bottom: none; padding-bottom: 0px;">
 						<div class="item_subinfo fl btn_list">
-							<a href="javascript:void(0)" id="address_search_btn" class="btn btn-block btn-lg btn-main"
+							<a href="javascript:void(0)" id="pm_search_btn" class="btn btn-block btn-lg btn-main"
 								style="margin-left: 305px;">查询</a> 
-							<a href="javascript:void(0)" id="address_search_reset" class="btn btn-block btn-lg btn-invice"
+							<a href="javascript:void(0)" id="pm_search_reset" class="btn btn-block btn-lg btn-invice"
 								style="width: 65px;">重置</a>
 						</div>
 					</div>
@@ -63,7 +63,7 @@
 					<div class="investment_con">
 						<div class="investment_con_list" style="display: block;">
 						   <div style="width:200px;height:29px;">
-						     <a href="${ctx }/user/addressedit.shtml" target="_blank" class="btn btn-block btn-lg btn-main"
+						     <a href="${ctx }/user/pmedit.shtml" target="_blank" class="btn btn-block btn-lg btn-main"
 								style="margin-left: 0px;">新增</a> 
 						   </div>
 						   
@@ -80,27 +80,27 @@
 		                                <th class="tl">创建时间</th>
 		                                <th class="tl" style="text-align:center">操作</th>
 		                            </tr>
-									<c:if test="${addressPage != null }">
-										<c:forEach var="address" items="${addressPage.list }">
+									<c:if test="${pmPage != null }">
+										<c:forEach var="pm" items="${pmPage.list }">
 											<tr class="table_content">
-												<td style="width:150px;"><span class="c_qiye toolong">${address.id }</span></td>
-												<td style="width:150px;">${address.contact}</td>
-												<td style="width:150px;">${address.mobilePhone}</td>
-												<td style="width:150px;"><q:phone zone="${address.zone }" extral="${address.extNumber }" phone="${address.phoneNumber }"/></td>
+												<td style="width:150px;"><span class="c_qiye toolong">${pm.id }</span></td>
+												<td style="width:150px;">${pm.contact}</td>
+												<td style="width:150px;">${pm.mobilePhone}</td>
+												<td style="width:150px;"><q:phone zone="${pm.zone }" extral="${pm.extNumber }" phone="${pm.phoneNumber }"/></td>
 												<td style="width:150px;">
 												
-												<q:address address="${address.address}" province="${address.provinceId}" city="${address.cityId}" district="${address.districtId}"/>
+												<q:pm pm="${pm.pm}" province="${pm.provinceId}" city="${pm.cityId}" district="${pm.districtId}"/>
 												</td>
-												<td style="width:150px;">${address.zipCode}</td>
+												<td style="width:150px;">${pm.zipCode}</td>
 												<td style="width:120px;">
-													<a class="blue" href="${ctx }/user/addressedit.shtml?id=${address.id }" >修改</a>&nbsp;&nbsp; 
-													<a  class="blue" href="${ctx }/user/addressdel.shtml?id=${address.id }" >删除</a>			
+													<a class="blue" href="${ctx }/user/pmedit.shtml?id=${pm.id }" >修改</a>&nbsp;&nbsp; 
+													<a  class="blue" href="${ctx }/user/pmdel.shtml?id=${pm.id }" >删除</a>			
                                                 </td>
 											</tr>
 										</c:forEach>
 										<tr>
 										 
-											<td colspan="6"><q:page  page="${addressPage}" /></td>
+											<td colspan="6"><q:page  page="${pmPage}" /></td>
 										</tr>
 									</c:if>
 								</table>
@@ -114,8 +114,8 @@
 <script src="${ctx}/js/common/common.js"></script>
 <script>
  	 $(function(){
- 		formReset("#address_search_reset", "#address_search_form");
- 		fromSubmit("#address_search_btn", "#address_search_form");
+ 		formReset("#pm_search_reset", "#pm_search_form");
+ 		fromSubmit("#pm_search_btn", "#pm_search_form");
  	 });
 </script>
 </body>

@@ -39,14 +39,14 @@
 <div class="b_inner h1000">
 <div class="container">
 				<div class="form pt10 pl160 pb20" >
-					 <form:form id="address_form" class="address_form" commandName="addressinfo" action="${formAction }" method="${formMethod }">
+					 <form:form id="address_form" class="address_form" commandName="pminfo" action="${formAction }" method="${formMethod }">
 						<div class="item">
 							<div class="item_subinfo fl">
 								<span class="label">详细地址</span>
 								<div class="fl">
-								    <q:province subId="selcity" id="selprovince" name="provinceId" attr="datatype='*'" value="${addressinfo.provinceId}" className="select-main category fl w90 "/>
-									<q:city subId="seldistrict" id="selcity" name="cityId" attr="datatype='*'" value="${addressinfo.cityId}" className="select-main category fl w90 "/>
-								    <q:district  id="seldistrict" name="districtId" attr="datatype='*'" value="${addressinfo.districtId}" className="select-main category fl w90"/>
+								    <q:province subId="selcity" id="selprovince" name="provinceId" attr="datatype='*'" value="${pminfo.provinceId}" className="select-main category fl w90 "/>
+									<q:city subId="seldistrict" id="selcity" name="cityId" attr="datatype='*'" value="${pminfo.cityId}" className="select-main category fl w90 "/>
+								    <q:district  id="seldistrict" name="districtId" attr="datatype='*'" value="${pminfo.districtId}" className="select-main category fl w90"/>
 								</div>
 							</div>
 							<div class="item_subinfo fl" >
